@@ -51,8 +51,8 @@
           </div>
         </div>
         <!-- ----------------- my menu navbar----------------!-->
-        <div class="button_menu ">
-            <ul class="navbar-navb   ">
+        <div class="button_menu open">
+            <ul class="navbar-navb">
                   <li class="nav-item me-3 text-wrap">
                     <a class="nav-link active text-uppercase" aria-current="page" href="Accueil.php">Accueil</a>
                   </li>
@@ -407,6 +407,6 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="asset/js/bootstrap.bundle.min.js"></script>
-    <script scr="accueil.js">ggg</script>
+    <script scr="accueil.js"></script>
 </body>
 </html>
