@@ -19,9 +19,9 @@
         <nav class="ac-navbar navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
           <a class="Logo navbar-brand text-uppercase" href="Accueil.php"><span>E.L.L</span></a>
-         <button type="button" id="button_toggel">
-            <ion-icon name="menu-sharp"></ion-icon>
-         </button>
+          <div class="button_toggel">
+          <ion-icon name="menu-outline" class="button_icon"></ion-icon>
+          </div>
           <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
             <ul class=" navbar-nav ms-auto mb-2 mb-lg-0 ">
               <li class="nav-item me-3 text-wrap">
@@ -51,7 +51,7 @@
           </div>
         </div>
         <!-- ----------------- my menu navbar----------------!-->
-        <div class="button_menu open">
+        <div class="button_menu ">
             <ul class="navbar-navb">
                   <li class="nav-item me-3 text-wrap">
                     <a class="nav-link active text-uppercase" aria-current="page" href="Accueil.php">Accueil</a>
@@ -407,6 +407,15 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="asset/js/bootstrap.bundle.min.js"></script>
-    <script scr="accueil.js"></script>
+    <script >
+    const button_toggel= document.querySelector('.button_toggel');
+     const button_menu = document.querySelector('.button_menu');
+if (button_toggel && button_menu) {
+  button_toggel.addEventListener('click', () => {
+        button_menu.classList.toggle('open');
+    });
+} else {
+    console.error('Required elements not found in the DOM.');
+}</script>
 </body>
 </html>

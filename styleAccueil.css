@@ -220,20 +220,14 @@ header{
   margin: 0px;
 }   
 /*-----------------My Menu toggel----------------*/
-#button_toggel{
-  text-decoration: none;
-  background-color: transparent;
-  color: #fff;
+.button_toggel .button_icon{
+  color: white;
+  font-size: 35px;
   border: 1px solid white;
   border-radius: 3px;
-  text-align: center;
-  justify-content: center;
-  display: flex;
-  font-size: 1.5em;
   display: none;
-  height: 35px;
 }
-#button_toggel:hover{
+.button_icon:hover{
   background-color: #fff;
   color: black;
 }
@@ -317,10 +311,42 @@ header{
   }
 }
 @media(max-width:991px){
+  header{
+    height: auto;
+    padding-bottom: 20px;
+    font-size: smaller;
+  }
+  .ac_footer1 p{
+    margin: 0;
+  }
+  .card_body,ul{
+    font-size: 12px;
+
+  }
   .button_menu{
     display: block;
   }
-  #button_toggel{
+  .button_toggel .button_icon{
     display: block;
+  }
+}
+@media(max-width:430px){
+  .body{
+    font-size: 20px;
+  }
+  .ac_footer{
+    text-align: center;
+    margin: 0%;
+  }
+  .ac_3_A1,.CR1, .ac_4, b{
+    font-size: 12px;
+    text-align: center;
+  }
+
+}
+@media(max-width:638px){
+  .ac_4, p{
+    margin: 0;
+    text-align: center;
   }
 }
