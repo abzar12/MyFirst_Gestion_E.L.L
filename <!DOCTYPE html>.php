@@ -140,9 +140,6 @@
                             <option value="Sénégal">
                             <option value="Autre">
                         </datalist><br>
-                        <input type="checkbox" name="contrat" id="contrat" class="a1">
-                        <span for="contrat"style="color:black;">D'accord pour les termes de condition</span> <br>
-                        <button type="button" onclick="prevStep()">Back</button>
                     </div>
                     <div class="colB2">
                         <label for="dure">Durée</label>
@@ -154,21 +151,24 @@
                             <option value="5 Mois">5 Mois</option>
                             <option value="6 Mois">6 Mois</option>
                             <option value="6 ou 7 Mois">6 Mois à 1ans</option>
-                        </select> <br>
+                        </select><br>
                         <label for="ville">Ville</label><br>
                         <input type="text" id="ville" name="ville" required><br>
                         <label for="mois">Quand pensez-vous venir</label><br>
                         <input type="date" name="mois" id="mois">
+                    </div>
+                    <div class="colB3">
+                      <p><input type="checkbox" name="contrat" id="contrat" class="a1" style="width:18px; margin:0;">
+                      <span for="contrat"style="color:black; font-size:12px">D'accord pour les termes de condition</span> <br></p>
+                       
+                        <button class="button_Back" type="button" onclick="prevStep()">Back</button>
                         <button class="button_Back1" type="submit" > Envoyé</ion-icon></button>
                     </div>
-                   
-                     
                 </div>
             </div>
                  
              </div>
-             <div class="part2" style="display:none;">
-
+             
              </div>
         </div>
       </form>
