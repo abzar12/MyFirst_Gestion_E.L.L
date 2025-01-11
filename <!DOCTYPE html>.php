@@ -74,8 +74,7 @@
         </div>
         </nav>
 
-    </header>
-    <form action="FormulaireRET.php" method="post">
+        <form action="FormulaireRET.php" method="post">
         <div class="principale container">
             <div class=" part2 active">
               <div class="partA">
@@ -172,6 +171,139 @@
              </div>
         </div>
       </form>
+    </header>
+    
+            <section class="ac_3colum py-5">
+                  <div class="container-fluid">
+                    <div class="ac_3 row">
+                       <h3 style="text-align: center; color:rgb(210, 105, 30);  font-family:auto; text-decoration:underline; font-weight: bold;">NOS COURS </h3>
+                      <div class=" col-md-6">
+                      <p class="CR1">COURS NORMAUX</p>
+                        <table class="ac_3_A1">
+                          <th class="text-uppercase">Nombre de Mois</th>
+                          <th class="text-uppercase">Nommbre d'Heure</th>
+                          <th class="text-uppercase">Montant</th>
+                          <tr>
+                            <td>1 Mois</td>
+                            <td>3 heures</td>
+                            <td> 70.000  FCFA</td>
+                          </tr>
+                          <tr>
+                            <td>2 Mois</td>
+                            <td>3 heures</td>
+                            <td>120.000 FCFA</td>
+                          </tr>
+                          <tr>
+                            <td>3 Mois</td>
+                            <td>3 heures</td>
+                            <td>180.000 FCFA</td>
+                          </tr>
+                          <tr>
+                            <td>1 Mois</td>
+                            <td>6 heures</td>
+                            <td>110.000 FCFA</td>
+                          </tr>
+                          <tr>
+                            <td>2 Mois</td>
+                            <td>6 heures</td>
+                            <td>140.000 FCFA</td>
+                          </tr>
+                          <tr>
+                            <td>3 Mois</td>
+                            <td>6 heures</td>
+                            <td>210.000 FCFA</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div class=" col-md-6">
+                      <p class="CR2">PROGRAMME LONGUE DUREE</p>
+                        <table class="ac_3_A2">
+                          <th class="text-uppercase">Nombre de Mois</th>
+                          <th class="text-uppercase">Nommbre d'Heure</th>
+                          <th class="text-uppercase">Montant</th>
+                          <tr>
+                            <td>6 Mois</td>
+                            <td>3 heures</td>
+                            <td>210.000 FCFA</td>
+                          </tr>
+                          <tr>
+                            <td>6 Mois</td>
+                            <td>6 heures</td>
+                            <td>320.000 FCFA</td>
+                          </tr>
+                          <tr>
+                            <td>9 Mois</td>
+                            <td>3 heures</td>
+                            <td>260.000 FCFA</td>
+                          </tr>
+                          <tr>
+                            <td>12 Mois</td>
+                            <td>3 heures</td>
+                            <td>320.000 FCFA</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div class=" col" style="">
+                      <p class="CR1">COURS PROFESSIONNEl</p>
+                        <table class="ac_3_A1" style="margin:auto;">
+                          <th class="text-uppercase">Nombre de Mois</th>
+                          <th class="text-uppercase">Nommbre d'Heure</th>
+                          <th class="text-uppercase">Montant Administrateur</th>
+                          <th class="text-uppercase">Montant Individus</th>
+                          <tr>
+                            <td>1 Mois</td>
+                            <td>3 heures</td>
+                            <td> 290.000  FCFA</td>
+                            <td> 270.000  FCFA</td>
+                          </tr>
+                          <tr>
+                          <td>1 Mois</td>
+                            <td>5 heures</td>
+                            <td> 370.000  FCFA</td>
+                            <td> 350.000  FCFA</td>
+                          </tr>
+                          <tr>
+                            <td>2 Mois</td>
+                            <td>3 heures</td>
+                            <td>450.000 FCFA</td>
+                            <td> 430.000  FCFA</td>
+                          </tr>
+                          <tr>
+                            <td>2 Mois</td>
+                            <td>5 heures</td>
+                            <td>560.000 FCFA</td>
+                            <td> 540.000  FCFA</td>
+                          </tr>
+                          <tr>
+                            <td>3 Mois</td>
+                            <td>3 heures</td>
+                            <td>670.000 FCFA</td>
+                            <td> 650.000  FCFA</td>
+                          </tr>
+                          <tr>
+                            <td>3 Mois</td>
+                            <td>5 heures</td>
+                            <td>840.000 FCFA</td>
+                            <td> 820.000  FCFA</td>
+                          </tr>
+                          <tr>
+                            <td>2 Semaines</td>
+                            <td>3 heures</td>
+                            <td>220.000 FCFA</td>
+                            <td> 200.000  FCFA</td>
+                          </tr>
+                          <tr>
+                            <td>2 Semaines</td>
+                            <td>5 heures</td>
+                            <td>250.000 FCFA</td>
+                            <td> 230.000  FCFA</td>
+                          </tr>
+                        </table>
+                      </div>
+
+                    </div>
+                  </div>
+            </section>
 <!-- MY FOOTER -->
 
     <!-- Bootstrap js-->
