@@ -45,7 +45,9 @@ header{
     color: white;
     font-size: 2em;
     font-weight: bolder;
+   
 }
+
 .A H1{
     text-decoration: none;
     font-size: em;
@@ -293,7 +295,27 @@ header{
 .button_menu .navbar-navdrop li a{
   color: rgb(2, 137, 6);
 }
-
+/*-------------------animation---------------*/
+.ac_animation1{
+  transform: scale(.3);
+     opacity: 0;
+     transition: transform 1s ease-out;
+ }
+ .ac_animation1.visible{
+   transform: scale(1);
+   opacity: 1;
+ 
+ }
+ .ac_animation2{
+   transform: translateX(-50%);
+   opacity: 0;
+   transition: 0.9s ease-out;
+ }
+ .ac_animation2.visible{
+   transform: translateX(0);
+   opacity: 1;
+   
+ }
 
 /* javascrip */
 @keyframes body {

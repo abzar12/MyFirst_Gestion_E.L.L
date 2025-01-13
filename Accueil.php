@@ -80,8 +80,8 @@
 
         </div>
         </nav>
-    <div class="ac_Acontainer">
-        <div class="A row col-12">
+    <div class="ac_Acontainer ">
+        <div class="A row col-12 ">
             <p>Bienvenue dans le meilleur institut d'anglais au Ghana</p>
             <h1>English language laboratory Institute</h1>
             <p>Apprendre l'anglais au Ghana n'a jamais été aussi facile Rejoignez le meilleur institut d'anglais au Ghana et débloquez le monde des opportunités avec nous.</p>
@@ -93,7 +93,7 @@
                 <section class="available py-5">
                   <div class="container">
                     <div class="row">
-                    <div class="ac_card mb-3">
+                    <div class="ac_card ac_animation1 mb-3">
                          <div class="row">
                            <div class="col-md-6 border-0 rounded-0">
                              <div class="card-body">
@@ -112,7 +112,7 @@
                 </section>
                 <section class="ac_2colum">
                   <div class="container-fluid ">
-                    <div class="ac_col row ">
+                    <div class="ac_col ac_animation2 row ">
                       <div class="ac_col1 col m-2" >
                       <ion-icon class="ion-icon1" name="book"></ion-icon>
                       <h2>Certificat accrédité</h2>
@@ -407,15 +407,6 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="asset/js/bootstrap.bundle.min.js"></script>
-    <script >
-    const button_toggel= document.querySelector('.button_toggel');
-     const button_menu = document.querySelector('.button_menu');
-if (button_toggel && button_menu) {
-  button_toggel.addEventListener('click', () => {
-        button_menu.classList.toggle('open');
-    });
-} else {
-    console.error('Required elements not found in the DOM.');
-}</script>
+    <script src="AccueiljavaS.js"></script>
 </body>
 </html>
