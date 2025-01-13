@@ -1,0 +1,132 @@
+*{
+    font-size: 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/*Head ceci est l'entete*/
+body{
+    background-color: rgba(238, 251, 234, 0.903);
+}
+.ac-navbar{
+    text-decoration: none;
+    background-color: rgb(0,0,0,0.55);
+    box-shadow: 1px 1px 3px rgba(255,255,255,0.54);
+} 
+.Logo,span{
+    text-decoration: none;
+    color: rgb(23, 176, 23);
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.ac-navbar .nav-link{
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: padding-bottom 0.4s ease-in-out, border-color 0.3s ease;
+    color: #D2691E ;
+}
+.ac-navbar .nav-link:hover{
+    padding-bottom: 20px;
+    border-bottom-color: rgb(23, 176, 23);
+}
+/*ceci is the body*/
+.cr_image, img{
+    height: 590px;
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-content: center;
+    background-size: cover;
+}
+
+/* style.css */
+header {
+    background-image: url('img/1f38ebb7-32f8-414a-a395-c0a9df5982e6.JPG');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 70vh;
+    width: 100%;
+}
+
+/* -----------------------my button css ----------------- */
+.button_icon{
+    color: white;
+    font-size: 25px;
+    border: 1px solid white;
+    border-radius: 3px;
+    display: none;
+    cursor: auto;
+  }
+  .button_icon:hover{
+    background-color: #fff;
+    color: black;
+  }
+.button_menu{
+   display: flex;
+   text-align: center;
+   width: 100%;
+   position: absolute;
+   top: 52px;
+   background-color: rgba(0,0,0,0.55);
+   backdrop-filter: blur(4px);
+   opacity: 0;
+   pointer-events: none;
+}
+.button_menu.open{
+    opacity: 1;
+    pointer-events: all;
+}
+.button_menu .navbar-navb li{
+    list-style-type: none;
+}
+.button_menu .navbar-navb li a{
+    color: white;
+}
+.button_menu ul li a:hover{
+    color: rgb(0, 120, 4);
+  }
+  .button_menu .navbar-navdrop ul li {
+    text-decoration: none;
+    align-items: center;
+    text-align: start;
+    justify-content: center;
+    width: 100%;
+    border: none;
+    
+  }.button_menu .navbar-navdrop ul li a{
+    
+   text-align: center;
+    text-transform: capitalize;
+    font-size: 16px;
+  }
+  .button_menu .navbar-navdrop .navlink-navdrop{
+    color: #fff;
+    
+  }.button_menu .navbar-navdrop .navlink-navdrop:hover{
+    color: rgb(0, 120, 4);
+  }
+  .button_menu .navbar-navdrop ul{
+    list-style-type:none ;
+    position: static;
+    text-align: center;
+    justify-content: center;
+    border: none;
+    
+  }
+  .button_menu .navbar-navdrop li a{
+    color: rgb(2, 137, 6);
+  }
+
+/* ---------------my javascript-------------             -------------        -------------------*/
+
+@media(max-width:991px){
+    header{
+        transform: none;
+    }
+    .button_menu{
+        display: block;
+    }
+    .button_icon{
+        display: block;
+    }
+}

@@ -224,7 +224,7 @@ header{
 /*-----------------My Menu toggel----------------*/
 .button_toggel .button_icon{
   color: white;
-  font-size: 35px;
+  font-size: 25px;
   border: 1px solid white;
   border-radius: 3px;
   display: none;
@@ -271,9 +271,8 @@ header{
   justify-content: center;
   width: 100%;
   border: none;
-  
-}.button_menu .navbar-navdrop ul li a{
-  
+}
+.button_menu .navbar-navdrop ul li a{
  text-align: center;
   text-transform: capitalize;
   font-size: 16px;
@@ -286,7 +285,6 @@ header{
 .button_menu .navbar-navdrop ul{
   list-style-type:none ;
   position: static;
-  /* margin-left: ; */
   text-align: center;
   justify-content: center;
   border: none;
