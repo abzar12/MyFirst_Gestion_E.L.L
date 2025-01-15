@@ -18,7 +18,6 @@ const observer = new IntersectionObserver((entries) =>{
              MytextHTML2.classList.add('visible');
         }else{
             MytextHTML1.classList.remove('visible');
-             MytextHTML2.classList.remove('visible');
         }
     });
 });
