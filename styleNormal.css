@@ -12,6 +12,10 @@ header{
     text-decoration: none;
     background-color: rgb(0,0,0,0.55);
     box-shadow: 1px 1px 3px rgba(255,255,255,0.54);
+    backdrop-filter: blur(2px);
+    height: 54px;
+    z-index: 99;
+    backdrop-filter: blur(3);
 } 
 .Logo,span{
     text-decoration: none;
@@ -159,15 +163,15 @@ label{
   box-shadow: 2px 4px 8px black;
   backdrop-filter: blur(5px);
   opacity: 0;
-  transform: translateY(60px) ;
-  transition: all 1.7s ease ;
+  transform: translateY(60px) translateX(-100px) ;
+  transition: all 1.9s ease ;
 }
 .ac_card_body:hover{
   background-color: rgba(23, 176, 23, 0.368);
 }
 .ac_card_body.anim1{
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) translateX(0);
 }
 
 .ac_card_body h5{
@@ -186,12 +190,23 @@ label{
   font-size: 18px;
 }
 /* ______________________fin de la card______________ */
+.ac_3{
+  
+  border-radius: 10px;
+  /* background-color: #b5b4b4af; */
+  margin: 130px 15px 10px 15px;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.55);
+  padding: 15px 0px ;
+}
 .ac_3 .CR1{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: rgb(0, 0, 0);
   font-weight: bolder;
   margin-left: auto;
+  margin-top: 15px;
   text-align: center;
+  background-color: rgba(0, 120, 5, 0.468);
+  border-radius: 5px
 }
 .ac_3 .CR2{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -199,14 +214,89 @@ label{
   font-weight: bolder;
   margin-left: auto;
   text-align: center;
+  margin-top: 15px;
+  background-color: rgba(0, 120, 5, 0.468);
+  border-radius: 5px;
 }
 .ac_3 th{
   width: 300px;
+  color: rgb(0, 120, 4);
 }
 .ac_3 th,td,tr{
   text-align: center;
   border: 1px solid black;
+  
 }
+/*____________________________for the Array */
+.ac_4_colum {
+  padding: 40px 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+/* Container */
+.ac_4_colum .container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Heading Styling */
+.ac_4_colum h3 {
+  text-align: center;
+  font-size: 2rem;
+  color: rgba(0, 120, 4, 0.434); /* Bootstrap Blue */
+  margin-bottom: 20px;
+}
+
+.ac_4_colum h3 span {
+  color: rgb(0, 120, 4); /* Highlighted Color */
+  font-weight: bold;
+  display: inline-block;
+    animation: bounce 2s infinite;
+}
+
+/* Columns Styling */
+.ac_row_col4 .col-md-6 {
+  padding: 20px;
+}
+
+.ac_row_col4 ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ac_row_col4 ul li {
+  margin: 15px 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.ac_row_col4 ul li p {
+  font-size: 0.95rem;
+  font-weight: normal;
+  color: #666;
+  margin: 5px 0 0 20px;
+}
+
+/* Additional Styling */
+.ac_row_col4 ul p:first-of-type {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #555; 
+}
+
+
+
+/* footer */
+.ac-footer .ac_footer .ac_footer2{
+  padding: 0%;
+  margin: 0px;
+}   
 
 /* ------------------my button----------- */
 
@@ -285,6 +375,17 @@ label{
   .button_menu .navbar-navdrop li a{
     color: rgb(2, 137, 6);
   }
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
 
 /*------------------my media------------------*/
   @media(max-width:991px){
@@ -370,3 +471,21 @@ label{
     }
 
   }
+  /* Responsive Design */
+@media (max-width: 768px) {
+  .ac_row_col4 .col-md-6 {
+      margin-bottom: 20px;
+  }
+
+  .ac_row_col4 ul p:first-of-type {
+      font-size: 1rem;
+  }
+
+  .ac_row_col4 ul li {
+      font-size: 1rem;
+  }
+
+  .ac_row_col4 ul li p {
+      font-size: 0.85rem;
+  }
+}

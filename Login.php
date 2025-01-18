@@ -65,7 +65,23 @@
          </div>
          </header>
 <!-- MY FOOTER -->
-
+<footer class="">
+<nav class=" navbar  bg-dark navbar-dark ">
+  <div class="ac-footer container-fluid">
+    <div class="ac_footer1 col-md-4">
+    <p style="color:white;">Copyright © 2024<span style="margin:3px"> E.L.L </span> Tous droits réservés</p></div>
+    <div class="ac_footer2 col-md-4">
+      <p style="color:white; margin-left:0px;  margin-right:0px;">  <ion-icon style="color: rgb(23, 176, 23);" name="location-outline"></ion-icon> Situé à: Alajo, Accra-Ghana</p>
+    </div>
+    <div class="ac_footer3 col-md-4 ">
+      <a style="margin-left: 35px" href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-instagram"></ion-icon></a>
+      <a style="margin-left: 35px" href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-facebook"></ion-icon></a>
+      <a style="margin-left: 35px" href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-tiktok"></ion-icon></a>
+      <a style="margin-left: 35px" href=""><ion-icon style="color: rgb(23, 176, 23);" name="mail"></ion-icon></a>
+    </div>
+</div>
+</nav>
+</footer>
     <!-- Bootstrap js-->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

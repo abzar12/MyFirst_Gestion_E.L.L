@@ -60,3 +60,8 @@ function prevStep() {
     }
 };
 // _________________________fin de la formulaire_______________
+AOS.init({
+    duration: 1000, // Durée de l'animation en millisecondes
+    easing: 'ease-in', // Type de transition
+    once: true, // Animation uniquement au premier scroll
+});

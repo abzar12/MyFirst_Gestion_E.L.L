@@ -7,6 +7,7 @@
     <!--  Bootstrap CSS -->
     <title>GESTION_D'INSTITUT</title>
     <link href="asset/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="styleNormal.css">
   </head>
   <body>
@@ -24,10 +25,10 @@
               </li>
               <ul class="navbar-nav">
                   <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-uppercase" data-bs-toggle="dropdown" href="formatiom.php" role="button" aria-expanded="false">Formation</a>
+                  <a class="nav-link dropdown-toggle active text-uppercase" data-bs-toggle="dropdown" href="formatiom.php" role="button" aria-expanded="false">Formation</a>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                    <li><a class="dropdown-item text-uppercase" href="Cnormal.php">Cours Normal</a></li>
+                    <li><a class="dropdown-item active text-uppercase" href="Cnormal.php">Cours Normal</a></li>
                          <li><a class="dropdown-item text-uppercase" href="Cspeciaux.php">Cours Speciaux</a></li>
                          <li><a class="dropdown-item text-uppercase" href="Cinformatique.php">Cours Informatique</a></li>
                          <li><hr class="dropdown-divider"></li>
@@ -39,7 +40,7 @@
                 <a class="nav-link text-uppercase" href="Acceuil.php">A propos</a>
               </li>
               <li class="nav-item me-3 ">
-                <a class="nav-link active text-uppercase" href="Login.php">Login</a>
+                <a class="nav-link  text-uppercase" href="Login.php">Login</a>
               </li>
             </ul>
           </div>
@@ -175,7 +176,7 @@
       </form>
     </header>
              
-             <section class="section1">
+            <section class="section1">
                      <div class="conatiner-fluid">
                          <div class="ac_card card" >
                            <div class="ac_card_body  card-body">
@@ -185,12 +186,12 @@
                            </div>
                          </div>
                      </div>
-              </section>
+            </section>
 
             <section class="ac_3colum py-5">
                   <div class="container-fluid">
-                    <div class="ac_3 row">
-                       <h3 style="text-align: center; color:rgb(210, 105, 30);  font-family:auto; text-decoration:underline; font-weight: bold;">NOS COURS </h3>
+                    <div data-aos="zoom-in-down" class="ac_3 row">
+                       <h3 style="text-align: center; color:rgb(0, 120, 4);  font-family:auto; text-decoration:underline; font-weight: bold;">NOS COURS </h3>
                       <div class=" col-md-6">
                       <p class="CR1">COURS NORMAUX</p>
                         <table class="ac_3_A1">
@@ -317,13 +318,61 @@
 
                     </div>
                   </div>
-             </section>
+            </section>
+            <section class="ac_4_colum">
+              <div class="container">
+              
+                <div class="ac_row_col4 row">
+                <h3 data-aos="zoom-in"><span>H</span>oraire</h3>
+                  <div data-aos="fade-left" class="col-md-6">
+                  <ul>
+                  <p >3 heures de cours théoriques</p>
+                    <li>Grammaire <p>Pour maîtriser les règles essentielles de la langue</p> </li>
+                    <li>Prononciation <p>Pour parler avec clarté et fluidité </p> </li>
+                    <li>Vocabulairse <p>Pour enrichir votre lexique et mieux vous exprimer</p> </li>
+                    <li>Lecture/Dictée <p>Pour renforcer vos compétences en compréhension écrite </p> </li>
+                    <li>Ecoute <p>Pour améliorer votre compréhension orale </p> </li>
+                    <li>Expressions <p> Pour vous aider à construire des phrases fluides et naturelles</p> </li>
+                  </ul>
+                  </div>
+                  <div data-aos="fade-right" class="col-md-6">
+                    <ul>
+                    <p>3 heures de pratique orale</p>
+                    <li>Debats <p>Pour argumenter et structurer vos idées en anglais</p></li>
+                    <li>Translations <p>Pour renforcer votre compréhension bilingue et votre précision</p></li>
+                    <li>Discussions <p>Pour améliorer votre fluidité dans des échanges interactifs</p></li>
+                    <li>Jeux linguistiques <p>Pour apprendre tout en s’amusant dans une ambiance détendue</p> </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </section>
 <!-- MY FOOTER -->
-
+<footer class="">
+<nav class=" navbar  bg-dark navbar-dark ">
+  <div class="ac-footer container-fluid">
+    <div class="ac_footer1 col-md-4">
+    <p style="color:white;">Copyright © 2024<span style="margin:3px"> E.L.L </span> Tous droits réservés</p></div>
+    <div class="ac_footer2 col-md-4">
+      <p style="color:white; margin-left:0px;  margin-right:0px;">  <ion-icon style="color: rgb(23, 176, 23);" name="location-outline"></ion-icon> Situé à: Alajo, Accra-Ghana</p>
+    </div>
+    <div class="ac_footer3 col-md-4 ">
+      <a style="margin-left: 35px" href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-instagram"></ion-icon></a>
+      <a style="margin-left: 35px" href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-facebook"></ion-icon></a>
+      <a style="margin-left: 35px" href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-tiktok"></ion-icon></a>
+      <a style="margin-left: 35px" href=""><ion-icon style="color: rgb(23, 176, 23);" name="mail"></ion-icon></a>
+    </div>
+</div>
+</nav>
+</footer>
     <!-- Bootstrap js-->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="asset/js/bootstrap.bundle.min.js"></script>
     <script src="Cnormaljava.js"></script>
+    <script>
+    
+</script>
   </body>
 </html>

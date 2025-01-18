@@ -4,7 +4,6 @@
     box-shadow: 1px 1px 3px rgba(255,255,255,0.54);
     backdrop-filter: blur(2px);
     height: 54px;
-    position: sticky;
 } 
 body{
     background-color: rgba(238, 251, 234, 0.903);
