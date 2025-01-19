@@ -76,7 +76,7 @@
         </nav>
 
         <form action="FormulaireRET.php" method="post">
-        <div class="principale container">
+         <div class="principale container">
             <div class=" part2 active">
               
               <div class="partA">
@@ -172,7 +172,7 @@
              </div>
              
              </div>
-        </div>
+         </div>
       </form>
     </header>
              
@@ -182,7 +182,7 @@
                            <div class="ac_card_body  card-body">
                              <h5 class="card-title"><span>|</span> Apprendre l'anglais au Ghana</h5>
          
-                             <p class="card-text">Ne laissez plus la barrière de la langue freiner vos rêves ! Que ce soit pour voyager, avancer dans votre carrière ou réussir vos examens, apprendre l'anglais n'a jamais été aussi simple.Que vous soyez débutant ou avancé, notre école vous accompagne avec des classes d'expression orale pour une pratique active et naturelle. Nos enseignants, compétents et professionnels, vous garantissent un apprentissage efficace dans une ambiance conviviale</p>
+                             <p class="P1 card-text">Ne laissez plus la barrière de la langue freiner vos rêves ! Que ce soit pour voyager, avancer dans votre carrière ou réussir vos examens, apprendre l'anglais n'a jamais été aussi simple.</p> <p class="P2">Que vous soyez débutant ou avancé, notre école vous accompagne avec des classes d'expression orale pour une pratique active et naturelle. Nos enseignants, compétents et professionnels, vous garantissent un apprentissage efficace dans une ambiance conviviale</p> 
                            </div>
                          </div>
                      </div>
@@ -258,110 +258,130 @@
                           </tr>
                         </table>
                       </div>
-                      <div class=" col" style="">
-                      <p class="CR1">COURS PROFESSIONNEl</p>
-                        <table class="ac_3_A1" style="margin:auto;">
-                          <th class="text-uppercase">Nombre de Mois</th>
-                          <th class="text-uppercase">Nommbre d'Heure</th>
-                          <th class="text-uppercase">Montant Administrateur</th>
-                          <th class="text-uppercase">Montant Individus</th>
-                          <tr>
-                            <td>1 Mois</td>
-                            <td>3 heures</td>
-                            <td> 290.000  FCFA</td>
-                            <td> 270.000  FCFA</td>
+                      <div class="ac_3_A2 col-md-6" >
+                      <p class="text-uppercase CR2" > LOGEMENT: est payable minimum pour 3 Mois </p>
+                          <table style="margin-bottom:15px;">
+                            <th class="text-uppercase" >CHAMBRE</th>
+                            <th>TARIF PAR MOIS</th>
+                          <tr> 
+                            <td style="background-color:rgba(128, 128, 128, 0.462);">Une personne par chambre</td>
+                            <td style="background-color:rgba(128, 128, 128, 0.462);">100.000 FCFA</td>
                           </tr>
-                          <tr>
-                          <td>1 Mois</td>
-                            <td>5 heures</td>
-                            <td> 370.000  FCFA</td>
-                            <td> 350.000  FCFA</td>
+                          <tr> 
+                            <td >une personne par chambre (climatisée)</td>
+                            <td>200.000 FCFA</td> 
                           </tr>
-                          <tr>
-                            <td>2 Mois</td>
-                            <td>3 heures</td>
-                            <td>450.000 FCFA</td>
-                            <td> 430.000  FCFA</td>
+                          <tr> 
+                          <td style="background-color:rgba(128, 128, 128, 0.462);">Une personne par chambre</td>
+                          <td style="background-color:rgba(128, 128, 128, 0.462);">200.000 FCFA</td>
                           </tr>
-                          <tr>
-                            <td>2 Mois</td>
-                            <td>5 heures</td>
-                            <td>560.000 FCFA</td>
-                            <td> 540.000  FCFA</td>
+                          <tr> 
+                          <td >2 personnes par chambre</td>
+                          <td>40.000 FCFA</td> 
                           </tr>
-                          <tr>
-                            <td>3 Mois</td>
-                            <td>3 heures</td>
-                            <td>670.000 FCFA</td>
-                            <td> 650.000  FCFA</td>
+                          <tr> 
+                          <td style="background-color:rgba(128, 128, 128, 0.462);">2 personne par chambre</td>
+                          <td style="background-color:rgba(128, 128, 128, 0.462);">50.000 FCFA</td> 
                           </tr>
-                          <tr>
-                            <td>3 Mois</td>
-                            <td>5 heures</td>
-                            <td>840.000 FCFA</td>
-                            <td> 820.000  FCFA</td>
+                          <tr> 
+                          <td>Famille d'accueil(vivre avec une famille Ghanéen)</td>
+                          <td>500.000 FCFA(Nourriture inclus 3 repas du jours )</td>
                           </tr>
-                          <tr>
-                            <td>2 Semaines</td>
-                            <td>3 heures</td>
-                            <td>220.000 FCFA</td>
-                            <td> 200.000  FCFA</td>
+                          <tr> 
+                          <td style="background-color:rgba(128, 128, 128, 0.462);">Famille d'accueil(vivre avec une famille Ghanéen)</td>
+                          <td style="background-color:rgba(128, 128, 128, 0.462);">600.000 FCFA(Nourriture inclus 3 repas du jours )</td>
                           </tr>
-                          <tr>
-                            <td>2 Semaines</td>
-                            <td>5 heures</td>
-                            <td>250.000 FCFA</td>
-                            <td> 230.000  FCFA</td>
-                          </tr>
-                        </table>
+                        
+                         </table>
                       </div>
+                      <div class="col-md-6">
+                      <p class="CR2 text-uppercase">Tarifs et Informations</p>
 
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class=" text-uppercase">Élément</th>
+                                    <th class="text-uppercase">Coût</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2 livres d'anglais</td>
+                                    <td>10.000 FCFA</td>
+                                </tr>
+                                <tr>
+                                    <td>Frais d'inscription</td>
+                                    <td>5.000 FCFA</td>
+                                </tr>
+                                <tr>
+                                    <td>Visites touristiques</td>
+                                    <td>50.000 FCFA (par mois)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <p class="note"><span class="highlight">NB :</span> Les frais sont <strong>non remboursables</strong> une fois payés.</p>
+                        <p>Les cours se tiennent dans des <strong>salles bien meublées et climatisées</strong> au sein de l’établissement.</p>
+                        <p>Une <strong>pause-café quotidienne</strong> est offerte pour le confort des apprenants.</p>
+
+                      </div>
+                      <a class="ac_3_INS"href="Formulaire.php">Passer a L'Inscription</a>
                     </div>
                   </div>
             </section>
+            <section class="ac_4colum py-">
+                  <div class="container">
+                    <div class="ac_4 rom" >
+                    
+                    </div>
+                  </div>
+                </section>
             <section class="ac_4_colum">
               <div class="container">
               
                 <div class="ac_row_col4 row">
-                <h3 data-aos="zoom-in"><span>H</span>oraire</h3>
-                  <div data-aos="fade-left" class="col-md-6">
-                  <ul>
-                  <p >3 heures de cours théoriques</p>
-                    <li>Grammaire <p>Pour maîtriser les règles essentielles de la langue</p> </li>
-                    <li>Prononciation <p>Pour parler avec clarté et fluidité </p> </li>
-                    <li>Vocabulairse <p>Pour enrichir votre lexique et mieux vous exprimer</p> </li>
-                    <li>Lecture/Dictée <p>Pour renforcer vos compétences en compréhension écrite </p> </li>
-                    <li>Ecoute <p>Pour améliorer votre compréhension orale </p> </li>
-                    <li>Expressions <p> Pour vous aider à construire des phrases fluides et naturelles</p> </li>
-                  </ul>
+                    <h3 data-aos="zoom-in"><span>H</span>oraire</h3>
+                      <div data-aos="fade-left" class="col-md-6">
+                      <ul>
+                      <p data-aos="fade-right" style="color:rgb(0, 120, 4); font-size:large; width:249px; ">3 heures de cours théoriques : </p>
+                        <li>Grammaire <p>Pour maîtriser les règles essentielles de la langue</p> </li>
+                        <li>Prononciation <p>Pour parler avec clarté et fluidité </p> </li>
+                        <li>Vocabulairse <p>Pour enrichir votre lexique et mieux vous exprimer</p> </li>
+                        <li>Lecture/Dictée <p>Pour renforcer vos compétences en compréhension écrite </p> </li>
+                        <li>Ecoute <p>Pour améliorer votre compréhension orale </p> </li>
+                        <li>Expressions <p> Pour vous aider à construire des phrases fluides et naturelles</p> </li>
+                      </ul>
+                      </div>
+                      <div data-aos="fade-right" class="col-md-6">
+                        <ul>
+                        <p data-aos="fade-left" style="color:rgb(0, 120, 4); font-size:large; width:249px; ">3 Heures de pratique orale :</p>
+                        <li>Debats <p>Pour argumenter et structurer vos idées en anglais</p></li>
+                        <li>Translations <p>Pour renforcer votre compréhension bilingue et votre précision</p></li>
+                        <li>Discussions <p>Pour améliorer votre fluidité dans des échanges interactifs</p></li>
+                        <li>Jeux linguistiques <p>Pour apprendre tout en s’amusant dans une ambiance détendue</p> </li>
+                        </ul>
                   </div>
-                  <div data-aos="fade-right" class="col-md-6">
-                    <ul>
-                    <p>3 heures de pratique orale</p>
-                    <li>Debats <p>Pour argumenter et structurer vos idées en anglais</p></li>
-                    <li>Translations <p>Pour renforcer votre compréhension bilingue et votre précision</p></li>
-                    <li>Discussions <p>Pour améliorer votre fluidité dans des échanges interactifs</p></li>
-                    <li>Jeux linguistiques <p>Pour apprendre tout en s’amusant dans une ambiance détendue</p> </li>
-                    </ul>
-                  </div>
+                 </div>
                 </div>
-              </div>
             </section>
 <!-- MY FOOTER -->
 <footer class="">
 <nav class=" navbar  bg-dark navbar-dark ">
   <div class="ac-footer container-fluid">
     <div class="ac_footer1 col-md-4">
-    <p style="color:white;">Copyright © 2024<span style="margin:3px"> E.L.L </span> Tous droits réservés</p></div>
+    <p style="color:white; margin:auto;">Copyright © 2024<span style="margin:3px"> E.L.L </span> Tous droits réservés</p></div>
     <div class="ac_footer2 col-md-4">
-      <p style="color:white; margin-left:0px;  margin-right:0px;">  <ion-icon style="color: rgb(23, 176, 23);" name="location-outline"></ion-icon> Situé à: Alajo, Accra-Ghana</p>
+      <p style="color:white; margin:auto;">  <ion-icon style="color: rgb(23, 176, 23);" name="location-outline"></ion-icon> Situé à: Alajo, Accra-Ghana</p>
     </div>
     <div class="ac_footer3 col-md-4 ">
-      <a style="margin-left: 35px" href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-instagram"></ion-icon></a>
-      <a style="margin-left: 35px" href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-facebook"></ion-icon></a>
-      <a style="margin-left: 35px" href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-tiktok"></ion-icon></a>
-      <a style="margin-left: 35px" href=""><ion-icon style="color: rgb(23, 176, 23);" name="mail"></ion-icon></a>
+      <a class="aion" href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-instagram"></ion-icon></a>
+      <a href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-facebook"></ion-icon></a>
+      <a href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-tiktok"></ion-icon></a>
+      <a href=""><ion-icon style="color: rgb(23, 176, 23);" name="mail"></ion-icon></a>
+      
     </div>
+    <span style="color:white; margin:auto; font-size:16px "> <ion-icon style="color: rgb(23, 176, 23); margin:auto 15px;" name="call-sharp"></ion-icon>Phone: +233 24 473 7721</span>
+    
 </div>
 </nav>
 </footer>
