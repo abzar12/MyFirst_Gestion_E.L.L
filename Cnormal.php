@@ -48,14 +48,14 @@
         <div class="button_menu ">
             <ul class="navbar-navb">
                   <li class="nav-item me-3 text-wrap">
-                    <a class="nav-link active text-uppercase" aria-current="page" href="Accueil.php">Accueil</a>
+                    <a class="nav-link  text-uppercase" aria-current="page" href="Accueil.php">Accueil</a>
                   </li>
                   <ul class="navbar-nav navbar-navdrop">
                       <li class="nav-item dropdown">
-                      <a class="navlink-navdrop nav-link  dropdown-toggle text-uppercase" data-bs-toggle="dropdown" href="formatiom.php" role="button" aria-expanded="false">Formation</a>
+                      <a class="navlink-navdrop nav-link active dropdown-toggle text-uppercase" data-bs-toggle="dropdown" href="formatiom.php" role="button" aria-expanded="false">Formation</a>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark bg-transparent" aria-labelledby="navbarDarkDropdownMenuLink">
-                        <li><a class="dropdown-item " href="Cnormal.php">Cours Normal</a></li>
+                        <li><a class="dropdown-item active" href="Cnormal.php">Cours Normal</a></li>
                              <li><a class="dropdown-item" href="Cspeciaux.php">Cours Speciaux</a></li>
                              <li><a class="dropdown-item" href="Cinformatique.php">Cours Informatique</a></li>
                              <li><hr class="dropdown-divider"></li>
