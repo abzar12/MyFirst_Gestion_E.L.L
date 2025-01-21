@@ -77,15 +77,15 @@
         <div class="container">
             <div class="ac_head  row">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem qui vero similique dolore nesciunt nihil accusantium error aperiam asperiores modi! Maiores dolore doloribus labore laboriosam et iusto tempore? Voluptatibus quos facere hic itaque provident tempora quod vel nisi, alias quae!</p>
-                a
+                
             </div>
         </div>
     </header>
-    <section class="ac_col1 py-5">
+    <section class="ac_col1 py-5" data-aos="zoom-out" >
         <div class="container">
             <div class=" row">
-                <div class=" col-md-12" style="">
-                      <p class="CR1">COURS PROFESSIONNEl</p>
+                <div class=" col-md-12" data-aos="" style="">
+                      <p class="CR2">COURS PROFESSIONNEl</p>
                         <table class="ac_3_A1" style="margin:auto;">
                           <th class="text-uppercase">Nombre de Mois</th>
                           <th class="text-uppercase">Nommbre d'Heure</th>
@@ -141,42 +141,30 @@
                           </tr>
                         </table>
                       </div>
-                      <div class="ac_3_A2 col-md-6" >
+                      <div class="ac_3_A2 col-md-6" data-aos="fade-right">
                       <p class="text-uppercase CR2" > LOGEMENT: est payable minimum pour 3 Mois </p>
                           <table style="margin-bottom:15px;">
                             <th class="text-uppercase" >CHAMBRE</th>
                             <th>TARIF PAR MOIS</th>
                           <tr> 
-                            <td style="background-color:rgba(128, 128, 128, 0.462);">Une personne par chambre</td>
-                            <td style="background-color:rgba(128, 128, 128, 0.462);">100.000 FCFA</td>
+                            <td style="background-color:rgba(128, 128, 128, 0.462);"><b>1 MOIS</b> Un Appartement menblé Climatisé</td>
+                            <td style="background-color:rgba(128, 128, 128, 0.462);">320.000 FCFA</td>
                           </tr>
                           <tr> 
-                            <td >une personne par chambre (climatisée)</td>
+                            <td ><b>2 MOIS</b> Un Appartement menblé Climatisé</td>
                             <td>200.000 FCFA</td> 
                           </tr>
                           <tr> 
-                          <td style="background-color:rgba(128, 128, 128, 0.462);">Une personne par chambre</td>
+                          <td style="background-color:rgba(128, 128, 128, 0.462);"><b>2 SEMAINES</b> Un Appartement menblé Climatisé</td>
                           <td style="background-color:rgba(128, 128, 128, 0.462);">200.000 FCFA</td>
                           </tr>
                           <tr> 
-                          <td >2 personnes par chambre</td>
-                          <td>40.000 FCFA</td> 
-                          </tr>
-                          <tr> 
-                          <td style="background-color:rgba(128, 128, 128, 0.462);">2 personne par chambre</td>
-                          <td style="background-color:rgba(128, 128, 128, 0.462);">50.000 FCFA</td> 
-                          </tr>
-                          <tr> 
-                          <td>Famille d'accueil(vivre avec une famille Ghanéen)</td>
-                          <td>500.000 FCFA(Nourriture inclus 3 repas du jours )</td>
-                          </tr>
-                          <tr> 
-                          <td style="background-color:rgba(128, 128, 128, 0.462);">Famille d'accueil(vivre avec une famille Ghanéen)</td>
-                          <td style="background-color:rgba(128, 128, 128, 0.462);">600.000 FCFA(Nourriture inclus 3 repas du jours )</td>
+                          <td ><b>3 MOIS</b> Un Appartement menblé Climatisé</td>
+                          <td>800.000 FCFA</td> 
                           </tr>
                          </table>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-6" data-aos="fade-left">
                       <p class="CR2 text-uppercase">Tarifs et Informations</p>
 
                         <table>
@@ -211,15 +199,16 @@
         </div>
     </section>
     <section class="ac_col2 py-5">
-        <div class="container">
+        <div class="container" id="avantg">
             <div class="row">
-                <div class="ac_avtg col-md-6">
-                    <p class="CR2 ">Avantages</p>
-                    <ul>
-                        <li>Préparation aux examens : TOEFL, IELTS, DELF/DALF, etc</li>
-                        <li>Visite touristique à payer 50.000 FCFA a l’intérieur d’Accra pour 4 visites</li>
-                        <li>Enseignement personnalisé pour progresser à votre rythme</li>
-                        <li>DALF</li>
+                <div class=" col-md-7 " >
+                    <p class="highlight text-uppercase">Avantages</p>
+                    <ul >
+                        <li ><b>Préparation aux examens :</b> TOEFL, IELTS,TOEIC, SAT,COMPUTER LAB,ETC</li>
+                        <li><b>Visite touristique</b> à payer 50.000 FCFA a l’intérieur d’Accra pour 4 visites</li>
+                        <li><b>Enseignement personnalisé</b> pour progresser à votre rythme</li>
+                        <li><b>A l’extérieur d’Accra comme :</b> Cape Coast, Akosombo, etc, 20.000 FCFA supplémentaires</li>
+                        <l>Lorem ipsum dolor sit amet consectetur adipisicing elit.</l>
                     </ul>
                 </div>
                 <div class="ac_ col-md-6">
@@ -228,6 +217,11 @@
             </div>
         </div>
     </section>
+    
+            <!-- <video width="640" height="360" controls style="text-align:center; margin:auto;">
+            <source src="How to create the Multi Step Progressive Form Using HTML CSS and Javascript - Multi Step Form.mp4" type="video/mp4">
+             Your browser does not support the video tag. -->
+    
 
 
 

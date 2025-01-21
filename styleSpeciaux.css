@@ -48,15 +48,56 @@ header{
   margin: 200px auto ;
   width: 750px;
   font-size: 22px;
-  transform: translateX(-100%);
+  transform: translateY(-100%);
   opacity: 0;
   transition: all 1.2s ease;
 }
 .ac_head.anim1{
-  transform: translateX(0);
+  transform: translateY(0);
   opacity: 1;
 }
+.highlight{
+  color: rgb(0, 120, 4);;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+  
+}
+.ac_col2 ul{
+  margin: 0;
+  padding: 0;
+  line-height: 30px;
+}
 /* __________________________END OF HEAD_____________________ */
+
+.ac_col1{
+  
+  border-radius: 10px;
+  /* background-color: #b5b4b4af; */
+  margin: 130px 15px 10px 15px;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.55);
+  padding: 15px 0px ;
+  z-index: 0;
+}
+.ac_col1 .CR2{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: rgb(0, 0, 0);
+  font-weight: bolder;
+  margin-left: auto;
+  margin-top: 15px;
+  text-align: center;
+  background-color: rgba(0, 120, 5, 0.468);
+  border-radius: 5px
+}
+
+.ac_col1 th{
+  width: 300px;
+  color: rgb(0, 120, 4);
+}
+.ac_col1 th,td,tr{
+  text-align: center;
+  border: 1px solid black;
+}
 
 /*-----------------My Menu toggel----------------*/
 .button_toggel .button_icon{

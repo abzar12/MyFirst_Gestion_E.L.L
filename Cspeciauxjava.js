@@ -23,3 +23,17 @@ AOS.init({
     easing: 'ease-in', // Type de transition
     once: true, // Animation uniquement au premier scroll
 });
+
+
+// ------------------scroll au formulaiare----------
+
+// const scrolbutton=document.getElementById('scrollForm');
+// const MyFroml=document.getElementById('avantg');
+
+// scrolbutton.addEventListener((click), function() {
+//     window.scrollTo({
+//         top: MyFroml.offsetTop -20,
+//         behavior: 'smooth'
+//     });
+
+// });
