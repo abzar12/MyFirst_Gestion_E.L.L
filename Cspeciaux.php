@@ -74,14 +74,108 @@
 
         </div>
         </nav>
-        <div class="container">
-            <div class="ac_head  row">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem qui vero similique dolore nesciunt nihil accusantium error aperiam asperiores modi! Maiores dolore doloribus labore laboriosam et iusto tempore? Voluptatibus quos facere hic itaque provident tempora quod vel nisi, alias quae!</p>
-                
+        <form action="FormulaireRET.php" method="post" data-aos="zoom-in">
+         <div class="principale container">
+            <div class=" part2 active">
+              
+              <div class="partA">
+              <h3 class="text-uppercase">Inscription</h3><br>
+                 <div class="colA1">
+                 <label for="nom" class="onlyNom" >Nom</label><br>
+                 <input class="input" type="text" id="nom" name="nom" placeholder="Taper votre Nom" Required><br>
+                 <label for="email" >Email</label><br>
+                     <input class="input" type="email" name="email" id="email" placeholder="@gmail.com" Required><br>
+                     <label for="tel" >Telephone</label><br>
+                    <input class="input" type="tel" name="tel" id="tel" placeholder="+233 XXXXXXXXX" required><br>
+                 </div>
+                 <div class="colA2">
+                    <label for="prenom" class="onlyNom" >Prenom</label><br>
+                    <input type="text" name="prenom" id="prenom" placeholder="Taper votre Nom" required><br>
+                     <label for="formation">Formation</label><br>
+                        <select name="formation" id="formation" require>
+                            <optgroup label="ANGLAIS" >
+                                <option value="anglais_normal" selected>Anglais normal</option>
+                                <option value="anglais_intensifs">Anglais intensif</option>
+                                <option value="anglais_professionnel">Anglais professionnel</option>
+                                <option value="TOEFL">TOEFL</option>
+                                <option value="IELTS">IELTS</option>
+                            </optgroup>
+                            
+                            <optgroup label="INFORMATIQUE">
+                                <option value="gr1">groupe1</option>
+                                <option value="gr1">groupe2</option>
+                                <option value="gr1">groupe3</option>
+                            </optgroup>
+                            <optgroup label="DIGITAL MARKETING">
+                                <option value="gr1">groupe1</option>
+                            </optgroup>
+                        </select><br>
+                        <label for="telWhatsapp">Téléphone Whatsapp:</label><br>
+                     <input type="tel" name="telWhatsapp" id="telWhatsapp" placeholder="+233 XXXXXXXXX" required><br>
+                     <button class="button_Back1" type="button" onclick="nextStep()">Next</button>
+                 </div>
+              </div>
             </div>
+             <div class="part2 ">
+                <div class="partB">
+                    <div class="colB1">
+                        <label for="date">Date de Naissance</label><br>
+                           <input class="input" type="date" name="date" id="date" required><br>
+                        <label for="langue" >Langue préférée</label><br>
+                          <input class="input" type="text"  name="langue" list="langue" required><br>
+                        <datalist class="input" id="langue">
+                            <option value="Français" selected>
+                            <option value="Arabe">
+                        </datalist>
+                        <label for="pays" >Pays</label><br>
+                        <input class="input" type="text" list="pays" name="pays" required>
+                        <datalist class="input"  id="pays" >
+                            <option value="Côte d'Ivoire">
+                            <option value="Burkina Faso">
+                            <option value="Mali">
+                            <option value="Guinée">
+                            <option value="Togo">
+                            <option value="Niger">
+                            <option value="Cameroun">
+                            <option value="Bénin">
+                            <option value="Sénégal">
+                            <option value="Autre">
+                        </datalist><br>
+                    </div>
+                    <div class="colB2">
+                        <label for="dure">Durée</label>
+                        <select name="dure" id="dure" required>
+                            <option value="1 Mois">1 Mois</option>
+                            <option value="2 Mois">2 Mois</option>
+                            <option value="3 Mois" selected>3 Mois</option>
+                            <option value="4 Mois">4 Mois</option>
+                            <option value="5 Mois">5 Mois</option>
+                            <option value="6 Mois">6 Mois</option>
+                            <option value="6 ou 7 Mois">6 Mois à 1ans</option>
+                        </select><br>
+                        <label for="ville">Ville</label><br>
+                        <input type="text" id="ville" name="ville" required><br>
+                        <label for="mois">Quand pensez-vous venir</label><br>
+                        <input type="date" name="mois" id="mois">
+                    </div>
+                    <div class="colB3">
+                      <p><input type="checkbox" name="contrat" id="contrat" class="a1" style="width:18px; margin:0;">
+                      <span for="contrat"style="color:black; font-size:12px">D'accord pour les termes de condition</span> <br></p>
+                       
+                        <button class="button_Back" type="button" onclick="prevStep()">Back</button>
+                        <button class="button_Back1 b" type="submit" > Envoyé</ion-icon></button>
+                    </div>
+                </div>
+            </div>
+                 
+             </div>
+             
+             </div>
+         </div>
+      </form>
         </div>
     </header>
-    <section class="ac_col1 py-5" data-aos="zoom-out" >
+    <section class="ac_col1 py-" data-aos="zoom-out" >
         <div class="container">
             <div class=" row">
                 <div class=" col-md-12" data-aos="" style="">
@@ -201,7 +295,7 @@
     <section class="ac_col2 py-5">
         <div class="container" id="avantg">
             <div class="row">
-                <div class=" col-md-7 " >
+                <div class=" col-md-7 py-5" >
                     <p class="highlight text-uppercase">Avantages</p>
                     <ul >
                         <li ><b>Préparation aux examens :</b> TOEFL, IELTS,TOEIC, SAT,COMPUTER LAB,ETC</li>
@@ -211,24 +305,45 @@
                         <l>Lorem ipsum dolor sit amet consectetur adipisicing elit.</l>
                     </ul>
                 </div>
-                <div class="ac_ col-md-6">
-
+                <div class="ac_ col-md-5">
+                    <p>je suis <b class="text-uppercase">Oumou Touré </b>je temoigne que cette institut est la bonne au ghana. <span>vueillez regarder la video</span></p>
+                    <video  weidth="300" height="250" controls> 
+                      <source src="" type="video/mp4" ></source>
+                      <source src="" type="video/ogg" ></source>
+                    </video>
                 </div>
             </div>
         </div>
     </section>
+    <section class="ac_4_colum">
+              <div class="container">
+              
+                <div class="ac_row_col4 row">
+                    <h3 data-aos="zoom-in"><span>H</span>oraire</h3>
+                      <div data-aos="fade-left" class="col-md-6">
+                      <ul>
+                      <p data-aos="fade-right" style="color:rgb(0, 120, 4); font-size:large; width:249px; ">3 heures de cours théoriques : </p>
+                        <li>Grammaire <p>Pour maîtriser les règles essentielles de la langue</p> </li>
+                        <li>Prononciation <p>Pour parler avec clarté et fluidité </p> </li>
+                        <li>Vocabulairse <p>Pour enrichir votre lexique et mieux vous exprimer</p> </li>
+                        <li>Lecture/Dictée <p>Pour renforcer vos compétences en compréhension écrite </p> </li>
+                        <li>Ecoute <p>Pour améliorer votre compréhension orale </p> </li>
+                        <li>Expressions <p> Pour vous aider à construire des phrases fluides et naturelles</p> </li>
+                      </ul>
+                      </div>
+                      <div data-aos="fade-right" class="col-md-6">
+                        <ul>
+                        <p data-aos="fade-left" style="color:rgb(0, 120, 4); font-size:large; width:249px; ">3 Heures de pratique orale :</p>
+                        <li>Debats <p>Pour argumenter et structurer vos idées en anglais</p></li>
+                        <li>Translations <p>Pour renforcer votre compréhension bilingue et votre précision</p></li>
+                        <li>Discussions <p>Pour améliorer votre fluidité dans des échanges interactifs</p></li>
+                        <li>Jeux linguistiques <p>Pour apprendre tout en s’amusant dans une ambiance détendue</p> </li>
+                        </ul>
+                  </div>
+                 </div>
+                </div>
+            </section>
     
-            <!-- <video width="640" height="360" controls style="text-align:center; margin:auto;">
-            <source src="How to create the Multi Step Progressive Form Using HTML CSS and Javascript - Multi Step Form.mp4" type="video/mp4">
-             Your browser does not support the video tag. -->
-    
-
-
-
-
-
-
-
     <!-- MY FOOTER -->
 <footer class="">
           <nav class=" navbar  bg-dark navbar-dark ">
