@@ -480,7 +480,9 @@ label{
     .ac_footer3 .aion{
       margin-left:0;
     }
-    
+    .ac_3_A1{
+      font-size: 12px;
+    }
   }
   @media(max-width:425px){
     header{

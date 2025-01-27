@@ -355,8 +355,48 @@ text-align: center;
   color: #555; 
 }
 
-/* -----------------------debut de la body--------- */
+/* -----------------------Fin de la body--------- */
 
+/* ______________________FOOTER__________________ */
+.footera{
+  display: none;
+}
+.footerb{
+  display: block;
+}
+.footer{
+height: 54px;
+display: flex; align-items: center;text-align: center;
+}
+.footer1{
+   display:flex;
+   justify-content: space-between;
+}
+.footer1 p{
+  color: white;
+  margin: auto 5px;
+}
+.footer1 a{
+  margin-right: 20px;
+
+}
+
+.footer1 ion-icon{
+  color: rgb(23, 176, 23);
+}
+.footer1 a ion-icon:hover{
+  font-size: 25px;
+  color: white;
+  transition: 0.1s  ease-in;
+  position: sticky;
+}
+.footer1 span{
+  margin: auto 15px auto -15px;
+  color: white;
+} 
+
+/* --------first_footer */
+/* footer */
 
 .ac_footer .ac_footer2{
   padding: 0%;
@@ -366,9 +406,14 @@ text-align: center;
 .ac_footer3 a{
   margin-left: 35px;
 }
-/*  */
 .button_menu .navbar-navdrop li a{
   color: rgb(2, 137, 6);
+}
+.ac-footer span{
+  color:white; margin:auto; font-size:16px 
+}
+.ac-footer span ion-icon{
+  color: rgb(23, 176, 23); margin:auto 15px;
 }
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
@@ -400,13 +445,16 @@ text-align: center;
       display: block;
       font-size: 20px;
     }
-    
-
+    .footera{
+      display: block;
+    }
+    .footerb{
+      display: none;
+    }
+   
     
   }
-  @media(max-width:800px){
-    
-  }
+ 
   @media(max-width:535px){
     .partA{
       font-size: 12px;
@@ -432,6 +480,8 @@ text-align: center;
   .ac_3_A1{
     font-size: 12px;
   }
+  /* footer----- */
+  
   }
   
   @media(max-width:425px){
@@ -479,6 +529,12 @@ text-align: center;
     .ac_card_body {
       top: -70px;
     }
-    
+    .ac-footer span{
+      margin-left: 0px;
+      
+    }
+    .ac-footer span ion-icon{
+      margin-left: 0px;
+    }
 
   }

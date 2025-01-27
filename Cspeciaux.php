@@ -345,26 +345,43 @@
             </section>
     
     <!-- MY FOOTER -->
-<footer class="">
-          <nav class=" navbar  bg-dark navbar-dark ">
-               <div class="ac-footer container-fluid">
-                  <div class="ac_footer1 col-md-4">
-                    <p style="color:white; margin:auto;">Copyright © 2024<span style="margin:3px"> E.L.L </span> Tous droits réservés</p></div>
-                    <div class="ac_footer2 col-md-4">
-                    <p style="color:white; margin:auto;">  <ion-icon style="color: rgb(23, 176, 23);" name="location-outline"></ion-icon> Situé à: Alajo, Accra-Ghana</p>
-                  </div>
-                  <div class="ac_footer3 col-md-4 ">
-                    <a class="aion" href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-instagram"></ion-icon></a>
-                    <a href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-facebook"></ion-icon></a>
-                    <a href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-tiktok"></ion-icon></a>
-                    <a href=""><ion-icon style="color: rgb(23, 176, 23);" name="mail"></ion-icon></a>
-                    
-                  </div>
-                     <span style="color:white; margin:auto; font-size:16px "> <ion-icon style="color: rgb(23, 176, 23); margin:auto 15px;" name="call-sharp"></ion-icon>Phone: +233 24 473 7721</span>
-                  
-              </div>
-          </nav>
+    <footer class="">
+<nav class="navbar footera  bg-dark navbar-dark ">
+  <div class="ac-footer container-fluid">
+    <div class="ac_footer1 col-md-4">
+    <p style="color:white; margin:auto; ">Copyright © 2024<span style="margin:3px"> E.L.L </span> Tous droits réservés</p></div>
+    <div class="ac_footer2 col-md-4">
+      <p style="color:white; margin:auto;">  <ion-icon style="color: rgb(23, 176, 23);" name="location-outline"></ion-icon> Situé à: Alajo, Accra-Ghana</p>
+    </div>
+    <div class="ac_footer3 col-md-4 ">
+      <a class="aion" href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-instagram"></ion-icon></a>
+      <a href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-facebook"></ion-icon></a>
+      <a href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-tiktok"></ion-icon></a>
+      <a href=""><ion-icon style="color: rgb(23, 176, 23);" name="mail"></ion-icon></a>
+      
+    </div>
+    <span > <ion-icon  name="call-sharp"></ion-icon>Phone: +233 24 473 7721</span>
+    
+</div>
+</nav>
 </footer>
+ <footer>
+          <nav class="navbar2 footerb  bg-dark navbar-dark ">
+            <div class="footer container-fluid">
+              <div class="footer1 col-md-12">
+              <p style=" ">Copyright © 2024<span style="margin:3px"> E.L.L </span> Tous droits réservés</p>
+              <p style="">  <ion-icon name="location-outline"></ion-icon> Situé à: Alajo, Accra-Ghana</p>
+              <span style=" "> <ion-icon style="margin:auto 15px;" name="call-sharp"></ion-icon>Phone: +233 24 473 7721</span>
+              <a class="aion" href=""><ion-icon style="" name="logo-instagram"></ion-icon></a>
+                    <a href=""><ion-icon name="logo-facebook"></ion-icon></a>
+                    <a href=""><ion-icon name="logo-tiktok"></ion-icon></a>
+                    <a href=""><ion-icon name="mail"></ion-icon></a>
+                 
+              
+              </div>
+            </div>
+          </nav>
+</footer> 
     <!-- Bootstrap js-->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
