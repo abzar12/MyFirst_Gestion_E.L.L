@@ -74,7 +74,7 @@
 
         </div>
         </nav>
-        <form action="FormulaireRET.php" method="post" data-aos="zoom-in">
+      <form action="FormulaireRET.php" method="post" data-aos="zoom-in">
          <div class="principale container">
             <div class=" part2 active">
               
@@ -362,7 +362,7 @@
     </div>
     <span > <ion-icon  name="call-sharp"></ion-icon>Phone: +233 24 473 7721</span>
     
-</div>
+  </div>
 </nav>
 </footer>
  <footer>

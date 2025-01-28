@@ -60,7 +60,7 @@ session_start();
             $error[]="le champ QUANT PENSEZ_VOUS VENIR est incorrect";
           }
           if (!isset($_POST['contrat'])) {
-            $error[] = "Vous devez accepter les termes et conditions.";
+            $error[] = 'echo"<script>alert("Vous devez accepter les termes et conditions.")</script>"';
         }
 
           if(count($error)>0){
@@ -102,7 +102,7 @@ session_start();
             
             try {
                 $stmt->execute();  
-                echo"enregistrer";
+                echo'<script>alert("ENREGISTRER DANS LA BASES")</script>';
             } catch (PDOException $th) {
                 echo "error".$th->getMessage();
             }
