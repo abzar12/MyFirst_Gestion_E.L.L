@@ -454,7 +454,6 @@ display: flex; align-items: center;text-align: center;
    
     
   }
- 
   @media(max-width:535px){
     .partA{
       font-size: 12px;
