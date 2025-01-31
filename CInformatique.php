@@ -174,6 +174,30 @@
       </form>
         </div>
     </header>
+              <section class="section1">
+                     <div class="conatiner-fluid">
+                         <div class="ac_card card" >
+                           <div class="ac_card_body  card-body">
+                             <h5 class="card-title"><span>|</span> L'informatique à English Language Laboratory</h5>
+                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis veritatis quos molestiae ad, labore, eum ducimus nesciunt delectus eos, ratione rem distinctio odit itaque quibusdam?</p>
+         
+                             <p class="P1 card-text"></p> 
+                           </div>
+                         </div>
+                     </div>
+              </section>
+              <section class="ac_colum1">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <table>
+                        <th></th>
+                        <th></th>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </section>
 
 
      <!-- MY FOOTER -->

@@ -45,6 +45,18 @@ function prevStep() {
         showpart(currentpart);
     }
 };
+
+// ----------------------pour la card----------------
+const anim1 = document.querySelector('.ac_card_body');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            anim1.classList.add('anim1');
+        }
+    });
+});
+observer.observe(anim1);
 // _________________________fin de la formulaire_______________
 
 // _________________________fin de button toggle_______________
