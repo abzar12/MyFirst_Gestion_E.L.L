@@ -174,7 +174,7 @@
       </form>
         </div>
     </header>
-              <section class="section1">
+              <section class="section1 py-5">
                      <div class="conatiner-fluid">
                          <div class="ac_card card" >
                            <div class="ac_card_body  card-body">
@@ -186,18 +186,129 @@
                          </div>
                      </div>
               </section>
-              <section class="ac_colum1">
+              <section class="ac_colum1 py-5">
                 <div class="container">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <table>
-                        <th></th>
-                        <th></th>
-                      </table>
+                  <div class="ac_row row g-5 py-5">
+                    <div class="ac_list1 col-md-6">
+                      <h3>MAINTENANCE INFORMATIQUE</h3>
+                      <ul>
+                          <li>Assembling & Disassembling of Computers</li>
+                          <li>Introduction to Computers</li>
+                          <li>Introduction to Motherboard & Peripheral Components</li>
+                          <li>BIOS Setup and Configuration</li>
+                          <li>Installation of Operating Systems and Software</li>
+                          <li>Diagnostics and Beep Codes</li>
+                          <li>Computer Systems Configuration</li>
+                          <li>Computer Troubleshooting</li>
+                      </ul>
+                      
+                      <p> <span class="text-uppercase highlight" style="font-size:15px;">durée:</span><br> 6 Mois/ 1700 GHS</p>
+                    </div>
+                    <div class="ac_list2 col-md-6">
+                      <h3>RESEAUX INFORMATIQUE</h3>
+                      <ul>
+                          <li>Concept de Base Réseau</li>
+                          <li>Protocoles et Normes de Réseau</li>
+                          <li>Composants de Réseau</li>
+                          <li>Principes Fondamentaux de TCP/IP</li>
+                          <li>Sous-Réseau et Routage</li>
+                          <li>Utilitaire TCP/IP </li>
+                          <li>Réseau sans Fil </li>
+                          <li>Connectivité à Distance</li>
+                          <li>Mettre en oeuvre un Réseau</li>
+                          <li>Entretienir et Soutenir un RESEAUX</li>
+                      </ul>
+                      
+                      <p> <span class="text-uppercase highlight" style="font-size:15px;">durée:</span><br> 6 Mois/ 1600 GHS</p>
+                    </div>
+                  </div>
+                  <div class="ac_row row g-5">
+                    <div class="ac_list1 col-md-6">
+                      <h3>ADMINISTRATEUR DE BUREAU DEBUTANT</h3>
+                      <ul>
+                          <li>Cours de Dactylographie</li>
+                          <li>Introduction à L'Informatique</li>
+                          <li>MS Word</li>
+                          <li>MS Excel MS Access</li>
+                          <li>Ms powerpoint</li>
+                          <li>Révision</li>
+                          <li>Examen</li>
+                      </ul>
+                      <p> <span class="text-uppercase highlight" style="font-size:15px;">durée:</span><br> 3 Mois/ 600 GHS</p>
+                    </div>
+                    <div class="ac_list2 col-md-6">
+                      <h3>ADMINISTRATEUR DE BUREAU AVANCÉ</h3>
+                      <ul>
+                          <li>Introduction à L'Informatique</li>
+                          <li>MS Word Avancé</li>
+                          <li>MS Excel Avancé </li>
+                          <li> MS Access Avancé</li>
+                          <li>Ms powerpoint Avancé</li>
+                          <li>Travaux Pratiques MS word "Journal"</li>
+                          <li>Travaux de Projet </li>
+                          <li>Révision</li>
+                          <li>Examen</li>
+                      </ul>
+                      
+                      <p> <span class="text-uppercase highlight" style="font-size:15px;">durée:</span><br> 4 Mois/ 900 GHS</p>
+                    </div>
+                  </div>
+                  <div class="ac_row row g-5 py-5">
+                    <div class="ac_list1 col-md-6">
+                      <h3>CONCEPTION GRAPHIQUE DEBUTANT</h3>
+                      <ul>
+                          <li>MS Editeur</li>
+                          <li>Photoshop</li>
+                          <li>Corel Dessin</li>
+                          
+                      </ul>
+                      
+                      <p> <span class="text-uppercase highlight" style="font-size:15px;">durée:</span><br> 4 Mois/ 1200 GHS</p>
+                    </div>
+                    <div class="ac_list2 col-md-6">
+                      <h3>CONCEPTION GRAPHIQUE AVANCÉ</h3>
+                      <ul>
+                          <li>Photoshop</li>
+                          <li>Corel Dessin</li>
+                          <li>Illustrateur</li>
+                          <li>Conception Intérieure</li>
+                          
+                      </ul>
+                      
+                      <p> <span class="text-uppercase highlight" style="font-size:15px;">durée:</span><br> 2 Mois/ 700 GHS</p>
                     </div>
                   </div>
                 </div>
               </section>
+              <div class="section py-5">
+                <div class="container-fluid">
+                  <div class="row">
+                  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img src="./img/Computer.jpg" class="d-block w-100" alt="Etudiant_ELL">
+                        </div>
+                        <div class="carousel-item">
+                          <img src="./img/Computer5.jpg" class="d-block w-100" alt="Etudiant_ELL">
+                        </div>
+                        <div class="carousel-item">
+                          <img src="./img/Computer1.jpg" class="d-block w-100" alt="Etudiant_ELL">
+                        </div>
+                        <div class="carousel-item">
+                          <img src="./img/Computer2.jpg" class="d-block w-100" alt="Etudiant_ELL">
+                        </div>
+                    </div>
+                   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                     <span class="visually-hidden">Previous</span>
+                   </button>
+                   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                     <span class="visually-hidden">Next</span>
+                   </button>
+                 </div>
+                </div>
+              </div>
 
 
      <!-- MY FOOTER -->
