@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Webcam Recorder</title>
+</head>
+<body>
+    <h2>Record Webcam Video</h2>
+    <video id="webcam" autoplay playsinline></video>
+    <button id="start">Start Recording</button>
+    <button id="stop">Stop & Download</button>
+
+    <script>
+        let mediaRecorder;
+        let recordedChunks = [];
+
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+            .then(stream => {
+                document.getElementById("webcam").srcObject = stream;
+                mediaRecorder = new MediaRecorder(stream);
+
+                mediaRecorder.ondataavailable = event => recordedChunks.push(event.data);
+                
+                mediaRecorder.onstop = () => {
+                    const blob = new Blob(recordedChunks, { type: "video/webm" });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement("a");
+                    a.href = url;
+                    a.download = "recorded-video.webm";
+                    document.body.appendChild(a);
+                    a.click();
+                };
+            })
+            .catch(error => console.error("Camera access denied:", error));
+
+        document.getElementById("start").onclick = () => {
+            recordedChunks = [];
+            mediaRecorder.start();
+        };
+
+        document.getElementById("stop").onclick = () => {
+            mediaRecorder.stop();
+        };
+    </script>
+</body>
+</html>

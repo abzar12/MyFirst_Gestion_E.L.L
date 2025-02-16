@@ -36,7 +36,7 @@
                   </li>
               </ul>
               <li class="nav-item me-3 ">
-                <a class="nav-link text-uppercase" href="Acceuil.php">A propos</a>
+                <a class="nav-link text-uppercase" href="apropos.php">A propos</a>
               </li>
               <li class="nav-item me-3 ">
                 <a class="nav-link  text-uppercase" href="Login.php">Login</a>
@@ -64,7 +64,7 @@
                   </ul>
                   
                   <li class="nav-item me-3 ">
-                    <a class="nav-link text-uppercase" href="Acceuil.php">A propos</a>
+                    <a class="nav-link text-uppercase" href="apropos.php">A propos</a>
                   </li>
                   <li class="nav-item me-3 ">
                     <a class="nav-link text-uppercase" href="Login.php">Login</a>
@@ -187,6 +187,11 @@
                      </div>
               </section>
               <section class="ac_colum1 py-5">
+              <div class="ac_col col  text-center">
+                    <h1 class="text-uppercase ">
+                      Cours informatique programme
+                    </h1>
+                  </div>
                 <div class="container">
                   <div class="ac_row row g-5 py-5">
                     <div class="ac_list1 col-md-6">
@@ -280,33 +285,37 @@
                   </div>
                 </div>
               </section>
-              <div class="section py-5">
-                <div class="container-fluid">
-                  <div class="row">
-                  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                          <img src="./img/Computer.jpg" class="d-block w-100" alt="Etudiant_ELL">
-                        </div>
-                        <div class="carousel-item">
-                          <img src="./img/Computer5.jpg" class="d-block w-100" alt="Etudiant_ELL">
-                        </div>
-                        <div class="carousel-item">
-                          <img src="./img/Computer1.jpg" class="d-block w-100" alt="Etudiant_ELL">
-                        </div>
-                        <div class="carousel-item">
-                          <img src="./img/Computer2.jpg" class="d-block w-100" alt="Etudiant_ELL">
-                        </div>
+              <div class="ac_section section  text-center py-5">
+                <div class="container">
+                  <div class="ac_row row ">
+                    <h1 class="text-uppercase ">english language lanboratory</h1>
+                    <div class="ac_col col pb-5 text-light">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit veniam, provident voluptates cumque iste neque, ipsam molestiae sit est facere inventore! Aspernatur deleniti hic minus possimus unde, explicabo molestiae, consequuntur accusamus tenetur facilis impedit nihil.
                     </div>
-                   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                     <span class="visually-hidden">Previous</span>
-                   </button>
-                   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                     <span class="visually-hidden">Next</span>
-                   </button>
-                 </div>
+
+                  </div>
+                  <div id="carouselExampleFade" class="carousel slide carousel-fade">
+                     <div class="ac_carousel carousel-inner">
+                       <div class="ac_carousel carousel-item active">
+                         <img src="img/Computer1.jpg" class="d-block w-100" alt="...">
+                       </div>
+                       <div class="carousel-item">
+                         <img src="img/Computer3.jpg" class="d-block w-100" alt="...">
+                       </div>
+                       <div class="ac_carousel carousel-item">
+                         <img src="img/Computer5.jpg" class="d-block w-100" alt="...">
+                       </div>
+                     </div>
+                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                       <span class="visually-hidden">Previous</span>
+                     </button>
+                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                       <span class="visually-hidden">Next</span>
+                     </button>
+                   </div>
+                 
                 </div>
               </div>
 
@@ -343,8 +352,6 @@
                     <a href=""><ion-icon name="logo-facebook"></ion-icon></a>
                     <a href=""><ion-icon name="logo-tiktok"></ion-icon></a>
                     <a href=""><ion-icon name="mail"></ion-icon></a>
-                 
-              
               </div>
             </div>
           </nav>
