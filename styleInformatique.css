@@ -1,6 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 body{
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  font-family: 'open-Sans';
+  background-color: #f4f4f4;
+  font-size: 16px; /* Ajuste la taille en fonction de ta préférence */
+   
   }
   
   /* __________________________START OF HEAD_____________________ */
@@ -152,7 +158,7 @@ body{
   position: absolute;
   border-bottom: 1px outset rgba(189, 185, 185, 0.5);
   font-weight:bolder;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'lora',sans-serif;
   padding-bottom: 5px;
   margin-left: 100px;
   z-index: 0;
@@ -185,7 +191,7 @@ body{
   }
   label{
     text-decoration: none;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'roboto';
     font-size: 16px;
     margin-bottom: 10px;
     font-weight: bolder;
@@ -222,7 +228,7 @@ body{
     border-radius: 5px;
     color: black;
     background-color: rgba(0, 120, 5, 0.468);
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
   }
   .button_Back1{
     margin-left: 71%;
@@ -230,7 +236,7 @@ body{
     border-radius: 5px;
     color: black;
     background-color: rgba(0, 120, 5, 0.468);
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
   }
   .button_Back1:hover{
     color: white;
@@ -242,7 +248,7 @@ body{
     border-radius: 5px;
     color: black;
     background-color: rgba(0, 120, 5, 0.468);
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
   }
   .button_Back2, .button_Back:hover{
     color: white;
@@ -330,6 +336,8 @@ body{
   color: rgb(23, 176, 23);
   text-transform: uppercase;
   margin-left: 55px;
+  font-family: 'lora', sans-serif;
+  font-size: 19px;
 }
 .ac_card_body span{
   font-size: 35px;
@@ -338,7 +346,7 @@ body{
 }
 .ac_card_body p{
   color: #fff;
-  font-weight: bold;
+  font-size: 16px;
 }
 .ac_card_body .P2{
   display: block;
@@ -349,16 +357,29 @@ body{
 .ac_colum1{
   font-size: 16px;
 }
+.ac_colum1 .ac_col h1{
+  text-decoration: none;
+  color: rgb(18, 164, 18);
+  background-color: rgba(0,0,0,0.55);
+  height: 90px;
+  display: flex;
+  justify-content: center;align-items: center;
+  font-family: 'lora', sans-serif;
+}
 .ac_list1  ul li{
   list-style-type: disc;
   margin-bottom: 15px;
+  font-family: 'open-sans';
+  font-size:20px;
 }
 .ac_list2 ul li{
   list-style-type: disc;
   margin-bottom: 10px;
+   font-family: 'open-sans';
+   font-size:20px;
 }
 .ac_row h3{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'lora', sans-serif;
   color: rgb(0, 0, 0);
   font-weight: bolder;
   text-align: center;
@@ -369,7 +390,20 @@ body{
   height: auto;
   padding: 5px;
 }
+/* -------------------my photo-------------- */
+.ac_section{
+  background-color: rgba(88, 88, 88, 0.425);
+}
 
+.ac_section h1{color: rgb(0, 120, 4);
+  text-decoration: underline;
+  font-family: 'lora', sans-serif;}
+.ac_carousel img{
+  height: 500px;
+   background-position: center;background-size: cover;background-repeat: no-repeat;
+   border-radius: 5px;
+
+}
   
   /* --------first_footer */
   
@@ -377,7 +411,6 @@ body{
   .ac_footer .ac_footer2{
     padding: 0%;
     margin: 0px;
-    
   }   
   .ac_footer3 a{
     margin-left: 35px;

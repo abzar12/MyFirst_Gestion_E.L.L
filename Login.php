@@ -34,7 +34,7 @@
                   </li>
               </ul>
               <li class="nav-item me-3 ">
-                <a class="nav-link text-uppercase" href="Acceuil.php">A propos</a>
+                <a class="nav-link text-uppercase" href="apropos.php">A propos</a>
               </li>
               <li class="nav-item me-3 ">
                 <a class="nav-link active text-uppercase" href="Login.php">Login</a>
