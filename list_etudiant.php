@@ -1,14 +1,12 @@
 <?php
 session_start();
-       
-
  try {
         $conn= new PDO ("mysql:host=localhost; dbname=Gestion_Eudiant", "root", "");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         // Prepare and execute the SQL query
         $stmt=$conn->prepare("SELECT * FROM Inscription_Etudiant");
         $stmt->Execute();
-        $result=$stmp->fetchAll(PDO::FETCH_ASSOC);
+        $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $th) {
        die("connection failed" .$th->getMessage());
     }
@@ -36,8 +34,12 @@ session_start();
             <td style="border:1px solid black; width:150px;"> <?= htmlspecialchars($row["Nom"]);?> </td>
             <td style="border:1px solid black; width:150px;"> <?= htmlspecialchars($row["Prenom"]);?> </td>
             <td style="border:1px solid black; width:150px;"> <?= htmlspecialchars($row["Email"]);?> </td>
+            <td> <a href="supprimer.php /code=<?= htmlspecialchars($row["ID"]);?>">supprimer</a></td>
         </tr>
         <?php endforeach ; ?>
     </table> 
+    jdkjndssd,<dfn>
+        dfkfnjkd dfke dk
+    </dfn>
 </body>
 </html>
