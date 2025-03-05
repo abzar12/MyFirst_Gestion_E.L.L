@@ -23,7 +23,7 @@ session_start();
 </head>
 <body>
     <h2>the list of Studiant</h2>
-    <?php if(count($result)>0);?>
+    <?php if(count($result)>0) ;?>
     <table style="border:1px solid black;">
         <th >
             <td style="border:1px solid black; width:150px;">NOM</td>

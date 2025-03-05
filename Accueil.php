@@ -353,7 +353,7 @@
                 </section>
                 <section class="ac_6colum py-5" >
                   <div class="container-fluid">
-                    <div class="row" style="display:; justify-content: center; align-item:center; text-align: center; margin:auto;  ">
+                    <div class="row" style="justify-content: center; align-item:center; text-align: center; margin:auto;  ">
                     <div class="card" style="width: 18rem; text-decoration:none; padding:0px; border:none; background-color:transparent;">
                        <img src="<?php echo $img3;?>" alt="Director" style="border: 1px solid transparent; border-radius:15px; background-size: cover; background-repeat: no-repeat; background-position: center;" >
                        <div class="card-body">
