@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open sans';
+    font-size: 18px;
+}
+
+/* -------------------mon navbar */
+.ac_navbar {
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.745);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    height: 50px;
+    color: white;
+}
+
+.ac_navbar a {
+    color: white;
+    font-family: 'merriweather';
+}
+
+/* -------------------My form recherche-------- */
+.ac_navbar .ac_form {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.ac_navbar .ac_form input {
+    border: 1px solid black;
+    border-radius: 50px;
+    padding: 2px 15px;
+    height: 30px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 5px;
+    width: 40vh;
+    font-family: 'Roboto';
+}
+
+.ac_navbar .ac_form .search {
+    border: none;
+    background-color: transparent;
+    font-size: 25px;
+    z-index: 100;
+    color: rgb(255, 255, 255);
+    margin-top: 2px;
+}
+
+.ac_navbar .ac_form .search:hover {
+    transform: scale(1.2);
+    transition: all 0.5s ease;
+    color: rgb(18, 164, 18);
+}
+
+/* -----------modification de profil et cloche------------- */
+.ac_navbar .ac_A1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.ac_navbar .ac_A1 button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 30px;
+}
+
+.ac_navbar .ac_A1 img {
+    height: 30px;
+    text-decoration: none;
+    width: 30px;
+    border-radius: 50%;
+
+}
+
+/* -----------FIN modification de profil et cloche------------- */
+/* ------------------my boy-----------------  */
+.ac_row {
+    margin-top: 50px;
+    height: 93vh;
+    background-color: rgba(1, 1, 1, 0.723);
+    width: 30vh;
+
+}
+
+.ac_row .ac_menu {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+
+}
+
+.ac_row .ac_menu li {
+    list-style: none;
+    color: white;
+    font-family: 'Merriweather';
+    margin-bottom: 35px;
+    margin-left: 10px;
+    border-radius: 10px;
+    height: 50px;
+    justify-content: center;
+    padding: 12px;
+}
+
+.ac_row .ac_menu li:hover {
+    background-color: rgb(192, 189, 189);
+}
+
+.ac_row .ac_menu li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    gap: 50px;
+    text-align: center;
+}
+
+.ac_row .ac_menu li a:hover {
+    color: rgb(18, 164, 18);
+    ;
+}
+
+.ac_row .ac_menu li a ion-icon {
+    margin-right: 15px;
+    font-size: 20px;
+    color: rgb(18, 164, 18);
+}
+
+.ac_row .ac_menu .active {
+
+    background-color: rgb(192, 189, 189);
+
+}
+
+/* -----------------fin de la structure de base-------------- */
+.section2{
+    position: absolute;
+    top: 100px;
+    left: 35vh;
+    width: 1000px;
+}
+.section2 .ac_etudiant{
+    background-color: rgb(204, 204, 204);
+    display: grid;
+    grid-template-columns: auto ;
+    margin: 0;
+    padding: 5px;
+    border-radius: 5px;
+    align-items: center;
+    text-align: center;
+}
+.ac_etudiant .menu_etud{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ac_etudiant .menu_etud select{
+    width: auto;
+    border-radius: 5px;
+    height: 30px;
+    padding: 2px 5px;
+    border: transparent;
+    background-color:#fff;
+}
+.ac_etudiant .menu_etud select option:hover{
+background-color: rgb(0, 120, 4);
+}
+/* dans menu research */
+.ac_etudiant .menu_etud .research{
+    display: flex;
+    align-items: center;
+}
+.ac_etudiant .menu_etud .research input{
+    border: 1px solid black;
+    border-radius: 50px;
+    padding: 2px 15px;
+    height: 30px;
+    background-color: rgb(255, 255, 255);
+    width: 35vh;
+    font-family: 'Roboto';
+}
+.ac_etudiant .menu_etud .research button{
+    border: none;
+    background-color: transparent;
+    font-size: 25px;
+    z-index: 100;
+    color: rgb(255, 255, 255);
+    margin-top: 2px;
+}
+
+.ac_etudiant .menu_etud .research button:hover {
+    transform: scale(1.2);
+    transition: all 0.5s ease;
+    color: rgb(18, 164, 18);
+}
+.ac_etudiant .menu_etud button{
+    border:1px solid rgb(18, 164, 18);
+    background-color: transparent;
+    font-size: 18px;
+    color: rgb(0, 120, 4);
+    margin-top: 2px;
+    background-color: #fff;
+    border-radius: 5px;
+    font-family: 'roboto';
+}
+.ac_etudiant .menu_etud button:hover{
+    background-color: rgb(0, 120, 4);
+    color: #fff;
+}
+
+/* --------------my section list of student 3------------------- */
+.section3{
+    display: block;
+    position: absolute;
+    top: 230px;
+    left: 42vh;
+    width: 900px;
+    background-color: rgb(204, 204, 204);
+    text-align: center;
+    padding: 0%;
+    border-radius: 10px;
+    font-family: 'lora';
+    font-size: 15px;
+}
+.ac_table {
+    width: 800px;
+    height: 350px;
+    margin: 0 auto;
+    overflow-x: auto;/* Scroll horizontal */
+    overflow-y: auto;/* Scroll vertical */
+    border: 1px solid #ccc;
+}
+.section3 th {
+    text-align: center;
+    color: rgb(0, 120, 4);
+    border: 1px solid black;
+    position: sticky;
+    top: 0;
+    background: rgb(244, 244, 244);
+    z-index: 10;
+}
+
+.section3 tr,td {
+    border: 1px solid black;
+    color: rgb(0, 0, 0);
+    text-align: left;
+    height: 5px;
+}
+.section3 h1{
+    font-size: 25px;
+    margin: 5px;
+    text-decoration: underline;
+}
+
+.section3 .tablebutton {
+    border: none;
+    display: flex;
+    padding: 0%;
+}
+.section3 .tablebutton button {
+    border: none;
+    background-color: transparent;
+    color: rgb(0, 120, 4);
+    font-size: 18px;
+    padding: 3px;
+}
+.section3 .tablebutton button:hover{
+    color: black;
+}

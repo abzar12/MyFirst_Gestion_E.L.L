@@ -1,22 +1,14 @@
 <?php
-require_once("connection.php");
+$conn= new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", "root", "");
 try {
-    $stmt = $conn->prepare("SELECT * FROM Inscription_Etudiant");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $stmt= $conn->prepare("SELECT * FROM Students");
     $stmt->execute();
-    $result1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // nombre etudiant dans la base 
-    $stmt = $conn->query("SELECT COUNT(*) AS Total FROM Inscription_Etudiant");
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    $Total_ET = $result['Total'];
+    $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $th) {
-    die("ERROR OF SELECT" . $th->getMessage());
+    die("erreur de la connection:").$th->getMessage();
 }
-
-$img = "img/profile.JPG";
-$img1 = "img/Computer.jpg";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +19,7 @@ $img1 = "img/Computer.jpg";
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="Dashbord.css">
+    <link rel="stylesheet" href="etudiant.css">
     <title>Dashbord</title>
 </head>
 
@@ -57,13 +49,13 @@ $img1 = "img/Computer.jpg";
         <div class="container-fluid">
             <div class="ac_row row">
                 <ul class="ac_menu nav  mb-3" id="pills-tab" role="tablist">
-                    <li class="active">
-                        <a href="dashbord.php"><ion-icon name="speedometer-sharp" class="active"></ion-icon> Dashbord</a>
+                    <li>
+                        <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon> Dashbord</a>
                     </li>
                     <li>
                         <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> Admin</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="etudiant.php"><ion-icon name="book-sharp"></ion-icon> Students</a>
                     </li>
                     <li>
@@ -83,62 +75,75 @@ $img1 = "img/Computer.jpg";
             </div>
         </div>
     </section>
-    <section class="ac_section2">
+    <section class="section2 py-5">
         <div class="container">
-            <div class="ac_row2 row">
-                <div class="card">
-                    <div class="card-body">
-                        <p><ion-icon name="book-sharp"></ion-icon></p>
-                        <p> <?= $Total_ET . " "; ?>Students</p>
+            <div class="ac_etudiant row">
+                <div class="menu_etud">
+                    <select name="" id="">
+                        <option value="level1">All Students</option>
+                        <option value="level1">level 1</option>
+                        <option value="level1">level 2</option>
+                        <option value="level1">level 3</option>
+                        <option value="level1">level 4</option>
+                        <option value="level1">level 5</option>
+                        <option value="level1">level 6</option>
+                        <option value="level1">INTER 1</option>
+                        <option value="level1">INTER 2</option>
+                        <option value="level1">INTER 3</option>
+                        <option value="level1">PROF 1</option>
+                        <option value="level1">PROF 2</option>
+                        <option value="level1">PROF 3</option>
+                    </select>
+                    <div class="research">
+                        <input type="text" placeholder="recherche">
+                    <button type="button" class="search"><ion-icon name="search"></ion-icon></button>
                     </div>
+                    
+                    <button type="button"><ion-icon name="add-circle-outline"></ion-icon>Add students</button>
+                    <button type="button"><ion-icon name="print-outline"></ion-icon>Print</button>
                 </div>
-                <div class="card">
-                    <div class="card-body">
-                        <p><ion-icon name="person-circle" class="smallicon"></ion-icon></p>
-                        <p><?php echo 566 . ' '; ?>Teachers</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <p><ion-icon name="person-sharp"></ion-icon></p>
-                        <p> <?php echo 3 . ' '; ?> Admin</p>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>
     <section class="section3">
-    <h1>list of Students</h1>
+        <h1>list of Students</h1>
         <div class="container ac_table">
-            <?php if (count($result1) > 0); ?>
-            <table class="table display nowrap" id="Mytable" style="width:100%">
+            <?php if (count($result)>0); ?>
+            <table class="table display nowrap" id="Mytable">
                 <thead>
                     <tr>
                         <th scope="col">Code</th>
                         <th scope="col">Last_Name</th>
                         <th scope="col">First_Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">WhatsApp</th>
-                        <th scope="col">Duration</th>
+                        <th scope="col">Birthday</th>
                         <th scope="col">Country</th>
+                        <th scope="col">WhatsApp</th>
+                        <th scope="col">Number_Ghana</th>
+                        <th scope="col">Class</th>
+                        <th scope="col">Courses</th>
+                        <th scope="col">Duration</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($result1 as $row): ?>
-                        <tr>
-                            <th><?= htmlspecialchars($row["ID"]); ?> </th>
-                            <td><?= htmlspecialchars($row["Nom"]); ?></td>
-                            <td><?= htmlspecialchars($row["Prenom"]); ?></td>
-                            <td><?= htmlspecialchars($row["Email"]); ?></td>
-                            <td><?= htmlspecialchars($row["Telephone_Whatsapp"]); ?></td>
-                            <td><?= htmlspecialchars($row["Dure"]); ?></td>
-                            <td><?= htmlspecialchars($row["Pays"]); ?></td>
-                            <td class="tablebutton">
-                                <button type="button"> <ion-icon name="create-sharp"></ion-icon></button> <button type="button"><ion-icon name="trash-outline"></ion-icon></button>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
+                    <?php foreach ($result as $row):?>
+                    <tr>
+                        <th><?= htmlspecialchars($row["ID"]); ?> </th>
+                        <td><?= htmlspecialchars($row["Nom"]); ?></td>
+                        <td><?= htmlspecialchars($row["Prenom"]); ?></td>
+                        <td><?= htmlspecialchars($row["DateNaissance"]); ?></td>
+                        <td><?= htmlspecialchars($row["Country"]); ?></td>
+                        <td><?= htmlspecialchars($row["TelephoneWhatsapp"]); ?></td>
+                        <td><?= htmlspecialchars($row["TelephoneGhana"]); ?></td>
+                        <td><?= htmlspecialchars($row["Classe"]); ?></td>
+                        <td><?= htmlspecialchars($row["Formation"]); ?></td>
+                        <td><?= htmlspecialchars($row["Dure"]); ?></td>
+                        <td class="tablebutton">
+                            <button type="button"> <ion-icon name="create-sharp"></ion-icon></button> <button type="button"><ion-icon name="trash-outline"></ion-icon></button>
+                        </td>
+                    </tr>
+                    <?php endforeach;?>
                 </tbody>
             </table>
         </div>
