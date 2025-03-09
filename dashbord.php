@@ -108,10 +108,10 @@ $img1 = "img/Computer.jpg";
         </div>
     </section>
     <section class="section3">
-    <h1>list of Students</h1>
+    <h1><span class="ac_span"><?php echo $Total_ET ; ?></span> New Students</h1>
         <div class="container ac_table">
             <?php if (count($result1) > 0); ?>
-            <table class="table display nowrap" id="Mytable" style="width:100%">
+            <table class="table display nowrap" id="Mytable">
                 <thead>
                     <tr>
                         <th scope="col">Code</th>
@@ -120,7 +120,7 @@ $img1 = "img/Computer.jpg";
                         <th scope="col">Email</th>
                         <th scope="col">WhatsApp</th>
                         <th scope="col">Duration</th>
-                        <th scope="col">Country</th>
+                        <th scope="col">__Country__</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>

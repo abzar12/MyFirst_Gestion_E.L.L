@@ -172,6 +172,22 @@ body {
 .ac_etudiant .menu_etud select option:hover{
 background-color: rgb(0, 120, 4);
 }
+/* ---------------button print and added*/
+.ac_etudiant .menu_etud button{
+    border:1px solid rgb(18, 164, 18);
+    background-color: transparent;
+    font-size: 18px;
+    color: rgb(0, 120, 4);
+    margin-top: 2px;
+    background-color: #fff;
+    border-radius: 5px;
+    font-family: 'roboto';
+    transition: all 0.5s ease-out;
+}
+.ac_etudiant .menu_etud button:hover{
+    background-color: rgb(0, 120, 4);
+    color: #fff;
+}
 /* dans menu research */
 .ac_etudiant .menu_etud .research{
     display: flex;
@@ -200,28 +216,15 @@ background-color: rgb(0, 120, 4);
     transition: all 0.5s ease;
     color: rgb(18, 164, 18);
 }
-.ac_etudiant .menu_etud button{
-    border:1px solid rgb(18, 164, 18);
-    background-color: transparent;
-    font-size: 18px;
-    color: rgb(0, 120, 4);
-    margin-top: 2px;
-    background-color: #fff;
-    border-radius: 5px;
-    font-family: 'roboto';
-}
-.ac_etudiant .menu_etud button:hover{
-    background-color: rgb(0, 120, 4);
-    color: #fff;
-}
+
 
 /* --------------my section list of student 3------------------- */
 .section3{
     display: block;
     position: absolute;
     top: 230px;
-    left: 42vh;
-    width: 900px;
+    left: 37vh;
+    width: 975px;
     background-color: rgb(204, 204, 204);
     text-align: center;
     padding: 0%;
@@ -229,8 +232,18 @@ background-color: rgb(0, 120, 4);
     font-family: 'lora';
     font-size: 15px;
 }
+.section3 .ac_span{
+    all: unset;
+    color: #fff;
+    font-size: 24px;
+    font-family: 'Open-sans';
+    border: 1px solid rgb(0, 120, 4);
+    background-color: rgb(0, 120, 4);
+    border-radius: 50%;
+    padding:15px 15px; align-items: center; margin: 5px;
+}
 .ac_table {
-    width: 800px;
+    width: 930px;
     height: 350px;
     margin: 0 auto;
     overflow-x: auto;/* Scroll horizontal */
@@ -245,31 +258,38 @@ background-color: rgb(0, 120, 4);
     top: 0;
     background: rgb(244, 244, 244);
     z-index: 10;
+    padding:10px 30px;
 }
 
 .section3 tr,td {
     border: 1px solid black;
     color: rgb(0, 0, 0);
-    text-align: left;
-    height: 5px;
+    text-align: center;
+    align-items: center;
+    height: auto;
+    margin: 5px auto;
 }
 .section3 h1{
+    display: flex;
     font-size: 25px;
     margin: 5px;
-    text-decoration: underline;
+    height: 70px;
+    align-items: center;
+    text-align: center; justify-content: center;
 }
 
 .section3 .tablebutton {
     border: none;
     display: flex;
     padding: 0%;
+    margin-left: 25px;
 }
 .section3 .tablebutton button {
     border: none;
     background-color: transparent;
     color: rgb(0, 120, 4);
-    font-size: 18px;
-    padding: 3px;
+    font-size: 19px;
+
 }
 .section3 .tablebutton button:hover{
     color: black;

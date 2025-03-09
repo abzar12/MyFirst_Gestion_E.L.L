@@ -22,8 +22,8 @@ try {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="etudiant.css">
-    <title>Dashbord</title>
+    <link rel="stylesheet" href="admin.css">
+    <title>administrateur</title>
 </head>
 
 <body>
@@ -55,10 +55,10 @@ try {
                     <li>
                         <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon> Dashbord</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> Admin</a>
                     </li>
-                    <li class="active">
+                    <li >
                         <a href="etudiant.php"><ion-icon name="book-sharp"></ion-icon> Students</a>
                     </li>
                     <li>
