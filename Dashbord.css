@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open sans';
+    font-size: 18px;
+}
+
+/* -------------------mon navbar */
+.ac_navbar {
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.745);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    height: 50px;
+    color: white;
+}
+
+.ac_navbar a {
+    color: white;
+    font-family: 'merriweather';
+}
+
+/* -------------------My form recherche-------- */
+.ac_navbar .ac_form {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.ac_navbar .ac_form input {
+    border: 1px solid black;
+    border-radius: 50px;
+    padding: 2px 15px;
+    height: 30px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 5px;
+    width: 40vh;
+    font-family: 'Roboto';
+}
+
+.ac_navbar .ac_form .search {
+    border: none;
+    background-color: transparent;
+    font-size: 25px;
+    z-index: 100;
+    color: rgb(255, 255, 255);
+    margin-top: 2px;
+}
+
+.ac_navbar .ac_form .search:hover {
+    transform: scale(1.2);
+    transition: all 0.5s ease;
+    color: rgb(18, 164, 18);
+}
+
+/* -----------modification de profil et cloche------------- */
+.ac_navbar .ac_A1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.ac_navbar .ac_A1 button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 30px;
+}
+
+.ac_navbar .ac_A1 img {
+    height: 30px;
+    text-decoration: none;
+    width: 30px;
+    border-radius: 50%;
+
+}
+
+/* -----------FIN modification de profil et cloche------------- */
+/* ------------------my boy-----------------  */
+.ac_row {
+    margin-top: 50px;
+    height: 93vh;
+    background-color: rgba(1, 1, 1, 0.723);
+    width: 30vh;
+
+}
+
+.ac_row .ac_menu {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+
+}
+
+.ac_row .ac_menu li {
+    list-style: none;
+    color: white;
+    font-family: 'Merriweather';
+    margin-bottom: 35px;
+    margin-left: 10px;
+    border-radius: 10px;
+    height: 50px;
+    justify-content: center;
+    padding: 12px;
+}
+
+.ac_row .ac_menu li:hover {
+    background-color: rgb(192, 189, 189);
+}
+
+.ac_row .ac_menu li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    gap: 50px;
+    text-align: center;
+}
+
+.ac_row .ac_menu li a:hover {
+    color: rgb(18, 164, 18);
+    ;
+}
+
+.ac_row .ac_menu li a ion-icon {
+    margin-right: 15px;
+    font-size: 20px;
+    color: rgb(18, 164, 18);
+}
+
+.ac_row .ac_menu .active {
+
+    background-color: rgb(192, 189, 189);
+
+}
+
+/* -----------------fin de la structure de base-------------- */
+/* -----------------debut de la section 2-------------- */
+
+.ac_row2 {
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    justify-content: space-between;
+    width: 900px;
+    position: absolute;
+    top: 80px;
+    left: 43vh;
+    text-align: center;
+    font-family: 'lora';
+    gap: 15px;
+}
+
+.ac_row2 .card {
+    border: 1px solid transparent;
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    box-shadow: 2px 6px 4px rgb(192, 189, 189);
+    padding: 0%;
+    /* rgb(18, 164, 18)rgba(0, 120, 5, 0.468)rgb(0, 120, 4) */
+}
+
+.ac_row2 .card-body ion-icon {
+    text-decoration: none;
+    color: rgb(18, 164, 18);
+    font-size: 30px;
+}
+
+/* --------------my section list of student 3------------------- */
+.section3{
+    display: block;
+    position: absolute;
+    top: 260px;
+    left: 37vh;
+    width: 975px;
+    background-color: #ccc;
+    text-align: center;
+    padding: 0%;
+    border-radius: 10px;
+    font-family: 'lora';
+    font-size: 15px;
+}
+.section3 .ac_span{
+    all: unset;
+    color: #fff;
+    font-size: 24px;
+    font-family: 'Open-sans';
+    border: 1px solid rgb(0, 120, 4);
+    background-color: rgb(0, 120, 4);
+    border-radius: 50%;
+    padding:15px 15px; align-items: center; margin: 5px;
+}
+.ac_table {
+    width: 930px;
+    height: 320px;
+    margin: 0 auto;
+    overflow-x: auto;/* Scroll horizontal */
+    overflow-y: auto;/* Scroll vertical */
+    border: 1px solid #ccc;
+}
+.section3 th {
+    text-align: center;
+    color: rgb(0, 120, 4);
+    border: 1px solid black;
+    position: sticky;
+    top: 0;
+    background: rgb(244, 244, 244);
+    z-index: 10;
+    padding:10px 30px;
+}
+
+.section3 tr,td {
+    border: 1px solid black;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    align-items: center;
+    height: auto;
+    margin: 5px auto;
+}
+.section3 h1{
+    display: flex;
+    font-size: 25px;
+    margin: 5px;
+    height: 70px;
+    align-items: center;
+    text-align: center; justify-content: center;
+}
+
+.section3 .tablebutton {
+    border: none;
+    display: flex;
+    padding: 0%;
+    text-align: center;
+    margin-left: 25px;
+}
+.section3 .tablebutton button {
+    border: none;
+    background-color: transparent;
+    color: rgb(0, 120, 4);
+    font-size: 18px;
+    text-align: center;
+
+}
+.section3 .tablebutton button:hover{
+    color: black;
+}
