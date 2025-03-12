@@ -2,12 +2,15 @@
 $conn= new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", "root", "");
 try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt= $conn->prepare("SELECT * FROM Admin");
+    $stmt= $conn->prepare("SELECT * FROM message");
     $stmt->execute();
     $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
-    $stmt= $conn->query("SELECT COUNT(*) AS Total FROM Admin");
+    $stmt= $conn->query("SELECT COUNT(*) AS Total FROM message");
     $result_ET= $stmt->fetch(PDO::FETCH_ASSOC);
     $Total_ET= $result_ET['Total'];
+    $stmt = $conn->query("select Prenom from Students ");
+    $result_Nom_Etudiant= $stmt->fetch(PDO::FETCH_ASSOC);
+    $Nom_ETudiant= $result_Nom_Etudiant['Prenom'];
 } catch (PDOException $th) {
     die("erreur de la connection:").$th->getMessage();
 }
@@ -22,8 +25,8 @@ try {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="admin.css">
-    <title>administrateur</title>
+    <link rel="stylesheet" href="message.css">
+    <title>message</title>
 </head>
 
 <body>
@@ -55,13 +58,13 @@ try {
                     <li>
                         <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon> Dashbord</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> Admin</a>
                     </li>
                     <li >
                         <a href="etudiant.php"><ion-icon name="book-sharp"></ion-icon> Students</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="message.php"><ion-icon name="chatbox"></ion-icon> Message</a>
                     </li>
                     <li>
@@ -110,41 +113,28 @@ try {
         </div>
     </section>
     <section class="section3">
-        <h1><span class="ac_span"><?php echo $Total_ET ; ?></span> Administrator</h1>
-        <div class="container ac_table">
-            <?php if (count($result)>0); ?>
-            <table class="table display nowrap" id="Mytable">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Last_Name</th>
-                        <th scope="col">First_Name</th>
-                        <th scope="col"> Email</th>
-                        <th scope="col"> _Birthday_ </th>
-                        <th scope="col">Country</th>
-                        <th scope="col">Number_Ghana</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($result as $row):?>
-                    <tr>
-                        <th><?= htmlspecialchars($row["ID"]); ?> </th>
-                        <td><?= htmlspecialchars($row["Nom"]); ?></td>
-                        <td><?= htmlspecialchars($row["Prenom"]); ?></td>
-                        <td><?= htmlspecialchars($row["Email"]); ?></td>
-                        <td><?= htmlspecialchars($row["DateNaissance"]); ?></td>
-                        <td><?= htmlspecialchars($row["Pays"]); ?></td>
-                        <td><?= htmlspecialchars($row["Telephone"]); ?></td>
-                        <td><?= htmlspecialchars($row["Role"]); ?></td>
-                        <td class="tablebutton">
-                            <button type="button"> <ion-icon name="create-sharp"></ion-icon></button> <button type="button"><ion-icon name="trash-outline"></ion-icon></button>
-                        </td>
-                    </tr>
-                    <?php endforeach;?>
-                </tbody>
-            </table>
+        <h1>You have <?php echo $Total_ET ;?> messages</h1>
+        <?php if(count($result)>0) ;?>
+        <div class="container ac_message">
+            <?php foreach($result as $row) :?>
+                <ul>
+                    <li>
+                        ID : <?= htmlspecialchars($row['ID']) ;?>
+                    </li>
+                    <li>
+                        Nom : <?= htmlspecialchars($row['ID_ET']) ;?>
+                    </li>
+                    <li>
+                        Email : <?= htmlspecialchars($row['Email']) ;?>
+                    </li>
+                    <li>
+                        Message : <?= htmlspecialchars($row['Message']) ;?>
+                    </li>
+                    <li>
+                        Date : <?= htmlspecialchars($row['create_at']) ;?>
+                    </li>
+                </ul>
+                <?php endforeach ; ?>
         </div>
     </section>
 
@@ -163,5 +153,4 @@ try {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="dashbordjava.js"></script>
 </body>
-
 </html>
