@@ -2,7 +2,7 @@
 $conn= new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", "root", "");
 try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt= $conn->prepare("SELECT * FROM message");
+    $stmt= $conn->prepare("SELECT * FROM message ORDER BY create_at DESC");
     $stmt->execute();
     $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
     $stmt= $conn->query("SELECT COUNT(*) AS Total FROM message");
