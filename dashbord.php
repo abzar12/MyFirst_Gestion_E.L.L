@@ -76,7 +76,7 @@ $img1 = "img/Computer.jpg";
                         <a href="user.php"><ion-icon name="person-circle-outline" class="smallicon"></ion-icon> Users</a>
                     </li>
                     <li>
-                        <a href="Accueil.php"><ion-icon name="log-out"></ion-icon>Logout</a>
+                        <a href="logOut.php"><ion-icon name="log-out"></ion-icon>Logout</a>
                     </li>
 
                 </ul>

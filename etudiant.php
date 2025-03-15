@@ -11,6 +11,22 @@ try {
 } catch (PDOException $th) {
     die("erreur de la connection:").$th->getMessage();
 }
+
+$class_filter = isset($_GET['class_filter']) ? $_GET['class_filter'] : '';
+
+$sql = "SELECT * FROM Students";
+if (!empty($class_filter)) {
+    $sql .= " WHERE Classe = :class";
+}
+
+$stmt = $conn->prepare($sql);
+
+if (!empty($class_filter)) {
+    $stmt->bindParam(':class', $class_filter);
+}
+
+$stmt->execute();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,23 +98,23 @@ try {
         <div class="container">
             <div class="ac_etudiant row">
                 <div class="menu_etud">
-                    <select name="" id="">
-                        <option value="level1">All Students</option>
-                        <option value="level1">level 1</option>
-                        <option value="level1">level 2</option>
-                        <option value="level1">level 3</option>
-                        <option value="level1">level 4</option>
-                        <option value="level1">level 5</option>
-                        <option value="level1">level 6</option>
-                        <option value="level1">INTER 1</option>
-                        <option value="level1">INTER 2</option>
-                        <option value="level1">INTER 3</option>
-                        <option value="level1">PROF 1</option>
-                        <option value="level1">PROF 2</option>
-                        <option value="level1">PROF 3</option>
-                    </select>
+                <form method="GET" action="">
+    <select name="class_filter" id="class_filter" value="ALL">
+        <option value="">All</option>
+        <?php 
+        // Remplace ceci par la récupération des classes depuis ta base de données
+        $classes = ["Level 1", "Level 2", "Level 2", "Level 3", "Level 4", "Level 5", "Level 6", "INTER 1", "INTER 2", "INTER 3", "PROF 1", "PROF 2", "PROF 3"]; 
+        foreach ($classes as $class): ?>
+            <option value="<?= htmlspecialchars($class); ?>" 
+                <?= isset($_GET['class_filter']) && $_GET['class_filter'] == $class ? 'selected' : '' ?>>
+                <?= htmlspecialchars($class); ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+    <button type="submit">Filter</button>
+</form>
                     <div class="research">
-                        <input type="text" placeholder="recherche">
+                        <input type="text" placeholder="recherche" id="myInput" onkeyup="myFunction()">
                     <button type="button" class="search"><ion-icon name="search"></ion-icon></button>
                     </div>
                     
@@ -113,7 +129,7 @@ try {
         <h1><span class="ac_span"><?php echo $Total_ET ; ?></span> Students</h1>
         <div class="container ac_table">
             <?php if (count($result)>0); ?>
-            <table class="table display nowrap" id="Mytable">
+            <table class="table display nowrap" id="myTable">
                 <thead>
                     <tr>
                         <th scope="col">Code</th>

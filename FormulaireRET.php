@@ -66,6 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (count($error) > 0) {
     foreach ($error as $key) {
       echo $key . "<br>";
+      
     }
   } else {
     $Nom = filter_var($Nom, FILTER_SANITIZE_STRING);
@@ -100,12 +101,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $stmt->bindParam(':Date_Depart', $Date_Depart);
 
       try {
-
+        $stmt->execute();
         $stmt = $conn->query("select ID from Admin WHERE Role =  'director'");
         $Result = $stmt->fetch(PDO::FETCH_ASSOC);
         $Director = $Result['ID'];
 
-        $message = "un nouveau étudiant $Nom $Prenom avec un Email de : $Emaila a été inscrit";
+        $message = "un nouveau étudiant $Nom $Prenom avec un Email de : $Email a été inscrit";
         $req = "insert into Message (Id_Admin, ID_ET, Email, Message) values(:ID_Admin , :Nom, :Email, :Message)";
         $stmt = $conn->prepare($req);
         $Nom_Prenom_ET= $Nom ." ". $Prenom;
