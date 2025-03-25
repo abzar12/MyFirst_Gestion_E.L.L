@@ -43,3 +43,33 @@
     </script>
 </body>
 </html>
+
+
+if (!empty($_SERVER['HTTP_REFERER'])) {
+    $previousPage = $_SERVER['HTTP_REFERER'];
+
+    // Vérifier si 'success=true' est déjà dans l'URL pour éviter les doublons
+    if (strpos($previousPage, 'success=true') === false) {
+        $separator = (strpos($previousPage, '?') !== false) ? "&" : "?";
+        $previousPage .= $separator . "success=true";
+    }}
+} catch (PDOException $th) {
+  echo "error" . $th->getMessage();
+}
+} catch (\Throwable $th) {
+echo "errro2" . $th->getMessage();
+}
+} else {
+session_start();
+
+if (!empty($error)) {
+  // Stocker les erreurs dans la session
+  $_SESSION['errors'] = $error;
+
+  // Récupérer la page précédente
+  $previousPage = $_SERVER['HTTP_REFERER'] ?? 'defaultPage.php';
+
+  // Redirection vers la page précédente avec un paramètre d'erreur
+  header("Location: $previousPage?error=true");
+  exit();}
+}

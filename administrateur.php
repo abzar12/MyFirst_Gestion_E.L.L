@@ -53,7 +53,7 @@ try {
             <div class="ac_row row">
                 <ul class="ac_menu nav  mb-3" id="pills-tab" role="tablist">
                     <li>
-                        <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon> Dashbord</a>
+                        <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon> Dashboard</a>
                     </li>
                     <li class="active">
                         <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> Admin</a>
@@ -102,7 +102,7 @@ try {
                     <button type="button" class="search"><ion-icon name="search"></ion-icon></button>
                     </div>
                     
-                    <button type="button"><ion-icon name="add-circle-outline"></ion-icon>Add students</button>
+                    <a href=""><button type="button"><ion-icon name="add-circle-outline"></ion-icon>Add students</button></a>
                     <button type="button"><ion-icon name="print-outline"></ion-icon>Print</button>
                 </div>
 

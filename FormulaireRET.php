@@ -60,14 +60,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $error[] = "le champ QUANT PENSEZ_VOUS VENIR est incorrect";
   }
   if (!isset($_POST['contrat'])) {
-    $error[] = 'echo"<script>alert("Vous devez accepter les termes et conditions.")</script>"';
+    $error[] = 'Vous devez accepter les termes et conditions.';
   }
 
+  session_start();
+
   if (count($error) > 0) {
-    foreach ($error as $key) {
-      echo $key . "<br>";
-      
-    }
+    // Stocker les erreurs dans la session
+    $_SESSION['errors'] = $error;
+
+    // Récupérer la page précédente (celle qui a envoyé le formulaire)
+    $previousPage = !empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
+
+    // Redirection vers la page qui a envoyé
+    header("Location: $previousPage");
+    exit();
   } else {
     $Nom = filter_var($Nom, FILTER_SANITIZE_STRING);
     $Prenom = filter_var($Prenom, FILTER_SANITIZE_STRING);
@@ -109,13 +116,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $message = "un nouveau étudiant $Nom $Prenom avec un Email de : $Email a été inscrit";
         $req = "insert into Message (Id_Admin, ID_ET, Email, Message) values(:ID_Admin , :Nom, :Email, :Message)";
         $stmt = $conn->prepare($req);
-        $Nom_Prenom_ET= $Nom ." ". $Prenom;
+        $Nom_Prenom_ET = $Nom . " " . $Prenom;
         $stmt->bindParam(':ID_Admin', $Director);
         $stmt->bindParam(':Nom', $Nom_Prenom_ET);
         $stmt->bindParam(':Email', $Email);
         $stmt->bindParam(':Message', $message);
         $stmt->execute();
-        echo '<script>alert("ENREGISTRER DANS LA BASES")</script>';
+
+
+        if (!empty($_SERVER['HTTP_REFERER'])) {
+          $previousPage = $_SERVER['HTTP_REFERER'];
+      
+          // Vérifier si 'success=true' est déjà dans l'URL pour éviter les doublons
+          if (strpos($previousPage, 'success=true') === false) {
+              $separator = (strpos($previousPage, '?') !== false) ? "&" : "?";
+              $previousPage .= $separator . "success=true";
+          }
+      
+          // Redirection propre
+          header("Location: $previousPage");
+          exit();
+          
+        }
       } catch (PDOException $th) {
         echo "error" . $th->getMessage();
       }

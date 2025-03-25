@@ -1,4 +1,16 @@
+<?php
+if($_GET['success'] == true){
+  echo "<script> alert('ENREGISTRER DANS LA BASES')</script>";
+}
+session_start();
 
+if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
+    foreach ($_SESSION['errors'] as $err) {
+        echo "<p style='color:red;'>$err</p>";
+    }
+    unset($_SESSION['errors']); // Nettoyer les erreurs après affichage
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -164,7 +176,7 @@
                       <span for="contrat"style="color:black; font-size:12px">D'accord pour les termes de condition</span> <br></p>
                        
                         <button class="button_Back" type="button" onclick="prevStep()">Back</button>
-                        <button class="button_Back1 b" type="submit" name="ac_sumit"> Envoyé</ion-icon></button>
+                        <button class="button_Back1 b" type="submit" > Envoyé</ion-icon></button>
                     </div>
                 </div>
             </div>
