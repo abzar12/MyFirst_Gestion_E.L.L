@@ -1,9 +1,34 @@
 <?php
+session_start();
+
 require_once("connection.php");
+
+if(!isset($_SESSION["UserId"])){
+    header("Location:Login.php");
+}
+$UserId=$_SESSION["UserId"];
+$stmt=$conn->prepare("SELECT * FROM users Where Id=:Id");
+$stmt->bindParam(':Id', $UserId);
+$stmt->execute();
+$UserAll=$stmt->fetch(PDO::FETCH_ASSOC);
+$_SESSION['LastName']= $UserAll["Nom"];
+$_SESSION['FirstName']=$UserAll["Prenom"];
+$_SESSION['UserRole'] = $UserAll["Role"];
+$LastName =$_SESSION['LastName'];
+$FirstName =$_SESSION['FirstName'];
+$userRole = $_SESSION['UserRole'];
+$img = "img/profile.JPG";
+$img1 = "img/Computer.jpg";
+
+$success = $_GET['success'];
+if ($success == true) {
+    echo ("<script>alert ('THE STUDENT HAS BEEN MODIFY') </script>");
+}
 try {
-    $stmt = $conn->prepare("SELECT * FROM Inscription_Etudiant");
-    $stmt->execute();
-    $result1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // $stmt = $conn->prepare("SELECT * FROM Inscription_Etudiant");
+    // $stmt->execute();
+    // $result1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // nombre etudiant dans la base 
     $stmt = $conn->query("SELECT COUNT(*) AS Total FROM Inscription_Etudiant");
@@ -12,9 +37,21 @@ try {
 } catch (PDOException $th) {
     die("ERROR OF SELECT" . $th->getMessage());
 }
+try {
+    $search = isset($_POST['query']) ? $_POST['query'] : "";
+    if ($_POST['query'] == "") {
+        $stmt = $conn->prepare("SELECT * FROM Inscription_Etudiant");
+        $stmt->execute();
+    } else {
+        $stmt = $conn->prepare("SELECT * FROM Inscription_Etudiant WHERE Nom LIKE ? OR Prenom Like ?");
+        $stmt->execute(["%$search%", "%$search%"]);
+    }
 
-$img = "img/profile.JPG";
-$img1 = "img/Computer.jpg";
+    $result1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (\Throwable $th) {
+    die("ERREUR DE RECHERCHE" . $th->getMessage());
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +64,7 @@ $img1 = "img/Computer.jpg";
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="Dashbord.css">
     <title>Dashbord</title>
 </head>
@@ -39,13 +77,11 @@ $img1 = "img/Computer.jpg";
                     <div class="ac_navbar">
                         <a class="Logo navbar-brand text-uppercase" href="Accueil.php"><span>E.L.L</span></a>
                         <form class="ac_form" action="">
-                            <input type="text" placeholder="recherche">
-                            <button type="button" class="search"><ion-icon name="search"></ion-icon></button>
+                            <input type="text" placeholder="Nom OU Prenom" id="recherche">
 
                         </form>
                         <div class="ac_A1">
-                            <button type="button"> <ion-icon name="notifications-outline"></ion-icon> </button>
-                            <img src="<?php echo $img; ?>" alt="">
+                            <p><?php echo "$LastName $FirstName <br> $userRole" ;?></p>
                         </div>
 
                     </div>
@@ -55,6 +91,7 @@ $img1 = "img/Computer.jpg";
     </header>
     <section class="ac_section1">
         <div class="container-fluid">
+            <?php /*if($userRole === "Director"):*/?>
             <div class="ac_row row">
                 <ul class="ac_menu nav  mb-3" id="pills-tab" role="tablist">
                     <li class="active">
@@ -70,11 +107,16 @@ $img1 = "img/Computer.jpg";
                         <a href="message.php"><ion-icon name="chatbox"></ion-icon> Message</a>
                     </li>
                     <li>
+                        <a href="NoteEtudiant.php"><ion-icon name="chatbox"></ion-icon> Note</a>
+                    </li>
+                    <?php/* elseif($userRole === "Professor") */:?>
+                    <li>
                         <a href="teacher.php"><ion-icon name="person-circle" class="smallicon"></ion-icon> Teachers</a>
                     </li>
                     <li>
                         <a href="user.php"><ion-icon name="person-circle-outline" class="smallicon"></ion-icon> Users</a>
                     </li>
+                    <?php /* endif ;*/?>
                     <li>
                         <a href="logOut.php"><ion-icon name="log-out"></ion-icon>Logout</a>
                     </li>
@@ -108,10 +150,10 @@ $img1 = "img/Computer.jpg";
         </div>
     </section>
     <section class="section3">
-    <h1><span class="ac_span"><?php echo $Total_ET ; ?></span> New Students</h1>
+        <h1><span class="ac_span"><?php echo $Total_ET; ?></span> New Students</h1>
         <div class="container ac_table">
             <?php if (count($result1) > 0); ?>
-            <table class="table display nowrap" id="Mytable">
+            <table class="table display nowrap" id="_list">
                 <thead>
                     <tr>
                         <th scope="col">Code</th>
@@ -124,26 +166,28 @@ $img1 = "img/Computer.jpg";
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php foreach ($result1 as $row): ?>
-                        <tr>
-                            <th><?= htmlspecialchars($row["ID"]); ?> </th>
-                            <td><?= htmlspecialchars($row["Nom"]); ?></td>
-                            <td><?= htmlspecialchars($row["Prenom"]); ?></td>
-                            <td><?= htmlspecialchars($row["Email"]); ?></td>
-                            <td><?= htmlspecialchars($row["Telephone_Whatsapp"]); ?></td>
-                            <td><?= htmlspecialchars($row["Dure"]); ?></td>
-                            <td><?= htmlspecialchars($row["Pays"]); ?></td>
-                            <td class="tablebutton">
-                                <button type="button"> <ion-icon name="create-sharp"></ion-icon></button> <button type="button"><ion-icon name="trash-outline"></ion-icon></button>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
+                <tbody id="mytable_list">
+                    <?php if ($result1) : ?>
+                        <?php foreach ($result1 as $row): ?>
+                            <tr>
+                                <th><?= htmlspecialchars($row["ID"]); ?> </th>
+                                <td><?= htmlspecialchars($row["Nom"]); ?></td>
+                                <td><?= htmlspecialchars($row["Prenom"]); ?></td>
+                                <td><?= htmlspecialchars($row["Email"]); ?></td>
+                                <td><?= htmlspecialchars($row["Telephone_Whatsapp"]); ?></td>
+                                <td><?= htmlspecialchars($row["Dure"]); ?></td>
+                                <td><?= htmlspecialchars($row["Pays"]); ?></td>
+                                <td class="tablebutton">
+                                    <a href="editer.php?code=<?= htmlspecialchars($row['ID']); ?> "><button type="button"> <ion-icon name="create-sharp"></ion-icon></button></a>
+                                    <a href="supprimer.php?code=<?= htmlspecialchars($row["ID"]); ?>" onclick="return ac_confirm()"><button type="button"><ion-icon name="trash-outline"></ion-icon></button></a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>
     </section>
-
 
     <!-- datatable -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-JobWAqYk5CSjWuVV3mxgS+MmccJqkrBaDhk8SKS1BW+71dJ9gzascwzW85UwGhxiSyR7Pxhu50k+Nl3+o5I49A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -157,7 +201,9 @@ $img1 = "img/Computer.jpg";
     <link href="https://cdn.datatables.net/v/bs5/dt-2.2.2/datatables.min.css" rel="stylesheet" integrity="sha384-M6C9anzq7GcT0g1mv0hVorHndQDVZLVBkRVdRb2SsQT7evLamoeztr1ce+tvn+f2" crossorigin="anonymous">
     <script src="https://cdn.datatables.net/v/bs5/dt-2.2.2/datatables.min.js" integrity="sha384-k90VzuFAoyBG5No1d5yn30abqlaxr9+LfAPp6pjrd7U3T77blpvmsS8GqS70xcnH" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="dashbordjava.js"></script>
+    <script src="dashbordjava.js">
+
+    </script>
 </body>
 
 </html>

@@ -4,16 +4,17 @@ try {
   $conn = new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", 'root', '');
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   if (isset($_POST['login'])) {
-    
     $Email = $_POST['ac_email'];
     $password = $_POST['ac_password'];
     $stmt = $conn->prepare("select Id from users where Email= :Email and Password= :password ");
     $stmt->bindParam(':Email', $Email);
     $stmt->bindParam(':password', $password);
     $stmt->execute();
+    $user =$stmt->fetch();
     if ($stmt->rowCount() > 0) {
       session_start();
       $_SESSION['user'] = $Email;
+      $_SESSION["UserId"] = $user["Id"];
       header("Location:dashbord.php");
       exit();
     } else {
@@ -23,7 +24,6 @@ try {
 } catch (PDOException $th) {
   die("erreur de la connection" . $th->getMessage());
 }
-
 
 
 ?>
@@ -76,7 +76,7 @@ try {
       </div>
     </nav>
     <div class="container_form">
-      <form method="post" action="">
+      <form method="POST" action="">
         <div class="A1">
           <p>LOGIN</p>
           <div class="A row ">
@@ -89,7 +89,6 @@ try {
             <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
             <div class=" col-em-10">
               <input type="password" class="I1 form-control" id="inputPassword3" name="ac_password" required>
-              
             </div>
           </div>
           <p id="ac_incorect" name="ac_incorect" style="color:red; font-size:14px; margin:0; border:none;"><?php echo $error; ?></p>

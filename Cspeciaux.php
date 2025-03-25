@@ -1,4 +1,16 @@
+<?php
+if($_GET['success'] == true){
+  echo "<script> alert('ENREGISTRER DANS LA BASES')</script>";
+ }
+ session_start();
 
+if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
+    foreach ($_SESSION['errors'] as $err) {
+        echo "<p style='color:red;'>$err</p>";
+    }
+    unset($_SESSION['errors']); // Nettoyer les erreurs après affichage
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>

@@ -64,21 +64,17 @@ body {
     justify-content: center;
     align-items: center;
     gap: 50px;
+    text-align: center;
+
 }
-
-.ac_navbar .ac_A1 button {
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-size: 30px;
-}
-
-.ac_navbar .ac_A1 img {
-    height: 30px;
-    text-decoration: none;
-    width: 30px;
-    border-radius: 50%;
-
+.ac_navbar .ac_A1 p{
+    font-family: 'Open sans ';
+    color: rgb(18, 164, 18);
+    font-size: 22px;
+    text-align: center;
+    align-items: center;
+    margin: 0;
+    line-height: 20px;
 }
 
 /* -----------FIN modification de profil et cloche------------- */
