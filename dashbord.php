@@ -22,7 +22,7 @@ $img1 = "img/Computer.jpg";
 
 $success = $_GET['success'];
 if ($success == true) {
-    echo ("<script>alert ('THE STUDENT HAS BEEN MODIFY') </script>");
+    echo ("<script>alert ('The information has been successfully updated') </script>");
 }
 try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -31,9 +31,16 @@ try {
     // $result1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // nombre etudiant dans la base 
-    $stmt = $conn->query("SELECT COUNT(*) AS Total FROM Inscription_Etudiant");
+    $stmt = $conn->query("SELECT COUNT(*) AS TotalOfStudent FROM Inscription_Etudiant");
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    $Total_ET = $result['Total'];
+    $Total_ET = $result['TotalOfStudent'];
+    $stmt = $conn->query("SELECT COUNT(*) AS TotalNewStudent FROM Students");
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $Total_new_Student = $result['TotalNewStudent'];
+    $stmt=$conn->query("SELECT COUNT(*) AS TotalAdmin FROM Admin");
+    $result=$stmt->fetch(PDO::FETCH_ASSOC);
+    $Total_Admin=$result['TotalAdmin'];
+
 } catch (PDOException $th) {
     die("ERROR OF SELECT" . $th->getMessage());
 }
@@ -51,7 +58,6 @@ try {
 } catch (\Throwable $th) {
     die("ERREUR DE RECHERCHE" . $th->getMessage());
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +70,7 @@ try {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="Dashbord.css">
     <title>Dashbord</title>
@@ -78,10 +85,9 @@ try {
                         <a class="Logo navbar-brand text-uppercase" href="Accueil.php"><span>E.L.L</span></a>
                         <form class="ac_form" action="">
                             <input type="text" placeholder="Nom OU Prenom" id="recherche">
-
                         </form>
                         <div class="ac_A1">
-                            <p><?php echo "$LastName $FirstName <br> $userRole" ;?></p>
+                            <p><?php echo "$LastName <br> $FirstName"  ;?></p>
                         </div>
 
                     </div>
@@ -91,32 +97,34 @@ try {
     </header>
     <section class="ac_section1">
         <div class="container-fluid">
-            <?php /*if($userRole === "Director"):*/?>
+           
             <div class="ac_row row">
                 <ul class="ac_menu nav  mb-3" id="pills-tab" role="tablist">
+                    
                     <li class="active">
                         <a href="dashbord.php"><ion-icon name="speedometer-sharp" class="active"></ion-icon> Dashbord</a>
-                    </li>
+                    </li> 
+                    <?php if($userRole === "director" ||$userRole === "Staff")  {?>
                     <li>
                         <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> Admin</a>
                     </li>
+                    <?php } ?>
                     <li>
                         <a href="etudiant.php"><ion-icon name="book-sharp"></ion-icon> Students</a>
                     </li>
+                    <?php if($userRole === "Director" ||$userRole === "Staff" ){?>
                     <li>
                         <a href="message.php"><ion-icon name="chatbox"></ion-icon> Message</a>
                     </li>
-                    <li>
-                        <a href="NoteEtudiant.php"><ion-icon name="chatbox"></ion-icon> Note</a>
-                    </li>
-                    <?php/* elseif($userRole === "Professor") */:?>
+                    <?php } ?>
                     <li>
                         <a href="teacher.php"><ion-icon name="person-circle" class="smallicon"></ion-icon> Teachers</a>
                     </li>
+                    <?php if($userRole === "Director") {?>
                     <li>
                         <a href="user.php"><ion-icon name="person-circle-outline" class="smallicon"></ion-icon> Users</a>
                     </li>
-                    <?php /* endif ;*/?>
+                    <?php } ?>
                     <li>
                         <a href="logOut.php"><ion-icon name="log-out"></ion-icon>Logout</a>
                     </li>
@@ -131,7 +139,7 @@ try {
                 <div class="card">
                     <div class="card-body">
                         <p><ion-icon name="book-sharp"></ion-icon></p>
-                        <p> <?= $Total_ET . " "; ?>Students</p>
+                        <p> Total of Students  <?= $Total_new_Student . " "; ?></p>
                     </div>
                 </div>
                 <div class="card">
@@ -143,14 +151,14 @@ try {
                 <div class="card">
                     <div class="card-body">
                         <p><ion-icon name="person-sharp"></ion-icon></p>
-                        <p> <?php echo 3 . ' '; ?> Admin</p>
+                        <p>  administrators<?php echo ' '.$Total_Admin ; ?></p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <section class="section3">
-        <h1><span class="ac_span"><?php echo $Total_ET; ?></span> New Students</h1>
+        <h1><span class="ac_span"><?php echo $Total_ET; ?></span>New students subscribe for last 3months</h1>
         <div class="container ac_table">
             <?php if (count($result1) > 0); ?>
             <table class="table display nowrap" id="_list">
@@ -163,7 +171,9 @@ try {
                         <th scope="col">WhatsApp</th>
                         <th scope="col">Duration</th>
                         <th scope="col">__Country__</th>
+                        <?php if($userRole === "Director" ||$userRole === "Staff" ) {?>
                         <th scope="col">Action</th>
+                        <?php }?>
                     </tr>
                 </thead>
                 <tbody id="mytable_list">
@@ -177,10 +187,12 @@ try {
                                 <td><?= htmlspecialchars($row["Telephone_Whatsapp"]); ?></td>
                                 <td><?= htmlspecialchars($row["Dure"]); ?></td>
                                 <td><?= htmlspecialchars($row["Pays"]); ?></td>
+                                <?php if($userRole === "director" || $userRole === "Staff" ) {?>
                                 <td class="tablebutton">
                                     <a href="editer.php?code=<?= htmlspecialchars($row['ID']); ?> "><button type="button"> <ion-icon name="create-sharp"></ion-icon></button></a>
                                     <a href="supprimer.php?code=<?= htmlspecialchars($row["ID"]); ?>" onclick="return ac_confirm()"><button type="button"><ion-icon name="trash-outline"></ion-icon></button></a>
                                 </td>
+                                <?php }?>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>
