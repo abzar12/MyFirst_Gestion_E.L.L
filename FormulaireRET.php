@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require "vendor/autoload.php";
+
 $conn = new PDO("mysql::host=localhost; dbname=Gestion_Eudiant", 'root', '');
 try {
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -106,12 +112,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $stmt->bindParam(':Ville', $Ville);
       $stmt->bindParam(':Pays', $Pays);
       $stmt->bindParam(':Date_Depart', $Date_Depart);
+      // send message unsing Gmail on a director acount
+
+      $mail = new PHPMailer(true);
+      try {
+        $mail->isSMTP();
+        $mail->Host = "smtp.gmail.com";
+        $mail->SMTPAuth = true;
+        $mail->Username = "abzarcamara9@gmail.com";
+        $mail->Password = "xbdmdaftrkaweupi";
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = "587";
+
+        $mail->setFrom("testELL@test.com", "Moussa");
+        $mail->addAddress("abzarcamara9@gmail.com", "Abzar");
+
+        //Content
+        $mail->Subject = "New Student";
+        $mail->Body    = "Good Morning Abzar Camara you have a new student : $Nom $Prenom\n" .
+          "Email: $Email";
+
+        $mail->send();
+      } catch (Exception $th) {
+        die("MESSAGE COULDN'T BE SEND, ERROR" . $th->getMessage());
+      }
 
       try {
         $stmt->execute();
-        $stmt = $conn->query("select ID from Admin WHERE Role =  'director'");
+        $stmt = $conn->query("select Id from users WHERE Role =  'Staff'");
         $Result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $Director = $Result['ID'];
+        $Director = $Result['Id'];
 
         $message = "un nouveau étudiant $Nom $Prenom avec un Email de : $Email a été inscrit";
         $req = "insert into Message (Id_Admin, ID_ET, Email, Message) values(:ID_Admin , :Nom, :Email, :Message)";
@@ -126,17 +156,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (!empty($_SERVER['HTTP_REFERER'])) {
           $previousPage = $_SERVER['HTTP_REFERER'];
-      
+
           // Vérifier si 'success=true' est déjà dans l'URL pour éviter les doublons
           if (strpos($previousPage, 'success=true') === false) {
-              $separator = (strpos($previousPage, '?') !== false) ? "&" : "?";
-              $previousPage .= $separator . "success=true";
+            $separator = (strpos($previousPage, '?') !== false) ? "&" : "?";
+            $previousPage .= $separator . "success=true";
           }
-      
+
           // Redirection propre
           header("Location: $previousPage");
           exit();
-          
         }
       } catch (PDOException $th) {
         echo "error" . $th->getMessage();
