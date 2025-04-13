@@ -176,7 +176,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
                         <th scope="col">Classroom</th>
                         <th scope="col">Courses</th>
                         <th scope="col">Duration</th>
-                        <?php if($userRole==="Director" || $userRole==="Staff") {?>
+                        <?php if($userRole==="Director" || $userRole==="Staff" || $userRole==="Teacher") {?>
                         <th scope="col">Action</th>
                         <?php };?>
                     </tr>
@@ -195,7 +195,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
                                 <td><?= htmlspecialchars($row["Classe"]); ?></td>
                                 <td><?= htmlspecialchars($row["Formation"]); ?></td>
                                 <td><?= htmlspecialchars($row["Dure"]); ?></td>
-                                <?php if($userRole==="Director" || $userRole==="Staff") :?>
+                                <?php if($userRole==="Director" || $userRole==="Staff" || $userRole==="Teacher") :?>
                                 <td class="tablebutton">
                                     <form action="" method="POST">
                                         <a href="EditeStudent.php?code=<?= htmlspecialchars($row["ID"]);?>"><button type="button"> <ion-icon name="create-sharp"></ion-icon></button></a>

@@ -114,8 +114,9 @@ $message= $_SESSION['message'];
                 <div class="ac_row p-2">
                     <div class="ac_col">
                         <select id="role" name="RoleAD" class="rounded-md p-2 border-b border-solid border-black w-full pl-2   ">
-                            <option value="teacher">Teacher</option>
+                            <option value="Teacher">Teacher</option>
                             <option value="Staff">Admin</option>
+                            <option value="Director">Director</option>
                         </select>
                     </div>
                 </div>

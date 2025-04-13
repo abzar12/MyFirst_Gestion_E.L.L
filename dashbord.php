@@ -104,7 +104,7 @@ try {
                     <li class="active">
                         <a href="dashbord.php"><ion-icon name="speedometer-sharp" class="active"></ion-icon> Dashbord</a>
                     </li> 
-                    <?php if($userRole === "director" ||$userRole === "Staff")  {?>
+                    <?php if($userRole === "Director" ||$userRole === "Staff")  {?>
                     <li>
                         <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> Admin</a>
                     </li>
@@ -187,7 +187,7 @@ try {
                                 <td><?= htmlspecialchars($row["Telephone_Whatsapp"]); ?></td>
                                 <td><?= htmlspecialchars($row["Dure"]); ?></td>
                                 <td><?= htmlspecialchars($row["Pays"]); ?></td>
-                                <?php if($userRole === "director" || $userRole === "Staff" ) {?>
+                                <?php if($userRole === "Director" || $userRole === "Staff" ) {?>
                                 <td class="tablebutton">
                                     <a href="editer.php?code=<?= htmlspecialchars($row['ID']); ?> "><button type="button"> <ion-icon name="create-sharp"></ion-icon></button></a>
                                     <a href="supprimer.php?code=<?= htmlspecialchars($row["ID"]); ?>" onclick="return ac_confirm()"><button type="button"><ion-icon name="trash-outline"></ion-icon></button></a>

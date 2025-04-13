@@ -5,7 +5,6 @@ if (!isset($_SESSION["UserId"])) {
     header("Location:Login.php");
 }
 $conn = new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", "root", "");
-// for the updating 
 $success = $_GET['success'];
 if ($success) {
     echo "<script>alert('The information has been successfully updated')</script>";
@@ -15,24 +14,31 @@ if ($code) {
     echo "<script>alert('The user has been saved')</script>";
 }
 
+// if ($code === false) {
+//     echo "<script>alert('All fields are required\"TRY IT AGAIN \” ')</script>";
+// }
+ 
 try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT * FROM Admin");
+    // select all teacher on the data base
+    $stmt = $conn->prepare("SELECT * FROM Teacher");
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $stmt = $conn->query("SELECT COUNT(*) AS Total FROM Admin");
-    $result_ET = $stmt->fetch(PDO::FETCH_ASSOC);
-    $Total_ET = $result_ET['Total'];
+    // Count all teacher on the data base
+    $stmt = $conn->query("SELECT COUNT(*) AS Total FROM Teacher");
+    $result_T = $stmt->fetch(PDO::FETCH_ASSOC);
+    $Total_T = $result_T['Total'];
 } catch (PDOException $th) {
     die("erreur de la connection:" . $th->getMessage());
 }
 try {
+    // delete one professor on the data base script delete
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deleteAdmin'])) {
         $IdAdmin = $_POST['deleteAdmin'];
-        $stmt = $conn->prepare("DELETE FROM Admin WHERE ID=:ID");
+        $stmt = $conn->prepare("DELETE FROM Teacher WHERE ID=:ID");
         $stmt->bindParam(':ID', $IdAdmin);
         $stmt->execute();
-        header("Location: administrateur.php");
+        header("Location:teacher.php");
     }
 } catch (Throwable $th) {
     die("erreur de supprimetion:" . $th->getMessage());
@@ -84,7 +90,7 @@ $userRole = $_SESSION['UserRole'];
                         <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon> Dashboard</a>
                     </li>
                     <?php if($userRole === "Director" ||$userRole === "Staff" ){?> 
-                    <li class="active">
+                    <li >
                         <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> Admin</a>
                     </li>
                     <?php };?>
@@ -96,7 +102,7 @@ $userRole = $_SESSION['UserRole'];
                         <a href="message.php"><ion-icon name="chatbox"></ion-icon> Message</a>
                     </li>
                     <?php };?>
-                    <li>
+                    <li class="active">
                         <a href="teacher.php"><ion-icon name="person-circle" class="smallicon"></ion-icon> Teachers</a>
                     </li>
                     <?php if($userRole === "Director") {?>
@@ -118,7 +124,7 @@ $userRole = $_SESSION['UserRole'];
             <div class="ac_etudiant row">
                 <div class="menu_etud">
                     <?php if ($userRole === 'Staff' || $userRole === 'Director') : ?>
-                        <a href="AddAdmin.php?tableName=Admin"><button type="button"><ion-icon name="add-circle-outline"></ion-icon>Add Admin</button></a>
+                        <a href="AddAdmin.php?tableName=Teacher"><button type="button"><ion-icon name="add-circle-outline"></ion-icon>Add Admin</button></a>
                     <?php endif; ?>
                     <button type="button"><ion-icon name="print-outline"></ion-icon>Print</button>
                 </div>
@@ -126,7 +132,7 @@ $userRole = $_SESSION['UserRole'];
         </div>
     </section>
     <section class="section3">
-        <h1><span class="ac_span"><?php echo $Total_ET; ?></span> Administrator</h1>
+        <h1><span class="ac_span"><?php echo $Total_T; ?></span> Administrator</h1>
         <div class="container ac_table">
             <?php if (count($result) > 0); ?>
             <table class="table display nowrap" id="Mytable">
@@ -156,7 +162,7 @@ $userRole = $_SESSION['UserRole'];
                             <td><?= htmlspecialchars($row["Telephone"]); ?></td>
                             <?php if ($userRole === 'Staff' || $userRole === 'Director') { ?>
                                 <td class="tablebutton">
-                                    <a href="modifyAdmin.php?code=<?= htmlspecialchars($row['ID']); ?>&tableName=Admin"><button type="submit"> <ion-icon name="create-sharp"></ion-icon></button></a>
+                                    <a href="modifyAdmin.php?code=<?= htmlspecialchars($row['ID']); ?>&tableName=Teacher"><button type="submit"> <ion-icon name="create-sharp"></ion-icon></button></a>
                                     <form method="POST">
                                         <button type="submit" onclick="return confirm('Do you really want to delete this user?')" value="<?= htmlspecialchars($row['ID']); ?>" name="deleteAdmin"><ion-icon name="trash-outline"></ion-icon></button>
                                     </form>
