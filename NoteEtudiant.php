@@ -8,6 +8,16 @@ require_once("connection.php");
 $stmt = $conn->prepare("SELECT * FROM NoteEtudiant");
 $stmt->execute();
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$Total_ET = count($result);
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deleteNote'])) {
+    $IdAdmin = $_POST['deleteNote'];
+    $stmt = $conn->prepare("DELETE FROM NoteEtudiant WHERE Student_Id=:ID");
+    $stmt->bindParam(':ID', $IdAdmin);
+    $stmt->execute();
+}
+$LastName = $_SESSION['LastName'];
+$FirstName = $_SESSION['FirstName'];
+$userRole = $_SESSION['UserRole'];
 ?>
 
 
@@ -39,7 +49,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                         </form>
                         <div class="ac_A1">
-                            <p><?php echo ($_SESSION['LastName']." ".$_SESSION['FirstName'] ."<br>".$_SESSION['UserRole']); ?></p>
+                        <p><?php echo "$LastName <br> $FirstName"; ?></p>
                         </div>
 
                     </div>
@@ -60,18 +70,17 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <li>
                         <a href="etudiant.php"><ion-icon name="book-sharp"></ion-icon> Students</a>
                     </li>
-                    <li>
-                        <a href="message.php"><ion-icon name="chatbox"></ion-icon> Message</a>
-                    </li>
                     <li class="active">
                         <a href="NoteEtudiant.php"><ion-icon name="chatbox"></ion-icon> Note</a>
                     </li>
                     <li>
                         <a href="teacher.php"><ion-icon name="person-circle" class="smallicon"></ion-icon> Teachers</a>
                     </li>
+                    <?php if($userRole === "Director"){?>
                     <li>
                         <a href="user.php"><ion-icon name="person-circle-outline" class="smallicon"></ion-icon> Users</a>
                     </li>
+                    <?php };?>
                     <li>
                         <a href="Accueil.php"><ion-icon name="log-out"></ion-icon>Logout</a>
                     </li>
@@ -145,6 +154,11 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?= htmlspecialchars($row["Orale"]); ?></td>
                                 <td><?= htmlspecialchars($row["Reading"]); ?></td>
                                 <td><?= htmlspecialchars($row["Grammar"]); ?></td>
+                                <td class="tablebutton" >
+                                    <form method="POST">
+                                        <button type="submit" onclick="return confirm('Do you really want to delete this user?')" value="<?= htmlspecialchars($row["Student_Id"]); ?>" name="deleteNote"><ion-icon name="trash-outline"></ion-icon></button>
+                                    </form>
+                                </td>
                                 <!-- <td class="tablebutton">
                                 <button type="button"> <ion-icon name="create-sharp"></ion-icon></button> <button type="button"><ion-icon name="trash-outline"></ion-icon></button>
                             </td> -->

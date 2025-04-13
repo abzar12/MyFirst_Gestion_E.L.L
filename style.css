@@ -103,7 +103,7 @@ label{
 .S1:hover{
     text-decoration: none;
     font-weight: bold;
-    color: #D2691E ;
+    color: rgb(210, 105, 30) ;
     cursor: pointer;
     animation: pulsation 1.5s infinite;
     background-color: rgb(0, 120, 4);

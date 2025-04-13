@@ -11,7 +11,7 @@ try {
 $stmt = $conn->prepare("DELETE FROM Inscription_Etudiant WHERE ID=:id");
 $stmt->bindValue(':id', $code);
 $stmt->execute();
-header("Location:dashbord.Php");
+header("Location:dashbord.php");
 } catch (\Throwable $thc) {
     die("error de la supprimetion" . $thc->getMessage());
 }

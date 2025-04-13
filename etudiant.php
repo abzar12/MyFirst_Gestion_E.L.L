@@ -1,12 +1,19 @@
 <?php
+session_start();
 $conn = new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", "root", "");
+$check=$_GET['success'];
+if($check){
+    echo "<script>alert('The information has been successfully updated')</script>";
+
+}
+
 try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $search = isset($_POST['query']) ? $_POST['query'] : "";
     $class_filter = isset($_POST['class_filter']) ? $_POST['class_filter'] : "";
     $stmt = "SELECT * FROM Students WHERE 1=1"; // WHERE 1=1 permet d'ajouter des conditions dynamiques
     $params = [];
-    
+
     if (!empty($search)) {
         $stmt .= " AND (Nom LIKE ? OR Prenom LIKE ?)";
         $params[] = "%$search%";
@@ -24,8 +31,18 @@ try {
     $result_ET = $stmt->fetch(PDO::FETCH_ASSOC);
     $Total_ET = $result_ET['Total'];
 } catch (PDOException $th) {
-    die("erreur de la connection:". $th->getMessage());
+    die("erreur de la connection:" . $th->getMessage());
 }
+if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['deleteStuden'])){
+    $IdStudent= $_POST['IdStudent'];
+    $stmt=$conn->prepare("DELETE FROM Students WHERE ID= :ID");
+    $stmt->bindParam(':ID',$IdStudent);
+    $stmt->execute();
+    header("Location:".$_SERVER['PHP_SELF']);
+}
+$LastName = $_SESSION['LastName'];
+$FirstName = $_SESSION['FirstName'];
+$userRole = $_SESSION['UserRole'];
 /*
 $class_filter = isset($_GET['class_filter']) ? $_GET['class_filter'] : '';
 
@@ -71,8 +88,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
 
                         </form>
                         <div class="ac_A1">
-                            <button type="button"> <ion-icon name="notifications-outline"></ion-icon> </button>
-                            <img src="<?php echo $img; ?>" alt="">
+                            <p><?php echo "$LastName <br> $FirstName"; ?></p>
                         </div>
 
                     </div>
@@ -87,21 +103,26 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
                     <li>
                         <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon> Dashbord</a>
                     </li>
+                    <?php if($userRole==="Director" || $userRole === "Staff") {?>
                     <li>
                         <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> Admin</a>
                     </li>
+                    <?php };?>
                     <li class="active">
                         <a href="etudiant.php"><ion-icon name="book-sharp"></ion-icon> Students</a>
                     </li>
                     <li>
-                        <a href="message.php"><ion-icon name="chatbox"></ion-icon> Message</a>
+                        <a href="NoteEtudiant.php"><ion-icon name="chatbox"></ion-icon> Note</a>
                     </li>
+                    
                     <li>
                         <a href="teacher.php"><ion-icon name="person-circle" class="smallicon"></ion-icon> Teachers</a>
                     </li>
+                    <?php if($userRole==="Director") {?>
                     <li>
                         <a href="user.php"><ion-icon name="person-circle-outline" class="smallicon"></ion-icon> Users</a>
                     </li>
+                    <?php };?>
                     <li>
                         <a href="Accueil.php"><ion-icon name="log-out"></ion-icon>Logout</a>
                     </li>
@@ -118,7 +139,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
                         <select name="class_filter" id="class_filter" value="ALL">
                             <option value="">All</option>
                             <?php
-                            
+
                             // Remplace ceci par la récupération des classes depuis ta base de données
                             $classes = ["Level 1", "Level 2", "Level 2", "Level 3", "Level 4", "Level 5", "Level 6", "INTER 1", "INTER 2", "INTER 3", "PROF 1", "PROF 2", "PROF 3"];
                             foreach ($classes as $class): ?>
@@ -129,9 +150,9 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
                             <?php endforeach; ?>
                         </select>
                     </form>
-                    
 
-                    <button type="button"><ion-icon name="add-circle-outline"></ion-icon>Add students</button>
+
+                    <a href="Formulaire.php"><button type="button"><ion-icon name="add-circle-outline"></ion-icon>Add students</button></a>
                     <button type="button"><ion-icon name="print-outline"></ion-icon>Print</button>
                 </div>
 
@@ -155,67 +176,76 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
                         <th scope="col">Classroom</th>
                         <th scope="col">Courses</th>
                         <th scope="col">Duration</th>
+                        <?php if($userRole==="Director" || $userRole==="Staff" || $userRole==="Teacher") {?>
                         <th scope="col">Action</th>
+                        <?php };?>
                     </tr>
                 </thead>
                 <tbody id="results">
-                <?php if ($result): ?>
-                    <?php foreach ($result as $row): ?>
-                        <tr>
-                            <th><?= htmlspecialchars($row["ID"]); ?> </th>
-                            <td><?= htmlspecialchars($row["Nom"]); ?></td>
-                            <td><?= htmlspecialchars($row["Prenom"]); ?></td>
-                            <td><?= htmlspecialchars($row["DateNaissance"]); ?></td>
-                            <td><?= htmlspecialchars($row["Country"]); ?></td>
-                            <td><?= htmlspecialchars($row["TelephoneWhatsapp"]); ?></td>
-                            <td><?= htmlspecialchars($row["TelephoneGhana"]); ?></td>
-                            <td><?= htmlspecialchars($row["Classe"]); ?></td>
-                            <td><?= htmlspecialchars($row["Formation"]); ?></td>
-                            <td><?= htmlspecialchars($row["Dure"]); ?></td>
-                            <td class="tablebutton">
-                                <button type="button"> <ion-icon name="create-sharp"></ion-icon></button> <button type="button"><ion-icon name="trash-outline"></ion-icon></button>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                    <?php endif ; ?>
+                    <?php if ($result): ?>
+                        <?php foreach ($result as $row): ?>
+                            <tr>
+                                <th><?= htmlspecialchars($row["ID"]); ?> </th>
+                                <td><?= htmlspecialchars($row["Nom"]); ?></td>
+                                <td><?= htmlspecialchars($row["Prenom"]); ?></td>
+                                <td><?= htmlspecialchars($row["DateNaissance"]); ?></td>
+                                <td><?= htmlspecialchars($row["Country"]); ?></td>
+                                <td><?= htmlspecialchars($row["TelephoneWhatsapp"]); ?></td>
+                                <td><?= htmlspecialchars($row["TelephoneGhana"]); ?></td>
+                                <td><?= htmlspecialchars($row["Classe"]); ?></td>
+                                <td><?= htmlspecialchars($row["Formation"]); ?></td>
+                                <td><?= htmlspecialchars($row["Dure"]); ?></td>
+                                <?php if($userRole==="Director" || $userRole==="Staff" || $userRole==="Teacher") :?>
+                                <td class="tablebutton">
+                                    <form action="" method="POST">
+                                        <a href="EditeStudent.php?code=<?= htmlspecialchars($row["ID"]);?>"><button type="button"> <ion-icon name="create-sharp"></ion-icon></button></a>
+                                        <input type="hidden" name="IdStudent" value="<?= htmlspecialchars($row["ID"]); ?>">
+                                        <button type="submit" name="deleteStuden" onclick="return confirm('Do you really want to delete this user?')"><ion-icon name="trash-outline"></ion-icon></button>
+                                    </form>
+
+                                </td>
+                                <?php endif; ?>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>
     </section>
     <!-- ------------------------------ mon javascript ------------------------------ !-->
     <script>
-    $(document).ready(function() {
-        function fetchStudents() {
-            var search = $("#search").val(); // Récupère la valeur de l'input de recherche
-            var class_filter = $("#class_filter").val(); // Récupère la valeur du filtre de classe
+        $(document).ready(function() {
+            function fetchStudents() {
+                var search = $("#search").val(); // Récupère la valeur de l'input de recherche
+                var class_filter = $("#class_filter").val(); // Récupère la valeur du filtre de classe
 
-            $.ajax({
-                url: "", // On reste sur la même page
-                method: "POST",
-                data: {
-                    query: search,
-                    class_filter: class_filter // Ajout du filtre de classe
-                },
-                success: function(data) {
-                    $("#results").html($(data).find("#results").html()); // Mise à jour du tableau
-                }
+                $.ajax({
+                    url: "", // On reste sur la même page
+                    method: "POST",
+                    data: {
+                        query: search,
+                        class_filter: class_filter // Ajout du filtre de classe
+                    },
+                    success: function(data) {
+                        $("#results").html($(data).find("#results").html()); // Mise à jour du tableau
+                    }
+                });
+            }
+
+            // Recherche dynamique sur le champ input
+            $("#search").on("keyup", function() {
+                fetchStudents();
             });
-        }
 
-        // Recherche dynamique sur le champ input
-        $("#search").on("keyup", function() {
+            // Filtrage dynamique par classe
+            $("#class_filter").on("change", function() {
+                fetchStudents();
+            });
+
+            // Chargement initial des étudiants
             fetchStudents();
         });
-
-        // Filtrage dynamique par classe
-        $("#class_filter").on("change", function() {
-            fetchStudents();
-        });
-
-        // Chargement initial des étudiants
-        fetchStudents();
-    });
-</script>
+    </script>
     <!-- datatable -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-JobWAqYk5CSjWuVV3mxgS+MmccJqkrBaDhk8SKS1BW+71dJ9gzascwzW85UwGhxiSyR7Pxhu50k+Nl3+o5I49A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Bootstrap js-->

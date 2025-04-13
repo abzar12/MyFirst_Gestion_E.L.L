@@ -1,4 +1,11 @@
 <?php
+session_start();
+$LastName = $_SESSION['LastName'];
+$FirstName = $_SESSION['FirstName'];
+$userRole = $_SESSION['UserRole'];
+if($userRole != "Director" && $userRole != "Staff"){
+    header("Location: dashbord.php" );
+}
 $conn= new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", "root", "");
 try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -42,8 +49,7 @@ try {
 
                         </form>
                         <div class="ac_A1">
-                            <button type="button"> <ion-icon name="notifications-outline"></ion-icon> </button>
-                            <img src="<?php echo $img; ?>" alt="">
+                            <p><?php echo "$LastName <br> $FirstName"; ?></p>
                         </div>
 
                     </div>
@@ -71,10 +77,7 @@ try {
                         <a href="teacher.php"><ion-icon name="person-circle" class="smallicon"></ion-icon> Teachers</a>
                     </li>
                     <li>
-                        <a href="user.php"><ion-icon name="person-circle-outline" class="smallicon"></ion-icon> Users</a>
-                    </li>
-                    <li>
-                        <a href="Accueil.php"><ion-icon name="log-out"></ion-icon>Logout</a>
+                        <a href="logOut.php"><ion-icon name="log-out"></ion-icon>Logout</a>
                     </li>
 
                 </ul>

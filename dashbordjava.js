@@ -1,6 +1,6 @@
 // function for accepte to remove
 function ac_confirm(){
-    if(confirm("vous le vous supprimer..")){
+    if(confirm("Do you really want to delete this user?")){
         return true;
     }else return false;
 }
