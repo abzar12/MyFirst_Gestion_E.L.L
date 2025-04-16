@@ -29,7 +29,7 @@ body {
 
 .ac_navbar a {
     color: white;
-    font-family: 'merriweather';
+
 }
 
 /* -------------------My form recherche-------- */
@@ -47,7 +47,6 @@ body {
     background-color: rgb(255, 255, 255);
     margin-top: 5px;
     width: 40vh;
-    font-family: 'Roboto';
 }
 
 .ac_navbar .ac_form .search {
@@ -95,7 +94,7 @@ body {
     height: 93vh;
     background-color: rgba(1, 1, 1, 0.723);
     width: 30vh;
-
+    font-family: 'lora';
 }
 
 .ac_row .ac_menu {
@@ -108,13 +107,13 @@ body {
 .ac_row .ac_menu li {
     list-style: none;
     color: white;
-    font-family: 'Merriweather';
     margin-bottom: 35px;
     margin-left: 10px;
     border-radius: 10px;
     height: 50px;
     justify-content: center;
     padding: 12px;
+    
 }
 
 .ac_row .ac_menu li:hover {
@@ -193,7 +192,6 @@ body {
     margin-top: 2px;
     background-color: #fff;
     border-radius: 5px;
-    font-family: 'roboto';
     transition: all 0.5s ease-out;
 }
 
@@ -201,38 +199,6 @@ body {
     background-color: rgb(0, 120, 4);
     color: #fff;
 }
-
-/* dans menu research */
-.ac_etudiant .menu_etud .research {
-    display: flex;
-    align-items: center;
-}
-
-.ac_etudiant .menu_etud .research input {
-    border: 1px solid black;
-    border-radius: 50px;
-    padding: 2px 15px;
-    height: 30px;
-    background-color: rgb(255, 255, 255);
-    width: 35vh;
-    font-family: 'Roboto';
-}
-
-.ac_etudiant .menu_etud .research button {
-    border: none;
-    background-color: transparent;
-    font-size: 25px;
-    z-index: 100;
-    color: rgb(255, 255, 255);
-    margin-top: 2px;
-}
-
-.ac_etudiant .menu_etud .research button:hover {
-    transform: scale(1.2);
-    transition: all 0.5s ease;
-    color: rgb(18, 164, 18);
-}
-
 
 /* --------------my section list of student 3------------------- */
 .section3 {
@@ -245,15 +211,13 @@ body {
     text-align: center;
     padding: 0%;
     border-radius: 10px;
+    font-size: 16px;
     font-family: 'lora';
-    font-size: 15px;
 }
 
 .section3 .ac_span {
     all: unset;
     color: #fff;
-    font-size: 24px;
-    font-family: 'Open-sans';
     border: 1px solid rgb(0, 120, 4);
     background-color: rgb(0, 120, 4);
     border-radius: 50%;
@@ -296,7 +260,7 @@ td {
 
 .section3 h1 {
     display: flex;
-    font-size: 25px;
+    font-size: 20px;
     margin: 5px;
     height: 70px;
     align-items: center;
@@ -315,7 +279,7 @@ td {
     border: none;
     background-color: transparent;
     color: rgb(0, 120, 4);
-    font-size: 19px;
+    font-size: 18px;
 
 }
 

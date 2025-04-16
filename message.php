@@ -43,11 +43,6 @@ try {
                 <div class="row">
                     <div class="ac_navbar">
                         <a class="Logo navbar-brand text-uppercase" href="Accueil.php"><span>E.L.L</span></a>
-                        <form class="ac_form" action="">
-                            <input type="text" placeholder="recherche">
-                            <button type="button" class="search"><ion-icon name="search"></ion-icon></button>
-
-                        </form>
                         <div class="ac_A1">
                             <p><?php echo "$LastName <br> $FirstName"; ?></p>
                         </div>
@@ -84,39 +79,8 @@ try {
             </div>
         </div>
     </section>
-    <section class="section2 py-5">
-        <div class="container">
-            <div class="ac_etudiant row">
-                <div class="menu_etud">
-                    <select name="" id="">
-                        <option value="level1">All Students</option>
-                        <option value="level1">level 1</option>
-                        <option value="level1">level 2</option>
-                        <option value="level1">level 3</option>
-                        <option value="level1">level 4</option>
-                        <option value="level1">level 5</option>
-                        <option value="level1">level 6</option>
-                        <option value="level1">INTER 1</option>
-                        <option value="level1">INTER 2</option>
-                        <option value="level1">INTER 3</option>
-                        <option value="level1">PROF 1</option>
-                        <option value="level1">PROF 2</option>
-                        <option value="level1">PROF 3</option>
-                    </select>
-                    <div class="research">
-                        <input type="text" placeholder="recherche">
-                    <button type="button" class="search"><ion-icon name="search"></ion-icon></button>
-                    </div>
-                    
-                    <button type="button"><ion-icon name="add-circle-outline"></ion-icon>Add students</button>
-                    <button type="button"><ion-icon name="print-outline"></ion-icon>Print</button>
-                </div>
-
-            </div>
-        </div>
-    </section>
     <section class="section3">
-        <h1>You have <?php echo $Total_ET ;?> messages</h1>
+        <h1>You’ve received <?php echo $Total_ET ;?> messages</h1>
         <?php if(count($result)>0) ;?>
         <div class="container ac_message">
             <?php foreach($result as $row) :?>

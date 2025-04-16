@@ -70,7 +70,6 @@ $userRole = $_SESSION['UserRole'];
                         <a class="Logo navbar-brand text-uppercase" href="Accueil.php"><span>E.L.L</span></a>
                         <form class="ac_form" action="">
                             <input type="text" placeholder="recherche">
-                            <button type="button" class="search"><ion-icon name="search"></ion-icon></button>
 
                         </form>
                         <div class="ac_A1">
@@ -140,7 +139,8 @@ $userRole = $_SESSION['UserRole'];
                         <th scope="col">Last_Name</th>
                         <th scope="col">First_Name</th>
                         <th scope="col"> Email</th>
-                        <th scope="col">Role</th>
+                        <th scope="col">Number_Ghana</th>
+                        <th scope="col">Action</th>
                         <?php if ($userRole === 'Staff' || $userRole === 'Director') { ?>
                             <th scope="col">Action</th>
                         <?php }; ?>

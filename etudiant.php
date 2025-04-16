@@ -4,7 +4,6 @@ $conn = new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", "root", "");
 $check=$_GET['success'];
 if($check){
     echo "<script>alert('The information has been successfully updated')</script>";
-
 }
 
 try {
@@ -83,7 +82,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
                     <div class="ac_navbar">
                         <a class="Logo navbar-brand text-uppercase" href="Accueil.php"><span>E.L.L</span></a>
                         <form class="ac_form" action="">
-                            <input type="text" id="search" placeholder="Nom ou Prénom">
+                            <input type="text" id="search" placeholder="Search Name">
                             <!-- <button type="button" class="search"><ion-icon name="search"></ion-icon></button> !-->
 
                         </form>
@@ -152,7 +151,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
                     </form>
 
 
-                    <a href="Formulaire.php"><button type="button"><ion-icon name="add-circle-outline"></ion-icon>Add students</button></a>
+                    <a href="AddStudents.php"><button type="button"><ion-icon name="add-circle-outline"></ion-icon>Add students</button></a>
                     <button type="button"><ion-icon name="print-outline"></ion-icon>Print</button>
                 </div>
 

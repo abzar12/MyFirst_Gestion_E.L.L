@@ -40,11 +40,16 @@ try {
     $stmt=$conn->query("SELECT COUNT(*) AS TotalAdmin FROM Admin");
     $result=$stmt->fetch(PDO::FETCH_ASSOC);
     $Total_Admin=$result['TotalAdmin'];
+    $stmt = $conn->query("SELECT COUNT(*) AS Total_Prof FROM teacher");
+    $result_Prof = $stmt->fetch(PDO::FETCH_ASSOC);
+    $Total_Prof = $result_Prof['Total_Prof'];
+
 
 } catch (PDOException $th) {
     die("ERROR OF SELECT" . $th->getMessage());
 }
 try {
+    // search on the data base
     $search = isset($_POST['query']) ? $_POST['query'] : "";
     if ($_POST['query'] == "") {
         $stmt = $conn->prepare("SELECT * FROM Inscription_Etudiant");
@@ -145,7 +150,7 @@ try {
                 <div class="card">
                     <div class="card-body">
                         <p><ion-icon name="person-circle" class="smallicon"></ion-icon></p>
-                        <p><?php echo 566 . ' '; ?>Teachers</p>
+                        <p><?php echo $Total_Prof . ' '; ?>Teachers</p>
                     </div>
                 </div>
                 <div class="card">

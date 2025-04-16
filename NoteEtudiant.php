@@ -1,12 +1,18 @@
 <?php
 session_start();
 $success = $_GET['success'];
-if($sucesuccessss == true){
+if ($sucesuccessss == true) {
     echo ("<script> alert('SUCCESSFULL...')</script>");
 }
 require_once("connection.php");
-$stmt = $conn->prepare("SELECT * FROM NoteEtudiant");
-$stmt->execute();
+$search = isset($_POST['query']) ? $_POST['query'] : "";
+if ($_POST['query'] == "") {
+    $stmt = $conn->prepare("SELECT * FROM NoteEtudiant");
+    $stmt->execute();
+} else {
+    $stmt = $conn->prepare("SELECT * FROM NoteEtudiant WHERE Nom LIKE ? OR Prenom LIKE ? OR Classroom LIKE ?");
+    $stmt->execute(["%$search%", "%$search%", "%$search%"]);
+}
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $Total_ET = count($result);
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deleteNote'])) {
@@ -14,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deleteNote'])) {
     $stmt = $conn->prepare("DELETE FROM NoteEtudiant WHERE Student_Id=:ID");
     $stmt->bindParam(':ID', $IdAdmin);
     $stmt->execute();
+    header("Location:" . $_SERVER['PHP_SELF']);
 }
 $LastName = $_SESSION['LastName'];
 $FirstName = $_SESSION['FirstName'];
@@ -29,9 +36,11 @@ $userRole = $_SESSION['UserRole'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="asset/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- about search on the table ajax !-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- end of search on the table ajax !-->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="etudiant.css">
     <title>NoteEtudiant</title>
 </head>
@@ -44,12 +53,10 @@ $userRole = $_SESSION['UserRole'];
                     <div class="ac_navbar">
                         <a class="Logo navbar-brand text-uppercase" href="#"><span>E.L.L</span></a>
                         <form class="ac_form" action="">
-                            <input type="text" id="search" placeholder="Nom ou Prénom">
-                            <!-- <button type="button" class="search"><ion-icon name="search"></ion-icon></button> !-->
-
+                            <input type="text" id="search" placeholder="search Name">
                         </form>
                         <div class="ac_A1">
-                        <p><?php echo "$LastName <br> $FirstName"; ?></p>
+                            <p><?php echo "$LastName <br> $FirstName"; ?></p>
                         </div>
 
                     </div>
@@ -64,9 +71,11 @@ $userRole = $_SESSION['UserRole'];
                     <li>
                         <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon> Dashbord</a>
                     </li>
+                    <?php if ($userRole === "Director" || $userRole === "Staff") { ?>
                     <li>
                         <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> Admin</a>
                     </li>
+                    <?php }; ?>
                     <li>
                         <a href="etudiant.php"><ion-icon name="book-sharp"></ion-icon> Students</a>
                     </li>
@@ -76,11 +85,11 @@ $userRole = $_SESSION['UserRole'];
                     <li>
                         <a href="teacher.php"><ion-icon name="person-circle" class="smallicon"></ion-icon> Teachers</a>
                     </li>
-                    <?php if($userRole === "Director"){?>
-                    <li>
-                        <a href="user.php"><ion-icon name="person-circle-outline" class="smallicon"></ion-icon> Users</a>
-                    </li>
-                    <?php };?>
+                    <?php if ($userRole === "Director") { ?>
+                        <li>
+                            <a href="user.php"><ion-icon name="person-circle-outline" class="smallicon"></ion-icon> Users</a>
+                        </li>
+                    <?php }; ?>
                     <li>
                         <a href="Accueil.php"><ion-icon name="log-out"></ion-icon>Logout</a>
                     </li>
@@ -138,9 +147,9 @@ $userRole = $_SESSION['UserRole'];
                         <th scope="col">Reading</th>
                         <th scope="col">Grammar</th>
                     </tr>
-                </thead>
-                <tbody id="results">
-                    <?php if ($result): ?>
+                </thead >
+                <tbody id="mytable_list">
+                    <?php if (!empty($result)): ?>
                         <?php foreach ($result as $row): ?>
                             <tr>
                                 <th><?= htmlspecialchars($row["Student_Id"]); ?> </th>
@@ -154,7 +163,7 @@ $userRole = $_SESSION['UserRole'];
                                 <td><?= htmlspecialchars($row["Orale"]); ?></td>
                                 <td><?= htmlspecialchars($row["Reading"]); ?></td>
                                 <td><?= htmlspecialchars($row["Grammar"]); ?></td>
-                                <td class="tablebutton" >
+                                <td class="tablebutton">
                                     <form method="POST">
                                         <button type="submit" onclick="return confirm('Do you really want to delete this user?')" value="<?= htmlspecialchars($row["Student_Id"]); ?>" name="deleteNote"><ion-icon name="trash-outline"></ion-icon></button>
                                     </form>
@@ -170,39 +179,24 @@ $userRole = $_SESSION['UserRole'];
         </div>
     </section>
     <!-- ------------------------------ mon javascript ------------------------------ !-->
-    <!-- <script>
-        $(document).ready(function() {
-            function fetchStudents() {
-                var search = $("#search").val(); // Récupère la valeur de l'input de recherche
-                var class_filter = $("#class_filter").val(); // Récupère la valeur du filtre de classe
+    <script>
+    $(document).ready(function() {
+        $("#search").on("keyup", function() {
+            var search = $("#search").val();
 
-                $.ajax({
-                    url: "", // On reste sur la même page
-                    method: "POST",
-                    data: {
-                        query: search,
-                        class_filter: class_filter // Ajout du filtre de classe
-                    },
-                    success: function(data) {
-                        $("#results").html($(data).find("#results").html()); // Mise à jour du tableau
-                    }
-                });
-            }
-
-            // Recherche dynamique sur le champ input
-            $("#search").on("keyup", function() {
-                fetchStudents();
+            $.ajax({
+                url: "",
+                method: "POST",
+                data: {
+                    query: search
+                },
+                success: function(data) {
+                    $("#mytable_list").html($(data).find("#mytable_list").html());
+                }
             });
-
-            // Filtrage dynamique par classe
-            $("#class_filter").on("change", function() {
-                fetchStudents();
-            });
-
-            // Chargement initial des étudiants
-            fetchStudents();
         });
-    </script> -->
+    });
+</script>
     <!-- datatable -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-JobWAqYk5CSjWuVV3mxgS+MmccJqkrBaDhk8SKS1BW+71dJ9gzascwzW85UwGhxiSyR7Pxhu50k+Nl3+o5I49A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Bootstrap js-->
@@ -211,11 +205,10 @@ $userRole = $_SESSION['UserRole'];
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="asset/js/bootstrap.bundle.min.js"></script>
 
-    <!-- datatable -->
+    <!-- datatable
     <link href="https://cdn.datatables.net/v/bs5/dt-2.2.2/datatables.min.css" rel="stylesheet" integrity="sha384-M6C9anzq7GcT0g1mv0hVorHndQDVZLVBkRVdRb2SsQT7evLamoeztr1ce+tvn+f2" crossorigin="anonymous">
     <script src="https://cdn.datatables.net/v/bs5/dt-2.2.2/datatables.min.js" integrity="sha384-k90VzuFAoyBG5No1d5yn30abqlaxr9+LfAPp6pjrd7U3T77blpvmsS8GqS70xcnH" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 </body>
 
 </html>

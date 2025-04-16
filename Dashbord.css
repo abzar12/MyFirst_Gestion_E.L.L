@@ -152,36 +152,42 @@ body {
 }
 
 /* --------------my section list of student 3------------------- */
-.section3{
+.section3 {
     display: block;
     position: absolute;
-    top: 260px;
+    top: 230px;
     left: 37vh;
     width: 975px;
-    background-color: #ccc;
+    background-color: rgb(204, 204, 204);
     text-align: center;
     padding: 0%;
     border-radius: 10px;
     font-size: 16px;
     font-family: 'lora';
 }
-.section3 .ac_span{
+
+.section3 .ac_span {
     all: unset;
     color: #fff;
-    font-size: 24px;
     border: 1px solid rgb(0, 120, 4);
     background-color: rgb(0, 120, 4);
     border-radius: 50%;
-    padding:15px 15px; align-items: center; margin: 5px;
+    padding: 15px 15px;
+    align-items: center;
+    margin: 5px;
 }
+
 .ac_table {
     width: 930px;
-    height: 320px;
+    height: 350px;
     margin: 0 auto;
-    overflow-x: auto;/* Scroll horizontal */
-    overflow-y: auto;/* Scroll vertical */
+    overflow-x: auto;
+    /* Scroll horizontal */
+    overflow-y: auto;
+    /* Scroll vertical */
     border: 1px solid #ccc;
 }
+
 .section3 th {
     text-align: center;
     color: rgb(0, 120, 4);
@@ -189,43 +195,45 @@ body {
     position: sticky;
     top: 0;
     background: rgb(244, 244, 244);
-    z-index: 99;
-    padding:10px 30px;
+    z-index: 10;
+    padding: 10px 30px;
 }
 
-.section3 tr {
-     border: 1px solid black;
-    color: rgb(0, 0, 0);
-}
-.section3 td{
+.section3 tr,
+td {
     border: 1px solid black;
+    color: rgb(0, 0, 0);
     text-align: center;
+    align-items: center;
+    height: auto;
+    margin: 5px auto;
 }
-.section3 h1{
+
+.section3 h1 {
     display: flex;
-    font-size: 25px;
+    font-size: 20px;
     margin: 5px;
     height: 70px;
     align-items: center;
-    text-align: center; justify-content: center;
+    text-align: center;
+    justify-content: center;
 }
 
 .section3 .tablebutton {
-    display: flex;
-    justify-content: center;
     border: none;
-    padding: auto 0;
-    align-items: center;
-    text-align: center;
-    gap: 15px;
+    display: flex;
+    padding: 0%;
+    justify-content: space-evenly;
 }
-.section3 .tablebutton button{
+
+.section3 .tablebutton button {
     border: none;
     background-color: transparent;
     color: rgb(0, 120, 4);
     font-size: 18px;
 
 }
-.section3 .tablebutton button:hover{
+
+.section3 .tablebutton button:hover {
     color: black;
 }

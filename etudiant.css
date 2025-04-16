@@ -3,7 +3,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Open sans';
+    font-family: 'Open-sans';
     font-size: 18px;
 }
 
@@ -22,7 +22,6 @@ body {
 
 .ac_navbar a {
     color: white;
-    font-family: 'merriweather';
 }
 
 /* -------------------My form recherche-------- */
@@ -40,7 +39,6 @@ body {
     background-color: rgb(255, 255, 255);
     margin-top: 5px;
     width: 40vh;
-    font-family: 'Roboto';
 }
 
 .ac_navbar .ac_form .search {
@@ -97,7 +95,7 @@ body {
     height: 93vh;
     background-color: rgba(1, 1, 1, 0.723);
     width: 30vh;
-
+    font-family: 'lora';
 }
 
 .ac_row .ac_menu {
@@ -110,13 +108,13 @@ body {
 .ac_row .ac_menu li {
     list-style: none;
     color: white;
-    font-family: 'Merriweather';
     margin-bottom: 35px;
     margin-left: 10px;
     border-radius: 10px;
     height: 50px;
     justify-content: center;
     padding: 12px;
+    
 }
 
 .ac_row .ac_menu li:hover {
@@ -155,10 +153,10 @@ body {
     left: 35vh;
     width: 1000px;
 }
-.section2 .ac_etudiant{
+.section2 .ac_etudiant {
     background-color: rgb(204, 204, 204);
     display: grid;
-    grid-template-columns: auto ;
+    grid-template-columns: auto;
     margin: 0;
     padding: 5px;
     border-radius: 5px;
@@ -177,10 +175,9 @@ body {
     padding: 2px 5px;
     border: transparent;
     background-color:#fff;
+    color: rgb(0, 120, 4);
 }
-.ac_etudiant .menu_etud select option:hover{
-background-color: rgb(0, 120, 4);
-}
+
 /* ---------------button print and added*/
 .ac_etudiant .menu_etud button{
     border:1px solid rgb(18, 164, 18);
@@ -190,45 +187,16 @@ background-color: rgb(0, 120, 4);
     margin-top: 2px;
     background-color: #fff;
     border-radius: 5px;
-    font-family: 'roboto';
     transition: all 0.5s ease-out;
 }
 .ac_etudiant .menu_etud button:hover{
     background-color: rgb(0, 120, 4);
     color: #fff;
 }
-/* dans menu research */
-.ac_etudiant .menu_etud .research{
-    display: flex;
-    align-items: center;
-}
-.ac_etudiant .menu_etud .research input{
-    border: 1px solid black;
-    border-radius: 50px;
-    padding: 2px 15px;
-    height: 30px;
-    background-color: rgb(255, 255, 255);
-    width: 35vh;
-    font-family: 'Roboto';
-}
-.ac_etudiant .menu_etud .research button{
-    border: none;
-    background-color: transparent;
-    font-size: 25px;
-    z-index: 100;
-    color: rgb(255, 255, 255);
-    margin-top: 2px;
-}
-
-.ac_etudiant .menu_etud .research button:hover {
-    transform: scale(1.2);
-    transition: all 0.5s ease;
-    color: rgb(18, 164, 18);
-}
-
 
 /* --------------my section list of student 3------------------- */
-.section3{
+/* --------------my section list of student 3------------------- */
+.section3 {
     display: block;
     position: absolute;
     top: 230px;
@@ -238,27 +206,32 @@ background-color: rgb(0, 120, 4);
     text-align: center;
     padding: 0%;
     border-radius: 10px;
+    font-size: 16px;
     font-family: 'lora';
-    font-size: 15px;
 }
-.section3 .ac_span{
+
+.section3 .ac_span {
     all: unset;
     color: #fff;
-    font-size: 24px;
-    font-family: 'Open-sans';
     border: 1px solid rgb(0, 120, 4);
     background-color: rgb(0, 120, 4);
     border-radius: 50%;
-    padding:15px 15px; align-items: center; margin: 5px;
+    padding: 15px 15px;
+    align-items: center;
+    margin: 5px;
 }
+
 .ac_table {
     width: 930px;
     height: 350px;
     margin: 0 auto;
-    overflow-x: auto;/* Scroll horizontal */
-    overflow-y: auto;/* Scroll vertical */
+    overflow-x: auto;
+    /* Scroll horizontal */
+    overflow-y: auto;
+    /* Scroll vertical */
     border: 1px solid #ccc;
 }
+
 .section3 th {
     text-align: center;
     color: rgb(0, 120, 4);
@@ -267,10 +240,11 @@ background-color: rgb(0, 120, 4);
     top: 0;
     background: rgb(244, 244, 244);
     z-index: 10;
-    padding:10px 30px;
+    padding: 10px 30px;
 }
 
-.section3 tr,td {
+.section3 tr,
+td {
     border: 1px solid black;
     color: rgb(0, 0, 0);
     text-align: center;
@@ -278,13 +252,15 @@ background-color: rgb(0, 120, 4);
     height: auto;
     margin: 5px auto;
 }
-.section3 h1{
+
+.section3 h1 {
     display: flex;
-    font-size: 25px;
+    font-size: 20px;
     margin: 5px;
     height: 70px;
     align-items: center;
-    text-align: center; justify-content: center;
+    text-align: center;
+    justify-content: center;
 }
 
 .section3 .tablebutton {
@@ -293,13 +269,15 @@ background-color: rgb(0, 120, 4);
     padding: 0%;
     margin-left: 25px;
 }
+
 .section3 .tablebutton button {
     border: none;
     background-color: transparent;
     color: rgb(0, 120, 4);
-    font-size: 19px;
+    font-size: 18px;
 
 }
-.section3 .tablebutton button:hover{
+
+.section3 .tablebutton button:hover {
     color: black;
 }

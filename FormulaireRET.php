@@ -112,8 +112,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $stmt->bindParam(':Ville', $Ville);
       $stmt->bindParam(':Pays', $Pays);
       $stmt->bindParam(':Date_Depart', $Date_Depart);
+      $stmt->execute();
       // send message unsing Gmail on a director acount
-
       $mail = new PHPMailer(true);
       try {
         $mail->isSMTP();
@@ -138,11 +138,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       }
 
       try {
-        $stmt->execute();
+
         $stmt = $conn->query("select Id from users WHERE Role =  'Staff'");
         $Result = $stmt->fetch(PDO::FETCH_ASSOC);
         $Director = $Result['Id'];
-
         $message = "un nouveau étudiant $Nom $Prenom avec un Email de : $Email a été inscrit";
         $req = "insert into Message (Id_Admin, ID_ET, Email, Message) values(:ID_Admin , :Nom, :Email, :Message)";
         $stmt = $conn->prepare($req);
