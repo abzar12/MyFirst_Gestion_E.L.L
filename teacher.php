@@ -7,22 +7,28 @@ if (!isset($_SESSION["UserId"])) {
 $conn = new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", "root", "");
 $success = $_GET['success'];
 if ($success) {
-    echo "<script>alert('The information has been successfully updated')</script>";
+    echo "<script>alert('The user has been saved')</script>";
 }
 $code = $_GET['code'];
 if ($code) {
-    echo "<script>alert('The user has been saved')</script>";
+    echo "<script>alert('The information has been successfully updated')</script>";
 }
-
 // if ($code === false) {
 //     echo "<script>alert('All fields are required\"TRY IT AGAIN \” ')</script>";
 // }
- 
+
 try {
+  
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // select all teacher on the data base
-    $stmt = $conn->prepare("SELECT * FROM Teacher");
-    $stmt->execute();
+    $search =  isset($_POST['query']) ? $_POST['query'] : "";
+    if ($_POST['query'] == "") {
+        $stmt = $conn->prepare("SELECT * FROM Teacher");
+        $stmt->execute();
+    } else {
+        $stmt = $conn->prepare("SELECT * FROM Teacher WHERE Nom LIKE ? OR Prenom LIKE ?");
+        $stmt->execute(["%$search%", "%$search%"]);
+    }
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     // Count all teacher on the data base
     $stmt = $conn->query("SELECT COUNT(*) AS Total FROM Teacher");
@@ -55,7 +61,11 @@ $userRole = $_SESSION['UserRole'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="asset/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- about search on the table ajax !-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- end of search on the table ajax !-->
+
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="admin.css">
     <title>administrateur</title>
@@ -69,9 +79,7 @@ $userRole = $_SESSION['UserRole'];
                     <div class="ac_navbar">
                         <a class="Logo navbar-brand text-uppercase" href="Accueil.php"><span>E.L.L</span></a>
                         <form class="ac_form" action="">
-                            <input type="text" placeholder="recherche">
-                            <button type="button" class="search"><ion-icon name="search"></ion-icon></button>
-
+                            <input type="text" placeholder="Search Name" id="search">
                         </form>
                         <div class="ac_A1">
                             <p><?php echo "$LastName <br> $FirstName"; ?></p>
@@ -89,27 +97,27 @@ $userRole = $_SESSION['UserRole'];
                     <li>
                         <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon> Dashboard</a>
                     </li>
-                    <?php if($userRole === "Director" ||$userRole === "Staff" ){?> 
-                    <li >
-                        <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> Admin</a>
-                    </li>
-                    <?php };?>
+                    <?php if ($userRole === "Director" || $userRole === "Staff") { ?>
+                        <li>
+                            <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> Admin</a>
+                        </li>
+                    <?php }; ?>
                     <li>
                         <a href="etudiant.php"><ion-icon name="book-sharp"></ion-icon> Students</a>
                     </li>
-                    <?php if($userRole === "Director" ||$userRole === "Staff" ){?> 
-                    <li>
-                        <a href="message.php"><ion-icon name="chatbox"></ion-icon> Message</a>
-                    </li>
-                    <?php };?>
+                    <?php if ($userRole === "Director" || $userRole === "Staff") { ?>
+                        <li>
+                            <a href="message.php"><ion-icon name="chatbox"></ion-icon> Message</a>
+                        </li>
+                    <?php }; ?>
                     <li class="active">
                         <a href="teacher.php"><ion-icon name="person-circle" class="smallicon"></ion-icon> Teachers</a>
                     </li>
-                    <?php if($userRole === "Director") {?>
-                    <li>
-                        <a href="user.php"><ion-icon name="person-circle-outline" class="smallicon"></ion-icon> Users</a>
-                    </li>
-                    <?php };?>
+                    <?php if ($userRole === "Director") { ?>
+                        <li>
+                            <a href="user.php"><ion-icon name="person-circle-outline" class="smallicon"></ion-icon> Users</a>
+                        </li>
+                    <?php }; ?>
                     <li>
                         <a href="Accueil.php"><ion-icon name="log-out"></ion-icon>Logout</a>
                     </li>
@@ -132,7 +140,7 @@ $userRole = $_SESSION['UserRole'];
         </div>
     </section>
     <section class="section3">
-        <h1><span class="ac_span"><?php echo $Total_T; ?></span> Administrator</h1>
+        <h1><span class="ac_span"><?php echo $Total_T; ?></span> Teachers</h1>
         <div class="container ac_table">
             <?php if (count($result) > 0); ?>
             <table class="table display nowrap" id="Mytable">
@@ -150,31 +158,53 @@ $userRole = $_SESSION['UserRole'];
                         <?php }; ?>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php foreach ($result as $row): ?>
-                        <tr>
-                            <th><?= htmlspecialchars($row["ID"]); ?> </th>
-                            <td><?= htmlspecialchars($row["Prenom"]); ?></td>
-                            <td><?= htmlspecialchars($row["Nom"]); ?></td>
-                            <td><?= htmlspecialchars($row["Email"]); ?></td>
-                            <td><?= htmlspecialchars($row["DateNaissance"]); ?></td>
-                            <td><?= htmlspecialchars($row["Pays"]); ?></td>
-                            <td><?= htmlspecialchars($row["Telephone"]); ?></td>
-                            <?php if ($userRole === 'Staff' || $userRole === 'Director') { ?>
-                                <td class="tablebutton">
-                                    <a href="modifyAdmin.php?code=<?= htmlspecialchars($row['ID']); ?>&tableName=Teacher"><button type="submit"> <ion-icon name="create-sharp"></ion-icon></button></a>
-                                    <form method="POST">
-                                        <button type="submit" onclick="return confirm('Do you really want to delete this user?')" value="<?= htmlspecialchars($row['ID']); ?>" name="deleteAdmin"><ion-icon name="trash-outline"></ion-icon></button>
-                                    </form>
-                                </td>
-                        </tr>
-                    <?php }; ?>
-                <?php endforeach; ?>
+                <tbody id="mytable_list">
+                    <?php if (!empty($result)) : ?>
+                        <?php foreach ($result as $row): ?>
+                            <tr>
+                                <th><?= htmlspecialchars($row["ID"]); ?> </th>
+                                <td><?= htmlspecialchars($row["Prenom"]); ?></td>
+                                <td><?= htmlspecialchars($row["Nom"]); ?></td>
+                                <td><?= htmlspecialchars($row["Email"]); ?></td>
+                                <td><?= htmlspecialchars($row["DateNaissance"]); ?></td>
+                                <td><?= htmlspecialchars($row["Pays"]); ?></td>
+                                <td><?= htmlspecialchars($row["Telephone"]); ?></td>
+                                <?php if ($userRole === 'Staff' || $userRole === 'Director') { ?>
+                                    <td class="tablebutton">
+                                        <a href="modifyAdmin.php?code=<?= htmlspecialchars($row['ID']); ?>&tableName=Teacher"><button type="submit"> <ion-icon name="create-sharp"></ion-icon></button></a>
+                                        <form method="POST">
+                                            <button type="submit" onclick="return confirm('Do you really want to delete this user?')" value="<?= htmlspecialchars($row['ID']); ?>" name="deleteAdmin"><ion-icon name="trash-outline"></ion-icon></button>
+                                        </form>
+                                    </td>
+                                <?php }; ?>
+                            </tr>
+
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>
     </section>
 
+
+    <script>
+    $(document).ready(function() {
+        $("#search").on("keyup", function() {
+            var search = $("#search").val();
+
+            $.ajax({
+                url: "",
+                method: "POST",
+                data: {
+                    query: search
+                },
+                success: function(data) {
+                    $("#mytable_list").html($(data).find("#mytable_list").html());
+                }
+            });
+        });
+    });
+</script>
 
     <!-- datatable -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-JobWAqYk5CSjWuVV3mxgS+MmccJqkrBaDhk8SKS1BW+71dJ9gzascwzW85UwGhxiSyR7Pxhu50k+Nl3+o5I49A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -183,17 +213,13 @@ $userRole = $_SESSION['UserRole'];
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="asset/js/bootstrap.bundle.min.js"></script>
-
+    <!-- about search on the table ajax !-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-JobWAqYk5CSjWuVV3mxgS+MmccJqkrBaDhk8SKS1BW+71dJ9gzascwzW85UwGhxiSyR7Pxhu50k+Nl3+o5I49A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- datatable -->
     <link href="https://cdn.datatables.net/v/bs5/dt-2.2.2/datatables.min.css" rel="stylesheet" integrity="sha384-M6C9anzq7GcT0g1mv0hVorHndQDVZLVBkRVdRb2SsQT7evLamoeztr1ce+tvn+f2" crossorigin="anonymous">
     <script src="https://cdn.datatables.net/v/bs5/dt-2.2.2/datatables.min.js" integrity="sha384-k90VzuFAoyBG5No1d5yn30abqlaxr9+LfAPp6pjrd7U3T77blpvmsS8GqS70xcnH" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="dashbordjava.js"></script>
 </body>
-<script>
-    // function supprim(){
-    //     if(confirm(""));
-    // }
-</script>
+
 
 </html>
