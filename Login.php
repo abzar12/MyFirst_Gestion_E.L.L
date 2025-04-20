@@ -36,9 +36,9 @@ try {
     <script src="https://cdn.tailwindcss.com"></script>
     <title>log-ELL-in</title>
 </head>
-<body class="bg-[rgba(0,0,0,0.87)]">
-    <div class="section flex w-[600px] ml-auto mr-auto mt-[140px] bg-white right-40 rounded-lg border-2 border-black border-solid h-[450px]">
-        <img src="img/logimag.jpg" alt="" class="bg-center bg-cover bg-no-repeat h-full rounded-lg bg-opacity-40">
+<body class="bg-[rgba(0,0,0,0.87)] flex items-center justify-center h-screen">
+    <div class="section flex w-[300px] md:w-[600px] bg-white right-40 rounded-lg border-2 border-black border-solid h-[450px]">
+        <img src="img/logimag.jpg" alt="" class="bg-center hidden md:block bg-cover bg-no-repeat h-full rounded-lg bg-opacity-40">
         <form action="" method="POST" id="formsignIn" class=" w-[300px] m-5">
            <h1 class="ml-auto mr-auto text-center text-[25px] pt-4 text-[rgb(0,120,4)] border-b-[rgb(0,120,4)] border-b-2 w-40">LOG IN</h1>
             <div class="container  ml-auto mr-aut   pt-5  mx-auto ">

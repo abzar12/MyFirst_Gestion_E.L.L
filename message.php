@@ -1,12 +1,22 @@
 <?php
 session_start();
-$LastName = $_SESSION['LastName'];
-$FirstName = $_SESSION['FirstName'];
-$userRole = $_SESSION['UserRole'];
+
+$conn= new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", "root", "");
+
+if(!isset($_SESSION['UserId'])){
+    header("Location:Login.php");
+}
+$timeout = 1800;
+if(isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout){
+    session_unset();
+    session_destroy();
+    header("Location: Login.php");
+}
+
 if($userRole != "Director" && $userRole != "Staff"){
     header("Location: dashbord.php" );
 }
-$conn= new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", "root", "");
+
 try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt= $conn->prepare("SELECT * FROM message ORDER BY create_at DESC");
@@ -21,6 +31,10 @@ try {
 } catch (PDOException $th) {
     die("erreur de la connection:").$th->getMessage();
 }
+$_SESSION['LAST_ACTIVITY'] = time();
+$LastName = $_SESSION['LastName'];
+$FirstName = $_SESSION['FirstName'];
+$userRole = $_SESSION['UserRole'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

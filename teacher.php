@@ -1,10 +1,18 @@
 <?php
 session_start();
+ 
+$conn = new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", "root", "");
 
 if (!isset($_SESSION["UserId"])) {
     header("Location:Login.php");
 }
-$conn = new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", "root", "");
+$timeout = 1800;
+if(isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout){
+    session_unset();
+    session_destroy();
+    header("Location: Login.php");
+}
+
 $success = $_GET['success'];
 if ($success) {
     echo "<script>alert('The user has been saved')</script>";
@@ -52,6 +60,7 @@ try {
 $LastName = $_SESSION['LastName'];
 $FirstName = $_SESSION['FirstName'];
 $userRole = $_SESSION['UserRole'];
+$_SESSION['LAST_ACTIVITY'] = time();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -119,7 +128,7 @@ $userRole = $_SESSION['UserRole'];
                         </li>
                     <?php }; ?>
                     <li>
-                        <a href="Accueil.php"><ion-icon name="log-out"></ion-icon>Logout</a>
+                        <a href="logOut.php"><ion-icon name="log-out"></ion-icon>Logout</a>
                     </li>
 
                 </ul>
