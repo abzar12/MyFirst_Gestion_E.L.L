@@ -21,6 +21,7 @@ if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
     <link href="asset/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="styleInformatique.css">
+    <link rel="stylesheet" href="input.css">
   </head>
   <body>
     <header class="banner">
@@ -120,7 +121,7 @@ if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
                             </optgroup>
                             <optgroup label="DIGITAL MARKETING">
                                 <option value="gr1">groupe1</option>
-                            </optgroup>
+                            </optgroup> 
                         </select><br>
                         <label for="telWhatsapp">Téléphone Whatsapp:</label><br>
                      <input type="tel" name="telWhatsapp" id="telWhatsapp" placeholder="+233 XXXXXXXXX" required><br>
@@ -171,11 +172,11 @@ if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
                         <input type="date" name="mois" id="mois">
                     </div>
                     <div class="colB3">
-                      <p><input type="checkbox" name="contrat" id="contrat" class="a1" style="width:18px; margin:0;">
-                      <span for="contrat"style="color:black; font-size:12px">D'accord pour les termes de condition</span> <br></p>
+                      <p><input type="checkbox" name="contrat" id="contrat" required class="a1" style="width:18px; margin:0;">
+                      <span for="contrat"style="color:black; ">D'accord pour les termes de condition</span> <br></p>
                        
                         <button class="button_Back" type="button" onclick="prevStep()">Back</button>
-                        <button class="button_Back1 b" type="submit" > Envoyé</ion-icon></button>
+                        <button class="button_BackEven b" type="submit" > Envoyé</ion-icon></button>
                     </div>
                 </div>
             </div>
@@ -199,80 +200,80 @@ if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
                          </div>
                      </div>
               </section>
-              <section class="ac_colum1 py-5">
+              <section class="ac_colum1 py-5"style="overflow: hidden;">
               <div class="ac_col col  text-center">
-                    <h1 class="text-uppercase ">
+                    <h1 class="text-uppercase "  data-aos="zoom-in-down">
                       Cours informatique programme
                     </h1>
                   </div>
                 <div class="container">
-                  <div class="ac_row row g-5 py-5">
+                  <div class="ac_row row g-5 py-5" >
                     <div class="ac_list1 col-md-6">
-                      <h3>MAINTENANCE INFORMATIQUE</h3>
+                      <h3  data-aos="zoom-in-down">MAINTENANCE INFORMATIQUE</h3>
                       <ul>
-                          <li>Assembling & Disassembling of Computers</li>
-                          <li>Introduction to Computers</li>
-                          <li>Introduction to Motherboard & Peripheral Components</li>
-                          <li>BIOS Setup and Configuration</li>
-                          <li>Installation of Operating Systems and Software</li>
-                          <li>Diagnostics and Beep Codes</li>
-                          <li>Computer Systems Configuration</li>
-                          <li>Computer Troubleshooting</li>
+                          <li data-aos="fade-right">Assembling & Disassembling of Computers</li>
+                          <li data-aos="fade-right">Introduction to Computers</li>
+                          <li data-aos="fade-right">Introduction to Motherboard & Peripheral Components</li>
+                          <li data-aos="fade-right">BIOS Setup and Configuration</li>
+                          <li data-aos="fade-right">Installation of Operating Systems and Software</li>
+                          <li data-aos="fade-right">Diagnostics and Beep Codes</li>
+                          <li data-aos="fade-right">Computer Systems Configuration</li>
+                          <li data-aos="fade-right">Computer Troubleshooting</li>
                       </ul>
                       
                       <p> <span class="text-uppercase highlight" style="font-size:15px;">durée:</span><br> 6 Mois/ 1700 GHS</p>
                     </div>
                     <div class="ac_list2 col-md-6">
-                      <h3>RESEAUX INFORMATIQUE</h3>
+                      <h3  data-aos="zoom-in-down">RESEAUX INFORMATIQUE</h3>
                       <ul>
-                          <li>Concept de Base Réseau</li>
-                          <li>Protocoles et Normes de Réseau</li>
-                          <li>Composants de Réseau</li>
-                          <li>Principes Fondamentaux de TCP/IP</li>
-                          <li>Sous-Réseau et Routage</li>
-                          <li>Utilitaire TCP/IP </li>
-                          <li>Réseau sans Fil </li>
-                          <li>Connectivité à Distance</li>
-                          <li>Mettre en oeuvre un Réseau</li>
-                          <li>Entretienir et Soutenir un RESEAUX</li>
+                          <li data-aos="fade-left">Concept de Base Réseau</li>
+                          <li data-aos="fade-left">Protocoles et Normes de Réseau</li>
+                          <li data-aos="fade-left">Composants de Réseau</li>
+                          <li data-aos="fade-left">Principes Fondamentaux de TCP/IP</li>
+                          <li data-aos="fade-left">Sous-Réseau et Routage</li>
+                          <li data-aos="fade-left">Utilitaire TCP/IP </li>
+                          <li data-aos="fade-left">Réseau sans Fil </li>
+                          <li data-aos="fade-left">Connectivité à Distance</li>
+                          <li data-aos="fade-left">Mettre en oeuvre un Réseau</li>
+                          <li data-aos="fade-left">Entretienir et Soutenir un RESEAUX</li>
                       </ul>
                       
                       <p> <span class="text-uppercase highlight" style="font-size:15px;">durée:</span><br> 6 Mois/ 1600 GHS</p>
                     </div>
                   </div>
-                  <div class="ac_row row g-5">
+                  <div class="ac_row row g-5" style="overflow: hidden;">
                     <div class="ac_list1 col-md-6">
-                      <h3>ADMINISTRATEUR DE BUREAU DEBUTANT</h3>
+                      <h3  data-aos="zoom-in-down">ADMINISTRATEUR DE BUREAU DEBUTANT</h3>
                       <ul>
-                          <li>Cours de Dactylographie</li>
-                          <li>Introduction à L'Informatique</li>
-                          <li>MS Word</li>
-                          <li>MS Excel MS Access</li>
-                          <li>Ms powerpoint</li>
-                          <li>Révision</li>
-                          <li>Examen</li>
+                          <li data-aos="fade-right">Cours de Dactylographie</li>
+                          <li data-aos="fade-right">Introduction à L'Informatique</li>
+                          <li data-aos="fade-right">MS Word</li>
+                          <li data-aos="fade-right">MS Excel MS Access</li>
+                          <li data-aos="fade-right">Ms powerpoint</li>
+                          <li data-aos="fade-right">Révision</li>
+                          <li data-aos="fade-right">Examen</li>
                       </ul>
                       <p> <span class="text-uppercase highlight" style="font-size:15px;">durée:</span><br> 3 Mois/ 600 GHS</p>
                     </div>
                     <div class="ac_list2 col-md-6">
-                      <h3>ADMINISTRATEUR DE BUREAU AVANCÉ</h3>
+                      <h3  data-aos="zoom-in-down">ADMINISTRATEUR DE BUREAU AVANCÉ</h3>
                       <ul>
-                          <li>Introduction à L'Informatique</li>
-                          <li>MS Word Avancé</li>
-                          <li>MS Excel Avancé </li>
-                          <li> MS Access Avancé</li>
-                          <li>Ms powerpoint Avancé</li>
-                          <li>Travaux Pratiques MS word "Journal"</li>
-                          <li>Travaux de Projet </li>
-                          <li>Révision</li>
-                          <li>Examen</li>
+                          <li data-aos="fade-left">Introduction à L'Informatique</li>
+                          <li data-aos="fade-left">MS Word Avancé</li>
+                          <li data-aos="fade-left">MS Excel Avancé </li>
+                          <li data-aos="fade-left"> MS Access Avancé</li>
+                          <li data-aos="fade-left">Ms powerpoint Avancé</li>
+                          <li data-aos="fade-left">Travaux Pratiques MS word "Journal"</li>
+                          <li data-aos="fade-left">Travaux de Projet </li>
+                          <li data-aos="fade-left">Révision</li>
+                          <li data-aos="fade-left">Examen</li>
                       </ul>
                       
                       <p> <span class="text-uppercase highlight" style="font-size:15px;">durée:</span><br> 4 Mois/ 900 GHS</p>
                     </div>
                   </div>
                   <div class="ac_row row g-5 py-5">
-                    <div class="ac_list1 col-md-6">
+                    <div class="ac_list1 col-md-6" data-aos="fade-right">
                       <h3>CONCEPTION GRAPHIQUE DEBUTANT</h3>
                       <ul>
                           <li>MS Editeur</li>
@@ -283,7 +284,7 @@ if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
                       
                       <p> <span class="text-uppercase highlight" style="font-size:15px;">durée:</span><br> 4 Mois/ 1200 GHS</p>
                     </div>
-                    <div class="ac_list2 col-md-6">
+                    <div class="ac_list2 col-md-6" data-aos="fade-left">
                       <h3>CONCEPTION GRAPHIQUE AVANCÉ</h3>
                       <ul>
                           <li>Photoshop</li>

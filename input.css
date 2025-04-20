@@ -1,0 +1,218 @@
+.part2.active {
+    display: block;
+  }
+  
+  .part2 h3 {
+    display: flex;
+    position: absolute;
+    border-bottom: 1px outset rgba(189, 185, 185, 0.5);
+    font-weight: bolder;
+    padding-bottom: 5px;
+    z-index: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .partA {
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.54);
+    width: 500px;
+    display: flex;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .onlyNom {
+    margin-top: 50px;
+  }
+  
+  input,
+  select {
+    text-decoration: none;
+    margin-right: 35px;
+    margin-top: px;
+    margin-bottom: 15px;
+    height: 30px;
+    width: 200px;
+    border-radius: 4px;
+    margin-left: 15px;
+    padding: 0px 10px;
+  }
+  
+  label {
+    text-decoration: none;
+    font-weight: bolder;
+    margin-left: 15px; 
+  }
+  
+  .colA1 select {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    height: 25px;
+    width: 150px;
+    border-radius: 4px;
+    margin-left: 30px;
+  }
+  
+  .part2 {
+    display: none;
+  
+  }
+  
+  .partB {
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.54);
+    width: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .button_Back {
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    background-color: rgba(0, 120, 5, 0.468);
+  }
+  
+  .button_BackEven {
+    margin-left: 350px;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    background-color: rgba(0, 120, 5, 0.468);
+  }
+  
+  .button_Back1 {
+    margin-left:  160px;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    background-color: rgba(0, 120, 5, 0.468);
+  }
+  
+  .button_BackEven:hover {
+    color: white;
+    background-color: rgb(0, 120, 4);
+    transition: all 0.5s ease;
+  }
+  .button_Back1:hover {
+    color: white;
+    background-color: rgb(0, 120, 4);
+    transition: all 0.5s ease;
+  }
+  .button_Back2 {
+    margin-left: 55px;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    background-color: rgba(0, 120, 5, 0.468);
+  }
+  
+  .button_Back2,
+  .button_Back:hover {
+    color: white;
+    background-color: rgb(0, 120, 4);
+    transition: all 0.5s ease;
+  }
+  
+  .colB3 {
+    grid-column: 1 / -1;
+  }
+  
+  .colB3 p {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-left: 15px;
+  }
+
+
+
+@media(max-width:535px) {
+    .partA {
+        font-size: 13px;
+      width: 400px;
+    }
+    label{
+        font-size: 18px;
+    }
+  
+    .partB {
+      font-size: 12px;
+      width: 400px;
+    }
+  
+    input {
+      margin-right: 0;
+    }
+  
+    label {
+      margin: 10px 0px 0px 10px;
+    }
+    input,
+    select {
+      width: 170px;
+    }
+  
+    .button_BackEven {
+      margin-left: 285px;
+    }
+    .button_Back1{
+      margin-left: 145px;
+    }
+  }
+  @media(max-width:425px) {
+    header {
+      height: auto;
+    }
+    .onlyNom {
+      margin-top: 0;
+    }
+    .button_BackEven {
+      margin-left: 75px;
+    }
+    .partA {
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      width: 220px;
+      gap: 0;
+      margin-bottom: 60px;
+    }
+  
+    .partB {
+      display: flex;
+      flex-direction: column;
+      width: 220px;
+      gap: 0;
+      margin-bottom: 60px;
+    }
+  
+    input {
+      margin-bottom: 0%;
+    }
+  
+    button {
+      margin-top: 15px;
+    }
+    .ac_card_body {
+    
+  
+    }
+    .colB3 p {
+      font-size: 8px;
+    }
+  
+  }

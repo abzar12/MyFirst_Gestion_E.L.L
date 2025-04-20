@@ -1,6 +1,7 @@
 <?php
 if($_GET['success'] == true){
   echo "<script> alert('ENREGISTRER DANS LA BASES')</script>";
+  header("Location:".$_SERVER['PHP_SELF']);
 }
 session_start();
 
@@ -21,6 +22,7 @@ if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
     <link href="asset/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="styleNormal.css">
+    <link rel="stylesheet" href="input.css">
   </head>
   <body>
     <header class="banner">
@@ -172,11 +174,11 @@ if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
                         <input type="date" name="mois" id="mois">
                     </div>
                     <div class="colB3">
-                      <p><input type="checkbox" name="contrat" id="contrat" class="a1" style="width:18px; margin:0;">
-                      <span for="contrat"style="color:black; font-size:12px">D'accord pour les termes de condition</span> <br></p>
+                      <p><input type="checkbox" name="contrat" id="contrat" required class="a1" style="width:18px; margin:0;">
+                      <span for="contrat"style="color:black;">D'accord pour les termes de condition</span> <br></p>
                        
                         <button class="button_Back" type="button" onclick="prevStep()">Back</button>
-                        <button class="button_Back1 b" type="submit" > Envoyé</ion-icon></button>
+                        <button class="button_BackEven b" type="submit" > Envoyé</ion-icon></button>
                     </div>
                 </div>
             </div>
@@ -201,7 +203,7 @@ if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
             </section>
 
             <section class="ac_3colum py-5">
-                  <div class="container-fluid">
+                  <div class="container-fluid" style="overflow: hidden;">
                     <div data-aos="zoom-in-down" class="ac_3 row">
                        <h3 style="text-align: center; color:rgb(0, 120, 4);  font-family:auto; text-decoration:underline; font-weight: bold;">NOS COURS </h3>
                       <div class=" col-md-6">
@@ -351,7 +353,7 @@ if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
             <section class="ac_4_colum">
               <div class="container">
               
-                <div class="ac_row_col4 row">
+                <div class="ac_row_col4 row" style="overflow: hidden;">
                     <h3 data-aos="zoom-in"><span>H</span>oraire</h3>
                       <div data-aos="fade-left" class="col-md-6">
                       <ul>
@@ -377,26 +379,43 @@ if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
                 </div>
             </section>
 <!-- MY FOOTER -->
+<!-- MY FOOTER -->
 <footer class="">
-<nav class=" navbar  bg-dark navbar-dark ">
-  <div class="ac-footer container-fluid">
-    <div class="ac_footer1 col-md-4">
-    <p style="color:white; margin:auto;">Copyright © 2024<span style="margin:3px"> E.L.L </span> Tous droits réservés</p></div>
-    <div class="ac_footer2 col-md-4">
-      <p style="color:white; margin:auto;">  <ion-icon style="color: rgb(23, 176, 23);" name="location-outline"></ion-icon> Situé à: Alajo, Accra-Ghana</p>
-    </div>
-    <div class="ac_footer3 col-md-4 ">
-      <a class="aion" href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-instagram"></ion-icon></a>
-      <a href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-facebook"></ion-icon></a>
-      <a href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-tiktok"></ion-icon></a>
-      <a href=""><ion-icon style="color: rgb(23, 176, 23);" name="mail"></ion-icon></a>
-      
-    </div>
-    <span style="color:white; margin:auto; font-size:16px "> <ion-icon style="color: rgb(23, 176, 23); margin:auto 15px;" name="call-sharp"></ion-icon>Phone: +233 24 473 7721</span>
-    
-</div>
-</nav>
-</footer>
+    <nav class="navbar footera  bg-dark navbar-dark ">
+      <div class="ac-footer container-fluid">
+        <div class="ac_footer1 col-md-4">
+          <p style="color:white; margin:auto; ">Copyright © 2024<span style="margin:3px"> E.L.L </span> Tous droits réservés</p>
+        </div>
+        <div class="ac_footer2 col-md-4">
+          <p style="color:white; margin:auto;"> <ion-icon style="color: rgb(23, 176, 23);" name="location-outline"></ion-icon> Situé à: Alajo, Accra-Ghana</p>
+        </div>
+        <div class="ac_footer3 col-md-4 ">
+          <a class="aion" href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-instagram"></ion-icon></a>
+          <a href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-facebook"></ion-icon></a>
+          <a href=""><ion-icon style="color: rgb(23, 176, 23);" name="logo-tiktok"></ion-icon></a>
+          <a href=""><ion-icon style="color: rgb(23, 176, 23);" name="mail"></ion-icon></a>
+
+        </div>
+        <span> <ion-icon name="call-sharp"></ion-icon>Phone: +233 24 473 7721</span>
+
+      </div>
+    </nav>
+  </footer>
+  <footer>
+    <nav class="navbar2 footerb  bg-dark navbar-dark ">
+      <div class="footer container-fluid">
+        <div class="footer1 col-md-12">
+          <p style=" ">Copyright © 2024<span style="margin:3px"> E.L.L </span> Tous droits réservés</p>
+          <p style=""> <ion-icon name="location-outline"></ion-icon> Situé à: Alajo, Accra-Ghana</p>
+          <span style=" "> <ion-icon style="margin:auto 15px;" name="call-sharp"></ion-icon>Phone: +233 24 473 7721</span>
+          <a class="aion" href=""><ion-icon style="" name="logo-instagram"></ion-icon></a>
+          <a href=""><ion-icon name="logo-facebook"></ion-icon></a>
+          <a href=""><ion-icon name="logo-tiktok"></ion-icon></a>
+          <a href=""><ion-icon name="mail"></ion-icon></a>
+        </div>
+      </div>
+    </nav>
+  </footer>
     <!-- Bootstrap js-->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

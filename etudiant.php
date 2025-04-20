@@ -1,5 +1,15 @@
 <?php
 session_start();
+if(!isset($_SESSION['UserId'])){
+    header("Location:Login.php");
+}
+$timeout = 1800;
+if(isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout){
+    session_unset();
+    session_destroy();
+    header("Location: Login.php");
+}
+
 $conn = new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", "root", "");
 $check=$_GET['success'];
 if($check){
@@ -42,6 +52,7 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['deleteStuden'])){
 $LastName = $_SESSION['LastName'];
 $FirstName = $_SESSION['FirstName'];
 $userRole = $_SESSION['UserRole'];
+$_SESSION['LAST_ACTIVITY'] = time();
 /*
 $class_filter = isset($_GET['class_filter']) ? $_GET['class_filter'] : '';
 
@@ -123,7 +134,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
                     </li>
                     <?php };?>
                     <li>
-                        <a href="Accueil.php"><ion-icon name="log-out"></ion-icon>Logout</a>
+                        <a href="logOut.php"><ion-icon name="log-out"></ion-icon>Logout</a>
                     </li>
 
                 </ul>

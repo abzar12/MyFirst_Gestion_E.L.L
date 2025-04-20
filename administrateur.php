@@ -3,7 +3,7 @@ session_start();
 
 if (!isset($_SESSION["UserId"])) {
     header("Location:Login.php");
-}
+} 
 $conn = new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", "root", "");
 // for the updating 
 $success = $_GET['success'];
@@ -120,7 +120,7 @@ $userRole = $_SESSION['UserRole'];
                         </li>
                     <?php }; ?>
                     <li>
-                        <a href="Accueil.php"><ion-icon name="log-out"></ion-icon>Logout</a>
+                        <a href="logOut.php"><ion-icon name="log-out"></ion-icon>Logout</a>
                     </li>
 
                 </ul>

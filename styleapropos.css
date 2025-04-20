@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+*{
+  font-family: 'open-sans'; 
+}
 body{
-    margin: 0;
-    padding: 0;
-    font-family: 'open-Sans';
-    background-color: #f4f4f4;
-    font-size: 16px; /* Ajuste la taille en fonction de ta préférence */
+   margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  font-size: 1rem;
+  line-height: 1.5;
   }
-  
+   
   /* __________________________START OF HEAD_____________________ */
   header{
       background-color: rgba(238, 251, 234, 0.903);
@@ -163,7 +166,6 @@ body{
     margin: 20px auto;
   }
 .section h2,h3{
-  font-family: 'open-sans';
   font-weight: 600;
 }
 .ac_row .choix_ecole ul li{
@@ -205,7 +207,6 @@ font-size: 18px;
 .ac_row_staff .card .text{
   text-align: start;
   line-height: 20px;
-  font-family: 'open-sans';
   background-color: #e2e2e2;
     padding: 10px;
     margin: 20px 0;
@@ -220,99 +221,66 @@ font-size: 18px;
   
 }
 
-/* header h1 {
-    margin: 0;
-}
-section {
-    padding: 20px;
-    
-    
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-h2 {
-    color: #333;
-}
-p {
-    font-size: 1.1em;
-    margin-bottom: 1em;
-}
-.mission {
-    background-color: #e2e2e2;
-    padding: 15px;
-    margin: 20px 0;
-    border-left: 5px solid #5cb85c;
-}
-.team {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-.team-member {
-    flex-basis: 30%;
-    background-color: #f8f8f8;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-.team-member img {
-    width: 100%;
-    border-radius: 5px;
-}
-.team-member h3 {
-    margin-top: 10px;
-    font-size: 1.2em;
-}
-.contact-btn {
-    display: inline-block;
-    background-color: #5cb85c;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 20px;
-} */
-
-
     /* _________________________DEBUT DE FOOTER________________________ */
 
-    .footera{
-        display: none;
-      }
-      .footerb{
-        display: block;
-      }
-      .footer{
-      height: 54px;
-      display: flex; align-items: center;text-align: center;
-      }
-      .footer1{
-         display:flex;
-         justify-content: space-between;
-      }
-      .footer1 p{
-        color: white;
-        margin: auto 5px;
-      }
-      .footer1 a{
-        margin-right: 20px;
-      
-      }
-      
-      .footer1 ion-icon{
-        color: rgb(23, 176, 23);
-      }
-      .footer1 a ion-icon:hover{
-        font-size: 25px;
-        color: white;
-        transition: 0.1s  ease-in;
-        position: sticky;
-      }
-      .footer1 span{
-        margin: auto 15px auto -15px;
-        color: white;
-      } 
+    /* ______________________FOOTER__________________ */
+.footera{
+  display: none;
+}
+.footerb{
+  display: block;
+}
+.footer{
+height: 54px;
+display: flex; align-items: center;text-align: center;
+}
+.footer1{
+   display:flex;
+   justify-content: space-between;
+}
+.footer1 p{
+  color: white;
+  margin: auto 5px;
+}
+.footer1 a{
+  margin-right: 20px;
+
+}
+
+.footer1 ion-icon{
+  color: rgb(23, 176, 23);
+}
+.footer1 a ion-icon:hover{
+  font-size: 25px;
+  color: white;
+  transition: 0.1s  ease-in;
+  position: sticky;
+}
+.footer1 span{
+  margin: auto 15px auto -15px;
+  color: white;
+} 
+
+/* --------first_footer */
+/* footer */
+
+.ac_footer .ac_footer2{
+  padding: 0%;
+  margin: 0px;
+  
+}   
+.ac_footer3 a{
+  margin-left: 35px;
+}
+.button_menu .navbar-navdrop li a{
+  color: rgb(2, 137, 6);
+}
+.ac-footer span{
+  color:white; margin:auto; font-size:16px 
+}
+.ac-footer span ion-icon{
+  color: rgb(23, 176, 23); margin:auto 15px;
+}
 
 
 
@@ -358,7 +326,21 @@ p {
     }
     .footerb{
       display: none;
+    } 
+  }
+  @media(max-width:430px){
+    .ac_footer{
+      text-align: center;
+      margin: 0%;
     }
-   
-    
+    .ac_footer3 .aion{
+      margin-left:0;
+    }
+    .ac-footer span{
+      margin: 0;
+      
+    }
+    .ac-footer span ion-icon{
+      margin-left: 0px;
+    }
   }

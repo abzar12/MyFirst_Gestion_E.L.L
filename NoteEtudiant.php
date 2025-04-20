@@ -1,10 +1,25 @@
 <?php
 session_start();
+
+require_once("connection.php");
+$UserId = $_SESSION["UserId"];
+if (!isset($UserId)) {
+    header("Location:Login.php");
+    exit();
+}
+$timeout = 1800;
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout) {
+    session_unset();
+    session_destroy();
+    header("Location: Login.php");
+    exit();
+}
+
 $success = $_GET['success'];
 if ($sucesuccessss == true) {
     echo ("<script> alert('SUCCESSFULL...')</script>");
 }
-require_once("connection.php");
+
 $search = isset($_POST['query']) ? $_POST['query'] : "";
 if ($_POST['query'] == "") {
     $stmt = $conn->prepare("SELECT * FROM NoteEtudiant");
@@ -25,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deleteNote'])) {
 $LastName = $_SESSION['LastName'];
 $FirstName = $_SESSION['FirstName'];
 $userRole = $_SESSION['UserRole'];
+$_SESSION['LAST_ACTIVITY'] = time();
 ?>
 
 
@@ -72,9 +88,9 @@ $userRole = $_SESSION['UserRole'];
                         <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon> Dashbord</a>
                     </li>
                     <?php if ($userRole === "Director" || $userRole === "Staff") { ?>
-                    <li>
-                        <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> Admin</a>
-                    </li>
+                        <li>
+                            <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> Admin</a>
+                        </li>
                     <?php }; ?>
                     <li>
                         <a href="etudiant.php"><ion-icon name="book-sharp"></ion-icon> Students</a>
@@ -91,7 +107,7 @@ $userRole = $_SESSION['UserRole'];
                         </li>
                     <?php }; ?>
                     <li>
-                        <a href="Accueil.php"><ion-icon name="log-out"></ion-icon>Logout</a>
+                        <a href="logOut.php"><ion-icon name="log-out"></ion-icon>Logout</a>
                     </li>
 
                 </ul>
@@ -147,7 +163,7 @@ $userRole = $_SESSION['UserRole'];
                         <th scope="col">Reading</th>
                         <th scope="col">Grammar</th>
                     </tr>
-                </thead >
+                </thead>
                 <tbody id="mytable_list">
                     <?php if (!empty($result)): ?>
                         <?php foreach ($result as $row): ?>
@@ -180,23 +196,23 @@ $userRole = $_SESSION['UserRole'];
     </section>
     <!-- ------------------------------ mon javascript ------------------------------ !-->
     <script>
-    $(document).ready(function() {
-        $("#search").on("keyup", function() {
-            var search = $("#search").val();
+        $(document).ready(function() {
+            $("#search").on("keyup", function() {
+                var search = $("#search").val();
 
-            $.ajax({
-                url: "",
-                method: "POST",
-                data: {
-                    query: search
-                },
-                success: function(data) {
-                    $("#mytable_list").html($(data).find("#mytable_list").html());
-                }
+                $.ajax({
+                    url: "",
+                    method: "POST",
+                    data: {
+                        query: search
+                    },
+                    success: function(data) {
+                        $("#mytable_list").html($(data).find("#mytable_list").html());
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
     <!-- datatable -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-JobWAqYk5CSjWuVV3mxgS+MmccJqkrBaDhk8SKS1BW+71dJ9gzascwzW85UwGhxiSyR7Pxhu50k+Nl3+o5I49A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Bootstrap js-->

@@ -3,10 +3,18 @@ session_start();
 
 require_once("connection.php");
 
+$UserId=$_SESSION["UserId"];
 if(!isset($_SESSION["UserId"])){
     header("Location:Login.php");
 }
-$UserId=$_SESSION["UserId"];
+$timeout = 1800;
+if(isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout){
+    session_unset();
+    session_destroy();
+    header("Location: Login.php");
+}
+
+
 $stmt=$conn->prepare("SELECT * FROM users Where Id=:Id");
 $stmt->bindParam(':Id', $UserId);
 $stmt->execute();
@@ -63,6 +71,7 @@ try {
 } catch (\Throwable $th) {
     die("ERREUR DE RECHERCHE" . $th->getMessage());
 }
+$_SESSION['LAST_ACTIVITY'] = time();
 ?>
 
 <!DOCTYPE html>
