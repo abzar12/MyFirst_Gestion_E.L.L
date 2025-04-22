@@ -4,7 +4,7 @@ session_start();
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require "vendor/autoload.php";
+require "vendor/autoload.php"; 
 
 $conn = new PDO("mysql::host=localhost; dbname=Gestion_Eudiant", 'root', '');
 try {
@@ -65,9 +65,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (empty($Date_Depart)) {
     $error[] = "le champ QUANT PENSEZ_VOUS VENIR est incorrect";
   }
-  if (!isset($_POST['contrat'])) {
-    $error[] = 'Vous devez accepter les termes et conditions.';
-  }
+  // if (!isset($_POST['contrat'])) {
+  //   $error[] = 'Vous devez accepter les termes et conditions.';
+  // }
 
   session_start();
 
