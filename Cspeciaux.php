@@ -183,7 +183,7 @@ if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
               </p>
 
               <button class="button_Back" type="button" onclick="prevStep()">Back</button>
-              <button class="button_BackEven b" type="submit"> Envoyé</ion-icon></button>
+              <button class="button_BackEven b" type="submit"> Envoyé</button>
             </div>
           </div>
         </div>

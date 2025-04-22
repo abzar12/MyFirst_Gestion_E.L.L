@@ -85,7 +85,7 @@ header{
     margin: 0px;
 }
 .ac_card h5{
-    text-align: center;
+    text-align: center; 
     justify-content: center;
     font-size: 2em;
     color: rgba(0, 120, 4, 0.952);
