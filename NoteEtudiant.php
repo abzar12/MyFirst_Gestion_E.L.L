@@ -60,7 +60,40 @@ $_SESSION['LAST_ACTIVITY'] = time();
     <link rel="stylesheet" href="etudiant.css">
     <title>NoteEtudiant</title>
 </head>
+<style>
+@media print {
 
+  #table-container, #table-container * {
+    visibility: visible;
+  }
+.tablebutton{
+    visibility: hidden;
+}
+  #table-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    page-break-inside: auto;
+  }
+
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  th, td {
+    border: 1px solid #000;
+    padding: 6px;
+    font-size: 12px;
+  }
+}
+</style>
 <body>
     <header>
         <div class="nav">
@@ -138,7 +171,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
                     </form>
 
 
-                    <button type="button"><ion-icon name="print-outline"></ion-icon>Print</button>
+                    <button type="button" onclick="printtable()"><ion-icon name="print-outline"></ion-icon>Print</button>
                 </div>
 
             </div>
@@ -146,7 +179,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
     </section>
     <section class="section3">
         <h1><span class="ac_span"><?php echo $Total_ET; ?></span> Students</h1>
-        <div class="container ac_table">
+        <div class="container ac_table" id="table-container">
             <?php (count($result) > 0); ?>
             <table class="table display nowrap" id="myTable">
                 <thead>
@@ -162,6 +195,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
                         <th scope="col">Orale</th>
                         <th scope="col">Reading</th>
                         <th scope="col">Grammar</th>
+                        <th scope="col">Note</th>
                     </tr>
                 </thead>
                 <tbody id="mytable_list">
@@ -179,6 +213,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
                                 <td><?= htmlspecialchars($row["Orale"]); ?></td>
                                 <td><?= htmlspecialchars($row["Reading"]); ?></td>
                                 <td><?= htmlspecialchars($row["Grammar"]); ?></td>
+                                <td><?= htmlspecialchars($row["Moyenne"]); ?></td>
                                 <td class="tablebutton">
                                     <form method="POST">
                                         <button type="submit" onclick="return confirm('Do you really want to delete this user?')" value="<?= htmlspecialchars($row["Student_Id"]); ?>" name="deleteNote"><ion-icon name="trash-outline"></ion-icon></button>
@@ -226,5 +261,14 @@ $_SESSION['LAST_ACTIVITY'] = time();
     <script src="https://cdn.datatables.net/v/bs5/dt-2.2.2/datatables.min.js" integrity="sha384-k90VzuFAoyBG5No1d5yn30abqlaxr9+LfAPp6pjrd7U3T77blpvmsS8GqS70xcnH" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 </body>
+<script>
+function printtable() {
+    const printContents = document.getElementById('table-container').innerHTML;
+    const originalContents = document.body.innerHTML;
 
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+}
+</script>
 </html>

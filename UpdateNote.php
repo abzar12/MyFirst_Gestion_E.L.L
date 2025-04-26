@@ -21,6 +21,7 @@ foreach ($students as $studentId => $row) {
         ':Reading' => $row['Reading'],
         ':Grammar' => $row['Grammar'],
     ]);
+    
 }
 } catch (\Throwable $th) {
    die("erreur d'enregistrement".$th->getMessage());
