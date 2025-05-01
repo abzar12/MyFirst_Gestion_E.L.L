@@ -37,6 +37,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deleteNote'])) {
     $stmt->execute();
     header("Location:" . $_SERVER['PHP_SELF']);
 }
+// binding the three table students NoteEtudiant and classroom with the table Event_ST_Note_CL;
+try {
+
+    $stmt = $conn->query("   SELECT Students.Nom , Students.Prenom, Classroom.Class_Name, 
+                                  NoteEtudiant.Dictation, NoteEtudiant.Vocabulary, NoteEtudiant.Expression, 
+                                  NoteEtudiant.Pronunciation, NoteEtudiant.Orale, NoteEtudiant.Reading, NoteEtudiant.Grammar
+                           
+                            FROM Students 
+                             JOIN NoteEtudiant On Students.ID = NoteEtudiant.ID_ST
+                            JOIN Event_ST_Note_CL on NoteEtudiant.ID_Note = Event_ST_Note_CL.ID_Note
+                            JOIN Classroom on Event_ST_Note_CL.ID_Class = Classroom.Class_ID
+                        ");
+    $stmt->execute();
+    $FullNote = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $th) {
+    die("ERROR OF DATA BASA" . $th->getMessage());
+}
+
+
 $LastName = $_SESSION['LastName'];
 $FirstName = $_SESSION['FirstName'];
 $userRole = $_SESSION['UserRole'];
@@ -61,39 +80,44 @@ $_SESSION['LAST_ACTIVITY'] = time();
     <title>NoteEtudiant</title>
 </head>
 <style>
-@media print {
+    @media print {
 
-  #table-container, #table-container * {
-    visibility: visible;
-  }
-.tablebutton{
-    visibility: hidden;
-}
-  #table-container {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
+        #table-container,
+        #table-container * {
+            visibility: visible;
+        }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    page-break-inside: auto;
-  }
+        .tablebutton {
+            visibility: hidden;
+        }
 
-  tr {
-    page-break-inside: avoid;
-    page-break-after: auto;
-  }
+        #table-container {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
 
-  th, td {
-    border: 1px solid #000;
-    padding: 6px;
-    font-size: 12px;
-  }
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            page-break-inside: auto;
+        }
+
+        tr {
+            page-break-inside: avoid;
+            page-break-after: auto;
+        }
+
+        th,
+        td {
+            border: 1px solid #000;
+            padding: 6px;
+            font-size: 12px;
+        }
+    }
 </style>
+
 <body>
     <header>
         <div class="nav">
@@ -180,7 +204,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
     <section class="section3">
         <h1><span class="ac_span"><?php echo $Total_ET; ?></span> Students</h1>
         <div class="container ac_table" id="table-container">
-            <?php (count($result) > 0); ?>
+            <?php (count($FullNote) > 0); ?>
             <table class="table display nowrap" id="myTable">
                 <thead>
                     <tr>
@@ -199,13 +223,13 @@ $_SESSION['LAST_ACTIVITY'] = time();
                     </tr>
                 </thead>
                 <tbody id="mytable_list">
-                    <?php if (!empty($result)): ?>
-                        <?php foreach ($result as $row): ?>
+                    <?php if (!empty($FullNote)): ?>
+                        <?php foreach ($FullNote as $row): ?>
                             <tr>
                                 <th><?= htmlspecialchars($row["Student_Id"]); ?> </th>
                                 <td><?= htmlspecialchars($row["Nom"]); ?></td>
                                 <td><?= htmlspecialchars($row["Prenom"]); ?></td>
-                                <td><?= htmlspecialchars($row["Classroom"]); ?></td>
+                                <td><?= htmlspecialchars($row["Class_Name"]); ?></td>
                                 <td><?= htmlspecialchars($row["Dictation"]); ?></td>
                                 <td><?= htmlspecialchars($row["Vocabulary"]); ?></td>
                                 <td><?= htmlspecialchars($row["Expression"]); ?></td>
@@ -262,13 +286,14 @@ $_SESSION['LAST_ACTIVITY'] = time();
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 </body>
 <script>
-function printtable() {
-    const printContents = document.getElementById('table-container').innerHTML;
-    const originalContents = document.body.innerHTML;
+    function printtable() {
+        const printContents = document.getElementById('table-container').innerHTML;
+        const originalContents = document.body.innerHTML;
 
-    document.body.innerHTML = printContents;
-    window.print();
-    document.body.innerHTML = originalContents;
-}
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    }
 </script>
+
 </html>
