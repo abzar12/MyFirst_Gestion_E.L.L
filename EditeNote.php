@@ -5,12 +5,23 @@ use PSpell\Dictionary;
 $Level = $_GET["level"];
 if ($Level === "") {
     header("Location:NoteEtudiant.php");
+    exit();
 } else {
-    require_once("connection.php");
-    $stm = $conn->prepare("SELECT * FROM NoteEtudiant Where Classroom= :level ");
+    try{
+         require_once("connection.php");
+    $stm = $conn->prepare("SELECT NoteEtudiant.ID_ST, Students.Nom, Students.Prenom, Students.Classe,
+                                  NoteEtudiant.Dictation, NoteEtudiant.Vocabulary, NoteEtudiant.Expression, NoteEtudiant.Pronunciation,
+                                  NoteEtudiant.Orale, NoteEtudiant.Reading, NoteEtudiant.Grammar, NoteEtudiant.Moyenne
+                                  From Students
+                                  JOIN NoteEtudiant on Students.ID = NoteEtudiant.ID_ST
+                            Where NoteEtudiant.Classroom = :level ");
     $stm->bindParam(':level', $Level);
     $stm->execute();
     $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+    }catch(PDOException $th){
+        die("DATA BASE CAN'T DISPLAY".$th->getMessage());
+    }
+   
 }
 
 ?>
@@ -58,17 +69,17 @@ if ($Level === "") {
                                 <tbody>
 
                                     <tr>
-                                        <td><input class=" border" type="text" disabled style="text-align:center; width:100px" value="<?= htmlspecialchars($row['Student_Id']); ?>"></input></td>
-                                        <td><input class="border border-b" type="text" name="students[<?= $row['Student_Id'] ?>][Nom]" style="text-align:center; width:119px" value="<?= htmlspecialchars($row['Nom']); ?>"></input></td>
-                                        <td><input class="border border-b" type="text" name="students[<?= $row['Student_Id'] ?>][Prenom]" style="text-align:center; width:115px" value="<?= htmlspecialchars($row['Prenom']); ?>"></input></td>
-                                        <td><input class="border border-b" type="text" name="students[<?= $row['Student_Id'] ?>][Classroom]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Classroom']); ?>"></input></td>
-                                        <td><input class="border border-b" type="text" name="students[<?= $row['Student_Id'] ?>][Dictation]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Dictation']); ?>"></input></td>
-                                        <td><input class="border border-b" type="text" name="students[<?= $row['Student_Id'] ?>][Vocabulary]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Vocabulary']); ?>"></input></td>
-                                        <td><input class="border border-b" type="text" name="students[<?= $row['Student_Id'] ?>][Expression]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Expression']); ?>"></input></td>
-                                        <td><input class="border border-b" type="text" name="students[<?= $row['Student_Id'] ?>][Pronunciation]" style="text-align:center; width:100px" value="<?= htmlspecialchars($row['Pronunciation']); ?>"></input></td>
-                                        <td><input class="border border-b" type="text" name="students[<?= $row['Student_Id'] ?>][Orale]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Orale']); ?>"></input></td>
-                                        <td><input class="border border-b" type="text" name="students[<?= $row['Student_Id'] ?>][Reading]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Reading']); ?>"></input></td>
-                                        <td><input class="border border-b" type="text" name="students[<?= $row['Student_Id'] ?>][Grammar]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Grammar']); ?>"></input></td>
+                                        <td><input class=" border" type="text" disabled style="text-align:center; width:100px" value="<?= htmlspecialchars($row['ID_ST']); ?>"></input></td>
+                                        <td><input class="border border-b" type="text" disabled  name="students[<?= $row['ID_ST'] ?>][Nom]" style="text-align:center; width:119px" value=" <?= htmlspecialchars($row['Nom']); ?> "></input></td>
+                                        <td><input class="border border-b" type="text" disabled  name="students[<?= $row['ID_ST'] ?>][Prenom]" style="text-align:center; width:115px" value="<?= htmlspecialchars($row['Prenom']); ?>"></input></td>
+                                        <td><input  class="border border-b" type="text" disabled  name="students[<?= $row['ID_ST'] ?>][Classe]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Classe']); ?>"></input></td>
+                                        <td><input class="border border-b" type="text" name="students[<?= $row['ID_ST'] ?>][Dictation]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Dictation']); ?>"></input></td>
+                                        <td><input class="border border-b" type="text" name="students[<?= $row['ID_ST'] ?>][Vocabulary]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Vocabulary']); ?>"></input></td>
+                                        <td><input class="border border-b" type="text" name="students[<?= $row['ID_ST'] ?>][Expression]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Expression']); ?>"></input></td>
+                                        <td><input class="border border-b" type="text" name="students[<?= $row['ID_ST'] ?>][Pronunciation]" style="text-align:center; width:100px" value="<?= htmlspecialchars($row['Pronunciation']); ?>"></input></td>
+                                        <td><input class="border border-b" type="text" name="students[<?= $row['ID_ST'] ?>][Orale]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Orale']); ?>"></input></td>
+                                        <td><input class="border border-b" type="text" name="students[<?= $row['ID_ST'] ?>][Reading]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Reading']); ?>"></input></td>
+                                        <td><input class="border border-b" type="text" name="students[<?= $row['ID_ST'] ?>][Grammar]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Grammar']); ?>"></input></td>
                                     <tr>
                                     <tr>
                                         <th>SOMME = </th>
@@ -85,24 +96,24 @@ if ($Level === "") {
                                             ];
                                             $sommeNote = array_sum($note);
                                             $note =$sommeNote / 7;
-                                            $MoyenneNote = round($note, 4);
-                                            echo $sommeNote;
-                                            $idEtudiant = $row['Student_Id'];
-                                            try {
-                                                $stmt = $conn->prepare("UPDATE NoteEtudiant SET Moyenne = :moyenne WHERE Student_Id = :id");
-                                                $stmt->execute([
-                                                    'moyenne' => $MoyenneNote,
-                                                    'id' => $idEtudiant
-                                                ]);
-                                            } catch (PDOException $e) {
-                                                echo "Erreur lors de la mise à jour : " . $e->getMessage();
-                                            }
+                                             $MoyenneNote = round($note, 4);
+                                             echo $sommeNote;
+                                            // $idEtudiant = $row['ID_ST'];
+                                            // try {
+                                            //     $stmt = $conn->prepare("UPDATE NoteEtudiant SET Moyenne = :moyenne WHERE ID_ST = :id");
+                                            //     $stmt->execute([
+                                            //         'moyenne' => $MoyenneNote,
+                                            //         'id' => $idEtudiant
+                                            //     ]);
+                                            // } catch (PDOException $e) {
+                                            //     echo "Erreur lors de la mise à jour : " . $e->getMessage();
+                                            // }
                                             ?>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th class="w-['90px']">MOYENNE = </th>
-                                        <td class="w-['90px']"> <?php echo $MoyenneNote; ?></td>
+                                        <th class="w-[90px]">MOYENNE = </th>
+                                        <td class="w-[50px]"><?= htmlspecialchars($MoyenneNote); ?></td>
                                     </tr>
 
                                 </tbody>

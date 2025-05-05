@@ -16,39 +16,68 @@ try {
     $Duration = trim($_POST['Duration']);
 
     $error = [];
-    if (empty($Prenom) || empty($Nom) || empty($Email) || empty($Formation) || empty($Classroom) || empty($Country) || empty($WhatsApp_Number) || empty($Duration)) {
+    if (empty($Prenom) || empty($Nom) || empty($Email) || empty($Formation) || empty($Classroom) || empty($Country) || empty($WhatsApp_Number)) {
       $error[] = "All field is required except Ghana Number";
     } else {
       $Email = filter_var($Email, FILTER_SANITIZE_EMAIL);
+// insertion de l'etudiant dans la table students 
+      $stmt1 = $conn->prepare("insert into Students (Nom, Prenom, DateNaissance, Email, Country, TelephoneWhatsapp, TelephoneGhana, Classe, Formation, Dure) values (:Nom, :Prenom, :Birthday, :Email, :Country,:TelephoneWhatsapp , :TelephoneGhana, :Classroom, :Formation, :Dure)");
+      $stmt1->bindParam(':Nom', $Nom);
+      $stmt1->bindParam(':Prenom', $Prenom);
+      $stmt1->bindParam(':Birthday', $Birthday);
+      $stmt1->bindParam(':Email', $Email);
+      $stmt1->bindParam(':Country', $Country);
+      $stmt1->bindParam(':TelephoneWhatsapp', $WhatsApp_Number);
+      $stmt1->bindParam(':TelephoneGhana', $Ghana_Number);
+      $stmt1->bindParam(':Classroom', $Classroom);
+      $stmt1->bindParam(':Formation', $Formation);
+      $stmt1->bindParam(':Dure', $Duration);
+      $stmt1->execute();
 
-      $stmt = $conn->prepare("insert into Students (Nom, Prenom, DateNaissance, Email, Country, TelephoneWhatsapp, TelephoneGhana, Classe, Formation, Dure) values (:Nom, :Prenom, :Birthday, :Email, :Country,:TelephoneWhatsapp , :TelephoneGhana, :Classroom, :Formation, :Dure)");
-      $stmt->bindParam(':Nom', $Nom);
-      $stmt->bindParam(':Prenom', $Prenom);
-      $stmt->bindParam(':Birthday', $Birthday);
-      $stmt->bindParam(':Email', $Email);
-      $stmt->bindParam(':Country', $Country);
-      $stmt->bindParam(':TelephoneWhatsapp', $WhatsApp_Number);
-      $stmt->bindParam(':TelephoneGhana', $Ghana_Number);
-      $stmt->bindParam(':Classroom', $Classroom);
-      $stmt->bindParam(':Formation', $Formation);
-      $stmt->bindParam(':Dure', $Duration);
-      $stmt->execute();
-
-      $stmt = $conn->prepare("SELECT ID FROM Students WHERE Nom =:Nom AND Prenom =:Prenom AND TelephoneWhatsapp =:TelephoneWhatsapp ");
+      // selection l'etudiant enregistrer pour sauvegarder son classe dans la table NoteEtudiant
+      $stmt = $conn->prepare("SELECT ID, Classe FROM Students WHERE Nom =:Nom AND Prenom =:Prenom AND TelephoneWhatsapp =:TelephoneWhatsapp ");
       $stmt->execute([
         ':Nom' => $Nom,
         ':Prenom' => $Prenom,
         ':TelephoneWhatsapp' => $WhatsApp_Number
       ]);
+      // ID_ST c'est id de l'etudiant enregistrer 
       $Student_Id = $stmt->fetch();
-      foreach ($Student_Id as $Student_key);
-      $stmt = $conn->prepare("insert into NoteEtudiant (Student_Id, Nom , Prenom, Classroom ) values (:ID, :Nom , :Prenom, :Classroom)");
-      $stmt->bindParam(':ID', $Student_key);
-      $stmt->bindParam(':Nom', $Nom);
-      $stmt->bindParam(':Prenom', $Prenom);
-      $stmt->bindParam(':Classroom', $Classroom);
+      if($Student_Id){
+        $stmt = $conn->prepare("insert into NoteEtudiant (ID_ST, Classroom ) values (:ID_ST, :Classroom)");
+      $stmt->bindParam(':ID_ST', $Student_Id['ID']); 
+      $stmt->bindParam(':Classroom', $Student_Id['Classe']);
       $stmt->execute();
+      }
+      // apres inserer des etudiant dans la table Students et initialiser la note avec (ID_ST) qui est Id de l'etudiant et sa classe dans la table NoteEtudiant;
+      //donc on relier dans la table Even_ST_Note_Cl les deux champs ;
+      // # 1 on doit recuperer ID de note dans la table NoteEtudiant;
+      $stmt2 = $conn->prepare("SELECT ID_Note FROM NoteEtudiant WHERE ID_ST = :ID_ST");
+      $stmt2->bindParam(':ID_ST', $Student_Id['ID']);
+      $stmt2->execute();
+      $ID_Note = $stmt2->fetch(); 
+      if($ID_Note){
+        // # 2 on doit recuperer ID de Classe dans la table Classroom where Class_Name= $Student_Id['Classe'];
+      // Class_S
+      $stmt = $conn->prepare("SELECT Class_ID FROM Classroom WHERE Class_Name = :Class_ST");// Class_ST=c'est la classe de etudiant;
+      $stmt->bindParam(':Class_ST', $Student_Id['Classe']);
+      $stmt->execute();
+      $Class_ID = $stmt->fetch(); 
+      $stmt = $conn->prepare("INSERT INTO Event_ST_Note_CL (ID_ST, ID_Note, ID_Class) 
+                              VALUES(:ID_ST, :ID_Note, :ID_Class);
+      ");
+      $stmt->bindParam(':ID_ST', $Student_Id['ID']);
+      $stmt->bindParam(':ID_Note', $ID_Note['ID_Note']);
+      $stmt->bindParam(':ID_Class', $Class_ID['Class_ID']);
+      $stmt->execute();
+        //foreach for students
+      foreach ($Student_Id as $Student_key);
       echo "<script>alert('The Student has been saved successfully')</script>";
+      }
+      
+      
+
+    
     }
   }
 } catch (PDOException $th) {

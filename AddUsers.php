@@ -36,6 +36,7 @@ if (isset($_POST['signUp'])) {
         if(empty($Nom) || empty($Prenom) || empty($password) || empty($Email) || empty($Number)){
             $error[]= "All fields are required";
             header("Location:".$_Server['PHP_SELF']);
+            exit();
         }else{
             // Check if email exists using prepared statement
             $check = $conn->prepare("SELECT ID FROM users WHERE Email = ?");
@@ -57,6 +58,7 @@ if (isset($_POST['signUp'])) {
         if($stmt){
             echo ("<script>alert('Enregistrer')</script>");
         }else echo "error";
+        header("Location: user.php");
     }
     } catch (Throwable $th) {
         die("eroror".$th->getMessage());

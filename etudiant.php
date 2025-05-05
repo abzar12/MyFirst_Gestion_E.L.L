@@ -3,6 +3,7 @@ session_start();
 if(!isset($_SESSION['UserId'])){
     header("Location:Login.php");
 }
+
 $timeout = 1800;
 if(isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout){
     session_unset();
@@ -15,12 +16,15 @@ $check=$_GET['success'];
 if($check){
     echo "<script>alert('The information has been successfully updated')</script>";
 }
+if($check>1){
+    header("Location: etudiant.php");
+}
 
 try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $search = isset($_POST['query']) ? $_POST['query'] : "";
     $class_filter = isset($_POST['class_filter']) ? $_POST['class_filter'] : "";
-    $stmt = "SELECT * FROM Students WHERE 1=1"; // WHERE 1=1 permet d'ajouter des conditions dynamiques
+    $stmt = "SELECT * FROM Students WHERE 1=1 ORDER BY Classe ASC"; // WHERE 1=1 permet d'ajouter des conditions dynamiques
     $params = [];
 
     if (!empty($search)) {
@@ -69,6 +73,7 @@ if (!empty($class_filter)) {
 
 $stmt->execute(); 
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -179,11 +184,11 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
                         <th scope="col">Code</th>
                         <th scope="col">Last_Name</th>
                         <th scope="col">First_Name</th>
+                        <th scope="col">Classroom</th>
                         <th scope="col"> Birthdayhbs</th>
                         <th scope="col">Country</th>
                         <th scope="col">WhatsApp_Number</th>
                         <th scope="col">Number_Ghana</th>
-                        <th scope="col">Classroom</th>
                         <th scope="col">Courses</th>
                         <th scope="col">Duration</th>
                         <?php if($userRole==="Director" || $userRole==="Staff" || $userRole==="Teacher") {?>
@@ -198,11 +203,11 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
                                 <th><?= htmlspecialchars($row["ID"]); ?> </th>
                                 <td><?= htmlspecialchars($row["Nom"]); ?></td>
                                 <td><?= htmlspecialchars($row["Prenom"]); ?></td>
+                                <td><?= htmlspecialchars($row["Classe"]); ?></td>
                                 <td><?= htmlspecialchars($row["DateNaissance"]); ?></td>
                                 <td><?= htmlspecialchars($row["Country"]); ?></td>
                                 <td><?= htmlspecialchars($row["TelephoneWhatsapp"]); ?></td>
                                 <td><?= htmlspecialchars($row["TelephoneGhana"]); ?></td>
-                                <td><?= htmlspecialchars($row["Classe"]); ?></td>
                                 <td><?= htmlspecialchars($row["Formation"]); ?></td>
                                 <td><?= htmlspecialchars($row["Dure"]); ?></td>
                                 <?php if($userRole==="Director" || $userRole==="Staff" || $userRole==="Teacher") :?>

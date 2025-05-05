@@ -65,9 +65,11 @@ if (isset($_POST['signUp'])) {
                 $stmt ->execute();
                 if ($tablename === "Teacher") {
                     header("Location: teacher.php?code=True");
+                    exit();
                 }
                 if ($tablename === "Admin") {
                     header("Location: administrateur.php?code=True");
+                    exit();
                 }
             }
         }
