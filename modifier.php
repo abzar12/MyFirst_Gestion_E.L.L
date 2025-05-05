@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindValue(':Pays', $Pays);
     $stmt->execute();
     header("Location:dashbord.php?success=True");
-
+    exit();
 }
 } catch (Throwable $th) {
     die("error de suppremetion: ".$th->getMessage());

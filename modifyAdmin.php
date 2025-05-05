@@ -31,9 +31,11 @@ try {
         $stmt->execute();
         if ($TableName === "Teacher") {
             header("Location: teacher.php?success=True");
+            exit();
         }
         if ($TableName === "Admin") {
             header("Location: administrateur.php?success=True");
+            exit();
         }
 
     }

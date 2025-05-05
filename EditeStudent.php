@@ -31,6 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['UpdateStudent'])){
     $stmt->bindParam(':Dure',$Dure);
     $stmt->execute();
     header("Location:etudiant.php?success=True");
+    exit();
 }
 
 

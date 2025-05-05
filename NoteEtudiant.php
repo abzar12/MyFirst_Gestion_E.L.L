@@ -30,24 +30,18 @@ if ($_POST['query'] == "") {
 }
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $Total_ET = count($result);
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deleteNote'])) {
-    $IdAdmin = $_POST['deleteNote'];
-    $stmt = $conn->prepare("DELETE FROM NoteEtudiant WHERE Student_Id=:ID");
-    $stmt->bindParam(':ID', $IdAdmin);
-    $stmt->execute();
-    header("Location:" . $_SERVER['PHP_SELF']);
-}
 // binding the three table students NoteEtudiant and classroom with the table Event_ST_Note_CL;
 try {
 
-    $stmt = $conn->query("   SELECT Students.Nom , Students.Prenom, Classroom.Class_Name, 
+    $stmt = $conn->query("   SELECT Students.ID, Students.Nom , Students.Prenom, Students.Classe, 
                                   NoteEtudiant.Dictation, NoteEtudiant.Vocabulary, NoteEtudiant.Expression, 
-                                  NoteEtudiant.Pronunciation, NoteEtudiant.Orale, NoteEtudiant.Reading, NoteEtudiant.Grammar
+                                  NoteEtudiant.Pronunciation, NoteEtudiant.Orale, NoteEtudiant.Reading, NoteEtudiant.Grammar,NoteEtudiant.Moyenne
                            
                             FROM Students 
                              JOIN NoteEtudiant On Students.ID = NoteEtudiant.ID_ST
                             JOIN Event_ST_Note_CL on NoteEtudiant.ID_Note = Event_ST_Note_CL.ID_Note
                             JOIN Classroom on Event_ST_Note_CL.ID_Class = Classroom.Class_ID
+                            ORDER BY Students.Classe ASC
                         ");
     $stmt->execute();
     $FullNote = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -226,10 +220,10 @@ $_SESSION['LAST_ACTIVITY'] = time();
                     <?php if (!empty($FullNote)): ?>
                         <?php foreach ($FullNote as $row): ?>
                             <tr>
-                                <th><?= htmlspecialchars($row["Student_Id"]); ?> </th>
+                                <th><?= htmlspecialchars($row["ID"]); ?> </th>
                                 <td><?= htmlspecialchars($row["Nom"]); ?></td>
                                 <td><?= htmlspecialchars($row["Prenom"]); ?></td>
-                                <td><?= htmlspecialchars($row["Class_Name"]); ?></td>
+                                <td><?= htmlspecialchars($row["Classe"]); ?></td>
                                 <td><?= htmlspecialchars($row["Dictation"]); ?></td>
                                 <td><?= htmlspecialchars($row["Vocabulary"]); ?></td>
                                 <td><?= htmlspecialchars($row["Expression"]); ?></td>
@@ -238,17 +232,8 @@ $_SESSION['LAST_ACTIVITY'] = time();
                                 <td><?= htmlspecialchars($row["Reading"]); ?></td>
                                 <td><?= htmlspecialchars($row["Grammar"]); ?></td>
                                 <td><?= htmlspecialchars($row["Moyenne"]); ?></td>
-                                <td class="tablebutton">
-                                    <form method="POST">
-                                        <button type="submit" onclick="return confirm('Do you really want to delete this user?')" value="<?= htmlspecialchars($row["Student_Id"]); ?>" name="deleteNote"><ion-icon name="trash-outline"></ion-icon></button>
-                                    </form>
-                                </td>
-                                <!-- <td class="tablebutton">
-                                <button type="button"> <ion-icon name="create-sharp"></ion-icon></button> <button type="button"><ion-icon name="trash-outline"></ion-icon></button>
-                            </td> -->
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                 </tbody>
             </table>
         </div>

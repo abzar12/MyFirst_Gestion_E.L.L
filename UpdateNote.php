@@ -5,11 +5,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
    
 }
 try {
-    $stmt =$conn->prepare("UPDATE NoteEtudiant SET Dictation= :Dictation, Vocabulary= :Vocabulary, Expression= :Expression, Pronunciation= :Pronunciation, Orale= :Orale, Reading= :Reading, Grammar= :Grammar WHERE Student_Id= :Student_Id");
+    $stmt =$conn->prepare("UPDATE NoteEtudiant SET Dictation= :Dictation, Vocabulary= :Vocabulary, Expression= :Expression, Pronunciation= :Pronunciation, Orale= :Orale, Reading= :Reading, Grammar= :Grammar WHERE ID_ST= :ID_ST");
 
 foreach ($students as $studentId => $row) {
     $stmt->execute([
-        ':Student_Id' => $studentId,
+        ':ID_ST' => $studentId,
         ':Dictation' => $row['Dictation'],
         ':Vocabulary' => $row['Vocabulary'],
         ':Expression' => $row['Expression'],

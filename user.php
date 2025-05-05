@@ -129,7 +129,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
             <div class="ac_etudiant row">
                 <div class="menu_etud">
                     <?php if ($userRole === 'Staff' || $userRole === 'Director') : ?>
-                        <a href="AddAdmin.php?tableName=Teacher"><button type="button"><ion-icon name="add-circle-outline"></ion-icon>Add Admin</button></a>
+                        <a href="AddUsers.php"><button type="button"><ion-icon name="add-circle-outline"></ion-icon>Add Users</button></a>
                     <?php endif; ?>
                     <button type="button"><ion-icon name="print-outline"></ion-icon>Print</button>
                 </div>
