@@ -1,140 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Open-sans';
-    font-size: 18px;
-}
-
-/* -------------------mon navbar */
-.ac_navbar {
-    position: absolute;
-    top: 0;
-    background-color: rgba(0, 0, 0, 0.745);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    height: 50px;
-    color: white;
-}
-
-.ac_navbar a {
-    color: white;
-}
-
-/* -------------------My form recherche-------- */
-.ac_navbar .ac_form {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    color: black;
-}
-
-.ac_navbar .ac_form input {
-    border: 1px solid black;
-    border-radius: 50px;
-    padding: 2px 15px;
-    height: 30px;
-    margin-top: 5px;
-    width: 40vh;
-    color: black;
-}
-
-
-/* -----------modification de profil et cloche------------- */
-.ac_navbar .ac_A1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    text-align: center;
-
-}
-.ac_navbar .ac_A1 p{
-
-    color: rgb(18, 164, 18);
-    font-size: 22px;
-    text-align: center;
-    align-items: center;
-    margin: 0;
-    line-height: 20px;
-}
-
-/* -----------FIN modification de profil et cloche------------- */
-/* ------------------my boy-----------------  */
-.ac_row {
-    margin-top: 50px;
-    height: 93vh;
-    background-color: rgba(1, 1, 1, 0.723);
-    width: 30vh;
-    font-family: 'lora';
-}
-
-.ac_row .ac_menu {
-    display: flex;
-    flex-direction: column;
-    margin-top: 30px;
-
-}
-
-.ac_row .ac_menu li {
-    list-style: none;
-    color: white;
-    margin-bottom: 35px;
-    margin-left: 10px;
-    border-radius: 10px;
-    height: 50px;
-    justify-content: center;
-    padding: 12px;
-}
-
-.ac_row .ac_menu li:hover {
-    background-color: rgb(192, 189, 189);
-}
-
-.ac_row .ac_menu li a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 18px;
-    gap: 50px;
-    text-align: center;
-}
-
-.ac_row .ac_menu li a:hover {
-    color: rgb(18, 164, 18);
-    ;
-}
-
-.ac_row .ac_menu li a ion-icon {
-    margin-right: 15px;
-    font-size: 20px;
-    color: rgb(18, 164, 18);
-}
-
-.ac_row .ac_menu .active {
-
-    background-color: rgb(192, 189, 189);
-
-}
 
 /* -----------------fin de la structure de base-------------- */
 /* -----------------debut de la section 2-------------- */
 
 .ac_row2 {
     text-decoration: none;
-    display: grid;
-    grid-template-columns: repeat(3, 2fr);
-    justify-content: space-between;
-    width: 900px;
-    position: absolute;
-    top: 80px;
-    left: 43vh;
-    text-align: center;
     gap: 15px;
+    padding-bottom: 15px;
+    top: 80px;
+    left: 40vh;
+    right: 10vh;
+     position: absolute;
 }
-
+.ac_card{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    justify-content: space-between;
+    text-align: center;
+    gap: 10px;
+}
 .ac_row2 .card {
     border: 1px solid transparent;
     font-size: 25px;
@@ -157,8 +40,12 @@ body {
     position: absolute;
     top: 230px;
     left: 37vh;
-    width: 975px;
-    background-color: rgb(204, 204, 204);
+    right: 7vh;
+    padding: 15px;
+    width: auto;
+}
+.ac_container3{
+ background-color: rgb(204, 204, 204);
     text-align: center;
     padding: 0%;
     border-radius: 10px;
@@ -237,3 +124,49 @@ td {
 .section3 .tablebutton button:hover {
     color: black;
 }
+
+
+@media(max-width:1100px){
+    .section3 h1{
+        font-size: 16px;
+    }
+    .ac_table{
+        font-size: 16px;
+    }
+    .section3{
+        top: 350px;
+        left: 35vh;
+    }
+    .ac_table{
+        height: 190px;
+    }
+    }
+
+    @media(max-width:832px){
+        .ac_section2{
+            display: none;
+        }
+        .section3 {
+            top: 15vh;
+            font-size: 1px;
+        }
+        .section3 h1{
+            font-size: 12px;
+        }
+        .ac_table{
+            height: 400px;
+            font-size: 12px;
+        }
+    }
+    @media(max-width:753px){
+     
+       
+        .section3 {
+            top: 15vh;
+            left: 15vh;
+            width: auto;
+        }
+        .ac_table{
+            height: 400px;
+        }
+    }

@@ -87,6 +87,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="Dashbord.css">
+    <link rel="stylesheet" href="navbarSidebar.css">
     <title>Dashbord</title>
 </head>
 
@@ -116,31 +117,31 @@ $_SESSION['LAST_ACTIVITY'] = time();
                 <ul class="ac_menu nav  mb-3" id="pills-tab" role="tablist">
                     
                     <li class="active">
-                        <a href="dashbord.php"><ion-icon name="speedometer-sharp" class="active"></ion-icon> Dashbord</a>
+                        <a href="dashbord.php"><ion-icon name="speedometer-sharp" class="active"></ion-icon> <span>Dashbord</span></a>
                     </li> 
                     <?php if($userRole === "Director" ||$userRole === "Staff")  {?>
                     <li>
-                        <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> Admin</a>
+                        <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> <span>Admin</span></a>
                     </li>
                     <?php } ?>
                     <li>
-                        <a href="etudiant.php"><ion-icon name="book-sharp"></ion-icon> Students</a>
+                        <a href="etudiant.php"><ion-icon name="book-sharp"></ion-icon> <span>Students</span></a>
                     </li>
                     <?php if($userRole === "Director" ||$userRole === "Staff" ){?>
                     <li>
-                        <a href="message.php"><ion-icon name="chatbox"></ion-icon> Message</a>
+                        <a href="message.php"><ion-icon name="chatbox"></ion-icon> <span>Message</span></a>
                     </li>
                     <?php } ?>
                     <li>
-                        <a href="teacher.php"><ion-icon name="person-circle" class="smallicon"></ion-icon> Teachers</a>
+                        <a href="teacher.php"><ion-icon name="person-circle" class="smallicon"></ion-icon> <span>Teachers</span></a>
                     </li>
                     <?php if($userRole === "Director") {?>
                     <li>
-                        <a href="user.php"><ion-icon name="person-circle-outline" class="smallicon"></ion-icon> Users</a>
+                        <a href="user.php"><ion-icon name="person-circle-outline" class="smallicon"></ion-icon><span>Users</span> </a>
                     </li>
                     <?php } ?>
                     <li>
-                        <a href="logOut.php"><ion-icon name="log-out"></ion-icon>Logout</a>
+                        <a href="logOut.php"><ion-icon name="log-out"></ion-icon><span>Logout</span></a>
                     </li>
 
                 </ul>
@@ -150,7 +151,8 @@ $_SESSION['LAST_ACTIVITY'] = time();
     <section class="ac_section2">
         <div class="container">
             <div class="ac_row2 row">
-                <div class="card">
+                <div class="ac_card">
+                    <div class="card">
                     <div class="card-body">
                         <p><ion-icon name="book-sharp"></ion-icon></p>
                         <p> Total of Students  <?= $Total_new_Student . " "; ?></p>
@@ -168,11 +170,14 @@ $_SESSION['LAST_ACTIVITY'] = time();
                         <p>  administrators<?php echo ' '.$Total_Admin ; ?></p>
                     </div>
                 </div>
+                </div>
+                
             </div>
         </div>
     </section>
     <section class="section3">
-        <h1><span class="ac_span"><?php echo $Total_ET; ?></span>New students subscribe for last 3months</h1>
+        <div class="ac_container3">
+             <h1><span class="ac_span"><?php echo $Total_ET; ?></span>New students subscribe for last 3months</h1>
         <div class="container ac_table">
             <?php if (count($result1) > 0); ?>
             <table class="table display nowrap" id="_list">
@@ -213,6 +218,8 @@ $_SESSION['LAST_ACTIVITY'] = time();
                 </tbody>
             </table>
         </div>
+        </div>
+       
     </section>
 
     <!-- datatable -->

@@ -150,7 +150,7 @@ body {
     position: absolute;
     top: 100px;
     left: 35vh;
-    width: 1000px;
+    right: 10vh;
 }
 
 .section2 .ac_etudiant {
@@ -206,7 +206,8 @@ body {
     position: absolute;
     top: 230px;
     left: 37vh;
-    width: 975px;
+    right: 10vh;
+    overflow: auto;
     background-color: rgb(204, 204, 204);
     text-align: center;
     padding: 0%;
@@ -285,4 +286,15 @@ td {
 
 .section3 .tablebutton button:hover {
     color: black;
+}
+
+@media(max-width:753px){
+    .section2 {
+        left: 15vh;
+    }
+    .section3{
+        left: 15vh;
+        margin-right: 15px;
+        font-size: 12px;
+    }
 }
