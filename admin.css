@@ -206,7 +206,7 @@ body {
     position: absolute;
     top: 230px;
     left: 37vh;
-    right: 10vh;
+    right: 7vh;
     overflow: auto;
     background-color: rgb(204, 204, 204);
     text-align: center;
@@ -228,8 +228,6 @@ body {
 }
 
 .ac_table {
-    width: 930px;
-    height: 350px;
     margin: 0 auto;
     overflow-x: auto;
     /* Scroll horizontal */
@@ -294,7 +292,25 @@ td {
     }
     .section3{
         left: 15vh;
-        margin-right: 15px;
-        font-size: 12px;
+        
+        right: 5vh;
+    }
+    *{
+        font-size: 16px;
+    }
+}
+@media(max-width:500px){
+
+    .section2{
+        display: none;
+    }
+    .section3{
+        left: 12vh;
+        top: 15vh;
+        height: auto;
+        right: 2vh;
+    }
+    *{
+        font-size: 14px;
     }
 }

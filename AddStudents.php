@@ -69,7 +69,7 @@ try {
       $stmt->bindParam(':ID_ST', $Student_Id['ID']);
       $stmt->bindParam(':ID_Note', $ID_Note['ID_Note']);
       $stmt->bindParam(':ID_Class', $Class_ID['Class_ID']);
-      $stmt->execute();
+      $stmt->execute(); 
         //foreach for students
       foreach ($Student_Id as $Student_key);
       echo "<script>alert('The Student has been saved successfully')</script>";
@@ -123,19 +123,19 @@ try {
           <div class="ac_col">
             <select id="role" name="Classroom" class="rounded-md p-2 border-b border-solid border-black w-full pl-2   ">
               <option value="">Classroom</option>
-              <option value="Level 1">Level 1</option>
-              <option value="Level 3">Level 3</option>
-              <option value="Level 2">Level 2</option>
-              <option value="Level 3">Level 3</option>
-              <option value="Level 4">Level 4</option>
-              <option value="Level 5">Level 5</option>
-              <option value="Level 6">Level 6</option>
-              <option value="INTER 1">INTER 1</option>
-              <option value="INTER 2">INTER 2</option>
-              <option value="INTER 3">INTER 3</option>
-              <option value="PROF 1">PROF 1</option>
-              <option value="PROF 2">PROF 2</option>
-              <option value="PROF 3">PROF 3</option>
+              <option value="1">Level 1</option>
+              <option value="3">Level 3</option>
+              <option value="2">Level 2</option>
+              <option value="3">Level 3</option>
+              <option value="4">Level 4</option>
+              <option value="5">Level 5</option>
+              <option value="6">Level 6</option>
+              <option value="7">INTER 1</option>
+              <option value="8">INTER 2</option>
+              <option value="9">INTER 3</option>
+              <option value="10">PROF 1</option>
+              <option value="11">PROF 2</option>
+              <option value="12">PROF 3</option>
             </select>
           </div>
         </div>

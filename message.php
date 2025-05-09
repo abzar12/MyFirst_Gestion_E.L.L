@@ -5,16 +5,19 @@ $conn= new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", "root", "");
 
 if(!isset($_SESSION['UserId'])){
     header("Location:Login.php");
+    exit();
 }
 $timeout = 1800;
 if(isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout){
     session_unset();
     session_destroy();
     header("Location: Login.php");
+    exit();
 }
 
-if($userRole != "Director" && $userRole != "Staff"){
+if($userRole <=> "Director" || $userRole <=> "Staff"){
     header("Location: dashbord.php" );
+    exit();
 }
 
 try {
@@ -47,6 +50,7 @@ $userRole = $_SESSION['UserRole'];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="message.css">
+    <link rel="stylesheet" href="navbarSidebar.css">
     <title>message</title>
 </head>
 
@@ -71,22 +75,22 @@ $userRole = $_SESSION['UserRole'];
             <div class="ac_row row">
                 <ul class="ac_menu nav  mb-3" id="pills-tab" role="tablist">
                     <li>
-                        <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon> Dashbord</a>
+                        <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon> <span>Dashbord</span></a>
                     </li>
                     <li>
-                        <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> Admin</a>
+                        <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> <span>Admin</span></a>
                     </li>
                     <li >
-                        <a href="etudiant.php"><ion-icon name="book-sharp"></ion-icon> Students</a>
+                        <a href="etudiant.php"><ion-icon name="book-sharp"></ion-icon> <span>Students</span></a>
                     </li>
                     <li class="active">
-                        <a href="message.php"><ion-icon name="chatbox"></ion-icon> Message</a>
+                        <a href="message.php"><ion-icon name="chatbox"></ion-icon> <span>Message</span></a>
                     </li>
                     <li>
-                        <a href="teacher.php"><ion-icon name="person-circle" class="smallicon"></ion-icon> Teachers</a>
+                        <a href="teacher.php"><ion-icon name="person-circle" class="smallicon"></ion-icon> <span>Teachers</span></a>
                     </li>
                     <li>
-                        <a href="logOut.php"><ion-icon name="log-out"></ion-icon>Logout</a>
+                        <a href="logOut.php"><ion-icon name="log-out"></ion-icon><span>Logout</span></a>
                     </li>
 
                 </ul>

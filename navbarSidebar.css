@@ -82,7 +82,7 @@ body {
 .ac_row .ac_menu li {
     list-style: none;
     color: white;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
     margin-left: 10px;
     border-radius: 10px;
     height: 50px;
@@ -131,7 +131,11 @@ overflow: hidden;
     padding: 0;
 }
 }
+
 @media(max-width:753px){
+    .ac_row .ac_menu li{
+        margin-bottom: 15px;
+    }
     .ac_row{
         width: 70px;
     }

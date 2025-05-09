@@ -62,11 +62,11 @@
     padding: 15px 15px;
     align-items: center;
     margin: 5px;
+
 }
 
 .ac_table {
-    width: 930px;
-    height: 350px;
+    max-height: 350px;
     margin: 0 auto;
     overflow-x: auto;
     /* Scroll horizontal */
