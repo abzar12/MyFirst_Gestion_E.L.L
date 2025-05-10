@@ -2,6 +2,7 @@
 session_start();
 if(!isset($_SESSION['UserId'])){
     header("Location:Login.php");
+    exit();
 }
 
 $timeout = 1800;
@@ -9,6 +10,7 @@ if(isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > 
     session_unset();
     session_destroy();
     header("Location: Login.php");
+    exit();
 }
 
 $conn = new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", "root", "");
@@ -24,16 +26,21 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $search = isset($_POST['query']) ? $_POST['query'] : "";
     $class_filter = isset($_POST['class_filter']) ? $_POST['class_filter'] : "";
-    $stmt = "SELECT * FROM Students WHERE 1=1 ORDER BY Classe ASC"; // WHERE 1=1 permet d'ajouter des conditions dynamiques
+    $stmt = "SELECT Students.*, Classroom.Class_Name
+              FROM Students
+              JOIN Event_ST_Note_CL ON Students.ID = Event_ST_Note_CL.ID_ST
+              JOIN NoteEtudiant ON Event_ST_Note_CL.ID_Note = NoteEtudiant.ID_Note
+              JOIN Classroom ON Event_ST_Note_CL.ID_Class = Classroom.Class_ID
+     WHERE 1=1 ORDER BY Students.Class ASC"; // WHERE 1=1 permet d'ajouter des conditions dynamiques
     $params = [];
 
     if (!empty($search)) {
-        $stmt .= " AND (Nom LIKE ? OR Prenom LIKE ?)";
+        $stmt .= " AND (Students.Nom LIKE ? OR Students.Prenom LIKE ?)";
         $params[] = "%$search%";
         $params[] = "%$search%";
     }
     if (!empty($class_filter)) {
-        $stmt .= " AND Classe = ?";
+        $stmt .= " AND Classroom.Class_Name = ?";
         $params[] = $class_filter;
     }
     $resl = $conn->prepare($stmt);
@@ -87,6 +94,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="etudiant.css">
+    <link rel="styleSheet" href="navbarSidebar.css">
     <title>Dashbord</title>
 </head>
 
@@ -116,30 +124,30 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
             <div class="ac_row row">
                 <ul class="ac_menu nav  mb-3" id="pills-tab" role="tablist">
                     <li>
-                        <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon> Dashbord</a>
+                        <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon><span>Dashbord</span> </a>
                     </li>
                     <?php if($userRole==="Director" || $userRole === "Staff") {?>
                     <li>
-                        <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> Admin</a>
+                        <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon><span>Admin</span> </a>
                     </li>
                     <?php };?>
                     <li class="active">
-                        <a href="etudiant.php"><ion-icon name="book-sharp"></ion-icon> Students</a>
+                        <a href="etudiant.php"><ion-icon name="book-sharp"></ion-icon><span>Students</span> </a>
                     </li>
                     <li>
-                        <a href="NoteEtudiant.php"><ion-icon name="chatbox"></ion-icon> Note</a>
+                        <a href="NoteEtudiant.php"><ion-icon name="chatbox"></ion-icon><span>Note</span> </a>
                     </li>
                     
                     <li>
-                        <a href="teacher.php"><ion-icon name="person-circle" class="smallicon"></ion-icon> Teachers</a>
+                        <a href="teacher.php"><ion-icon name="person-circle" class="smallicon"></ion-icon><span>Teachers</span> </a>
                     </li>
                     <?php if($userRole==="Director") {?>
                     <li>
-                        <a href="user.php"><ion-icon name="person-circle-outline" class="smallicon"></ion-icon> Users</a>
+                        <a href="user.php"><ion-icon name="person-circle-outline" class="smallicon"></ion-icon><span>Users</span> </a>
                     </li>
                     <?php };?>
                     <li>
-                        <a href="logOut.php"><ion-icon name="log-out"></ion-icon>Logout</a>
+                        <a href="logOut.php"><ion-icon name="log-out"></ion-icon><span>Logout</span> </a>
                     </li>
 
                 </ul>
@@ -203,7 +211,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
                                 <th><?= htmlspecialchars($row["ID"]); ?> </th>
                                 <td><?= htmlspecialchars($row["Nom"]); ?></td>
                                 <td><?= htmlspecialchars($row["Prenom"]); ?></td>
-                                <td><?= htmlspecialchars($row["Classe"]); ?></td>
+                                <td><?= htmlspecialchars($row["Class_Name"]); ?></td>
                                 <td><?= htmlspecialchars($row["DateNaissance"]); ?></td>
                                 <td><?= htmlspecialchars($row["Country"]); ?></td>
                                 <td><?= htmlspecialchars($row["TelephoneWhatsapp"]); ?></td>
