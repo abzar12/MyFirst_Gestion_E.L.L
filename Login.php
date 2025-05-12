@@ -52,7 +52,7 @@ try {
                         <input type="password" name="PasswordAD" placeholder="password" class="rounded-md w-full border-b border-solid border-black  p-2   ">
                     </div>
                 </div>
-                <a href="forget.php" class=""><button type="button">forgot password?</button></a>
+                <a href="forgot_passwordAdmin.php" class=""><button type="button">forgot password?</button></a>
                 <h1 class="m-0 border-0 text-red-900 text-[13px]"><?php echo $error; ?></h1>
             </div>
             <button type="submit " name="logIn" class="w-full border-2 rounded-md  mt-5 mb-[60px]  p-1 border-solid border-[rgba(0,120,5,0.468)]  bg-[rgba(0,120,5,0.468)] text-[rgba(0,0,0,0.82)] hover:bg-[rgb(0,120,4)] transition-colors duration-300">Log In</button>

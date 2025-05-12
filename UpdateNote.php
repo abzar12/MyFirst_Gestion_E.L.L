@@ -14,7 +14,7 @@ foreach ($students as $studentId => $row) {
         ':Vocabulary' => $row['Vocabulary'],
         ':Expression' => $row['Expression'],
         ':Pronunciation' => $row['Pronunciation'],
-        ':Orale' => $row['Orale'],
+        ':Orale' => $row['Orale'], 
         ':Reading' => $row['Reading'],
         ':Grammar' => $row['Grammar'],
     ]);

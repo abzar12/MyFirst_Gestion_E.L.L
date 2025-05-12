@@ -66,6 +66,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="navbarSidebar.css">
     <title>administrateur</title>
 </head>
 
@@ -94,29 +95,29 @@ $_SESSION['LAST_ACTIVITY'] = time();
             <div class="ac_row row">
                 <ul class="ac_menu nav  mb-3" id="pills-tab" role="tablist">
                     <li>
-                        <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon> Dashboard</a>
+                        <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon> <span>Dashboard</span> </a>
                     </li>
                     <?php if($userRole === "Director" ||$userRole === "Staff" ){?> 
                     <li >
-                        <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> Admin</a>
+                        <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon><span>Admin</span> </a>
                     </li>
                     <?php };?>
                     <li>
-                        <a href="etudiant.php"><ion-icon name="book-sharp"></ion-icon> Students</a>
+                        <a href="etudiant.php"><ion-icon name="book-sharp"></ion-icon><span>Students</span> </a>
                     </li>
                     <?php if($userRole === "Director" ||$userRole === "Staff" ){?> 
                     <li>
-                        <a href="message.php"><ion-icon name="chatbox"></ion-icon> Message</a>
+                        <a href="message.php"><ion-icon name="chatbox"></ion-icon> <span>Message</span></a>
                     </li>
                     <?php };?>
                     <li >
-                        <a href="teacher.php"><ion-icon name="person-circle" class="smallicon"></ion-icon> Teachers</a>
+                        <a href="teacher.php"><ion-icon name="person-circle" class="smallicon"></ion-icon> <span>Teachers</span></a>
                     </li>
                     <li class="active">
-                        <a href="user.php"><ion-icon name="person-circle-outline" class="smallicon"></ion-icon> Users</a>
+                        <a href="user.php"><ion-icon name="person-circle-outline" class="smallicon"></ion-icon> <span>Teachers</span></a>
                     </li>
                     <li>
-                        <a href="logOut.php"><ion-icon name="log-out"></ion-icon>Logout</a>
+                        <a href="logOut.php"><ion-icon name="log-out"></ion-icon><span>Logout</span></a>
                     </li>
 
                 </ul>
