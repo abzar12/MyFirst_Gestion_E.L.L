@@ -19,9 +19,9 @@ if($userRole != "Director" && $userRole != "Staff"){
     header("Location: dashbord.php" );
     exit();
 }
-
+    require_once("connection.php");
 try {
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
     $stmt= $conn->prepare("SELECT * FROM message ORDER BY create_at DESC");
     $stmt->execute();
     $result=$stmt->fetchAll(PDO::FETCH_ASSOC);

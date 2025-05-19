@@ -6,9 +6,9 @@ use PHPMailer\PHPMailer\Exception;
 
 require "vendor/autoload.php"; 
 
-$conn = new PDO("mysql::host=localhost; dbname=Gestion_Eudiant", 'root', '');
+
 try {
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  require_once("connection.php");
 } catch (PDOException $th) {
   die("connection error" . $th->getMessage());
 }

@@ -1,8 +1,7 @@
 <?php
 
 try {
-    $conn = new PDO("mysql::host=localhost; dbname=Gestion_eudiant", "root", "");
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    require_once("connection.php");
 } catch (PDOException  $th) {
     die("error de la connection" . $th->getMessage());
 }

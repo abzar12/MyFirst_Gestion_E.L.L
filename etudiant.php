@@ -13,7 +13,7 @@ if(isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > 
     exit();
 }
 
-$conn = new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", "root", "");
+require_once("connection.php");
 $check=$_GET['success'];
 if($check){
     echo "<script>alert('The information has been successfully updated')</script>";

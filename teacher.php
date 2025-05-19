@@ -1,7 +1,7 @@
 <?php
 session_start();
  
-$conn = new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", "root", "");
+require_once("connection.php");
 
 if (!isset($_SESSION["UserId"])) {
     header("Location:Login.php");

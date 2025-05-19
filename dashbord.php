@@ -48,7 +48,7 @@ try {
     $stmt=$conn->query("SELECT COUNT(*) AS TotalAdmin FROM Admin");
     $result=$stmt->fetch(PDO::FETCH_ASSOC);
     $Total_Admin=$result['TotalAdmin'];
-    $stmt = $conn->query("SELECT COUNT(*) AS Total_Prof FROM teacher");
+    $stmt = $conn->query("SELECT COUNT(*) AS Total_Prof FROM Teacher");
     $result_Prof = $stmt->fetch(PDO::FETCH_ASSOC);
     $Total_Prof = $result_Prof['Total_Prof'];
 

@@ -1,23 +1,37 @@
 <?php
 session_start();
 try {
-    $conn = new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", 'root', '');
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    require_once("connection.php");
 
     if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["forgot"])) {
         $email = $_POST["EmailAD"];
-        $stmt = $conn->prepare("SELECT Nom ,Prenom From users WHERE Email = ?");
+        $stmt = $conn->prepare("SELECT ID, Nom ,Prenom From users WHERE Email = ?");
         $stmt->execute(["$email"]);
         $userINFO = $stmt->fetch();
-        if ($userINFO == "") {
-            $_SESSION["message_Serror"] = "Sorry! no account associated with this email";
+        if (!$userINFO ) {
+            $_Eroor = "Sorry! no account associated with this email";
         } else {
-            $token = bin2hex(random_bytes(32));
-            $expires = date('Y-m-d H:i:s', strtotime('+1 hour'));
+            $_SESSION["token"] = bin2hex(random_bytes(3));
+            $token = $_SESSION["token"];
+            $_SESSION["expire"] = date('Y-m-d H:i:s', strtotime('+1 hour'));
+            $expires = $_SESSION["expire"];
             $stmt = $conn->prepare("INSERT INTO ResetPassword (Email, Token, expires_at) VALUES ( :email, :token :expire)");
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':token', $token);
             $stmt->bindParam(':expire', $expires);
+            try{
+                $to = "$email";
+                $subject= "ELL OTP OTP";
+                $message = "Your code (OTP) is: $token avaible for 1 hour";
+                $headers = "From: abzarcamara3.com";
+                if(mail($to,$subject,$message,$headers)){
+                    $_SESSION["email"] = $email;
+                   header("Location:forgot-password-OTP.php");
+                    exit();
+                }
+            }catch(PDOException $th){
+                die("EMAIL ERROR" .$th->getMessage());
+            }
         }
     }
 } catch (PDOException $th) {
@@ -47,12 +61,12 @@ try {
             <div class="container  ml-auto mr-aut   pt-5  mx-auto ">
                 <div class="ac_row p-2">
                     <div class="ac_col">
-                        <input type="email" name="EmailAD" placeholder="Your Email" class="font-merriweather w-full rounded-md border-b border-solid border-black  p-2   ">
+                        <input type="email" name="EmailAD" placeholder="Your Email" class="font-merriweather w-full rounded-md border border-solid border-black  p-2   ">
                     </div>
                 </div>
-                <h1 class="m-0 border-0 text-red-900 text-[13px]"><?php echo $error; ?></h1>
+                <h1 class="m-0 border-0 text-red-900 text-[13px]"><?php echo $_Eroor; ?></h1>
             </div>
-            <button type="submit " name="forgot" class="w-full border-2 rounded-md  mt-5 mb-[60px]  p-1 border-solid border-[rgba(0,120,5,0.468)]  bg-[rgba(0,120,5,0.468)] text-[rgba(0,0,0,0.82)] hover:bg-[rgb(0,120,4)] transition-colors duration-300">Log In</button>
+            <button type="submit " name="forgot" class="w-full border-2 rounded-md  mt-5 mb-[15px]  p-1 border-solid border-[rgba(0,120,5,0.468)]  bg-[rgba(0,120,5,0.468)] text-[rgba(0,0,0,0.82)] hover:bg-[rgb(0,120,4)] transition-colors duration-300">Log In</button>
             <a href="login.php"><i class="fa-solid fa-arrow-left text-black "></i>
                 Go back</a>
     </div>
