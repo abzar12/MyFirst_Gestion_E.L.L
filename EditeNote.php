@@ -9,11 +9,13 @@ if ($Level === "") {
 } else {
     try{
          require_once("connection.php");
-    $stm = $conn->prepare("SELECT NoteEtudiant.ID_ST, Students.Nom, Students.Prenom, Students.Classe,
+    $stm = $conn->prepare("SELECT NoteEtudiant.ID_ST, Students.Nom, Students.Prenom, Classroom.Class_Name,
                                   NoteEtudiant.Dictation, NoteEtudiant.Vocabulary, NoteEtudiant.Expression, NoteEtudiant.Pronunciation,
                                   NoteEtudiant.Orale, NoteEtudiant.Reading, NoteEtudiant.Grammar, NoteEtudiant.Moyenne
                                   From Students
                                   JOIN NoteEtudiant on Students.ID = NoteEtudiant.ID_ST
+                                  JOIN Event_ST_Note_CL ON  NoteEtudiant.ID_Note = Event_ST_Note_CL.ID_Note
+                                  JOIN Classroom ON Event_ST_Note_CL.ID_Class = Classroom.CLass_ID
                             Where NoteEtudiant.Classroom = :level ");
     $stm->bindParam(':level', $Level);
     $stm->execute();
@@ -48,6 +50,7 @@ if ($Level === "") {
                 <form action="UpdateNote.php" method="POST" class="flex justify-center mx-auto  text-sm">
                     <div class=" overflow-x-auto">
                         <table class="table " id="myTable">
+                            <h1 class="text-center  text-1xl sm:text-2xl text-red-500">Each column has to be inserted</h1>
                             <thead>
                                 <tr class="">
                                     <th class="border" scope="col">Student_Id</th>
@@ -72,14 +75,14 @@ if ($Level === "") {
                                         <td><input class=" border" type="text" disabled style="text-align:center; width:100px" value="<?= htmlspecialchars($row['ID_ST']); ?>"></input></td>
                                         <td><input class="border border-b" type="text" disabled  name="students[<?= $row['ID_ST'] ?>][Nom]" style="text-align:center; width:119px" value=" <?= htmlspecialchars($row['Nom']); ?> "></input></td>
                                         <td><input class="border border-b" type="text" disabled  name="students[<?= $row['ID_ST'] ?>][Prenom]" style="text-align:center; width:115px" value="<?= htmlspecialchars($row['Prenom']); ?>"></input></td>
-                                        <td><input  class="border border-b" type="text" disabled  name="students[<?= $row['ID_ST'] ?>][Classe]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Classe']); ?>"></input></td>
-                                        <td><input class="border border-b" type="text" name="students[<?= $row['ID_ST'] ?>][Dictation]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Dictation']); ?>"></input></td>
-                                        <td><input class="border border-b" type="text" name="students[<?= $row['ID_ST'] ?>][Vocabulary]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Vocabulary']); ?>"></input></td>
-                                        <td><input class="border border-b" type="text" name="students[<?= $row['ID_ST'] ?>][Expression]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Expression']); ?>"></input></td>
-                                        <td><input class="border border-b" type="text" name="students[<?= $row['ID_ST'] ?>][Pronunciation]" style="text-align:center; width:100px" value="<?= htmlspecialchars($row['Pronunciation']); ?>"></input></td>
-                                        <td><input class="border border-b" type="text" name="students[<?= $row['ID_ST'] ?>][Orale]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Orale']); ?>"></input></td>
-                                        <td><input class="border border-b" type="text" name="students[<?= $row['ID_ST'] ?>][Reading]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Reading']); ?>"></input></td>
-                                        <td><input class="border border-b" type="text" name="students[<?= $row['ID_ST'] ?>][Grammar]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Grammar']); ?>"></input></td>
+                                        <td><input  class="border border-b" type="text" disabled  name="students[<?= $row['ID_ST'] ?>][Classe]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Class_Name']); ?>"></input></td>
+                                        <td><input class="border border-b bg-white" type="text" name="students[<?= $row['ID_ST'] ?>][Dictation]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Dictation']); ?>"></input></td>
+                                        <td><input class="border border-b bg-white" type="text" name="students[<?= $row['ID_ST'] ?>][Vocabulary]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Vocabulary']); ?>"></input></td>
+                                        <td><input class="border border-b bg-white" type="text" name="students[<?= $row['ID_ST'] ?>][Expression]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Expression']); ?>"></input></td>
+                                        <td><input class="border border-b bg-white" type="text" name="students[<?= $row['ID_ST'] ?>][Pronunciation]" style="text-align:center; width:100px" value="<?= htmlspecialchars($row['Pronunciation']); ?>"></input></td>
+                                        <td><input class="border border-b bg-white" type="text" name="students[<?= $row['ID_ST'] ?>][Orale]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Orale']); ?>"></input></td>
+                                        <td><input class="border border-b bg-white" type="text" name="students[<?= $row['ID_ST'] ?>][Reading]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Reading']); ?>"></input></td>
+                                        <td><input class="border border-b bg-white" type="text" name="students[<?= $row['ID_ST'] ?>][Grammar]" style="text-align:center; width:90px" value="<?= htmlspecialchars($row['Grammar']); ?>"></input></td>
                                     <tr>
                                     <tr>
                                         <th>SOMME = </th>
@@ -121,6 +124,7 @@ if ($Level === "") {
                             <?php endforeach; ?>
 
                         <?php }; ?>
+                        <button class="w-20 border h-7 mb-3 border-[rgba(0,120,5,0.468)] font-bold mr-5 rounded-md cursor-pointer bg-[rgba(0,120,4,0.8)] text-white hover:bg-[rgb(0,120,4)]"><a href="NoteEtudiant.php">Cancel</a></button>
                     </div>
                     <button type="submit" class="w-20 border h-7 mb-3 border-[rgba(0,120,5,0.468)] font-bold rounded-md cursor-pointer bg-[rgba(0,120,4,0.8)] text-white hover:bg-[rgb(0,120,4)]">Save</button>
 

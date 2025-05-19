@@ -4,7 +4,7 @@ session_start();
 if (!isset($_SESSION["UserId"])) {
     header("Location:Login.php");
 } 
-$conn = new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", "root", "");
+require_once("connection.php");
 // for the updating 
 $success = $_GET['success'];
 if ($success) {

@@ -1,8 +1,8 @@
 <?php
 session_start();
+
 try {
-    $conn = new PDO("mysql::host=localhost ; dbname=Gestion_Eudiant", 'root', '');
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    require_once("connection.php");
     if (isset($_POST['logIn'])) {
         $Email = $_POST['EmailAD'];
         $password = $_POST['PasswordAD'];
