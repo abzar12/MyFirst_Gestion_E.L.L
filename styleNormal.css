@@ -38,7 +38,6 @@ span {
   text-decoration: none;
   color: rgb(23, 176, 23);
   font-size: 1.1em;
-  font-weight: bold;
 }
 
 .ac-navbar .nav-link {
@@ -55,145 +54,6 @@ span {
 
 /*------------------body-----------------*/
 
-.part2.active {
-  display: block;
-}
-
-.part2 h3 {
-  display: flex;
-  position: absolute;
-  border-bottom: 1px outset rgba(189, 185, 185, 0.5);
-  font-weight: bolder;
-  padding-bottom: 5px;
-  z-index: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.partA {
-  font-size: 18px;
-  background: rgba(255, 255, 255, 0.54);
-  width: 500px;
-  display: flex;
-  padding: 10px;
-  border: 1px solid black;
-  border-radius: 10px;
-  margin-top: 70px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.onlyNom {
-  margin-top: 50px;
-}
-
-input,
-select {
-  text-decoration: none;
-  margin-right: 35px;
-  margin-top: px;
-  margin-bottom: 15px;
-  height: 30px;
-  width: 200px;
-  border-radius: 4px;
-  margin-left: 15px;
-  padding: 0px 10px;
-}
-
-label {
-  text-decoration: none;
-  font-weight: bolder;
-  margin-left: 15px; 
-}
-
-.colA1 select {
-  margin-top: 10px;
-  margin-bottom: 15px;
-  height: 25px;
-  width: 150px;
-  border-radius: 4px;
-  margin-left: 30px;
-}
-
-.part2 {
-  display: none;
-
-}
-
-.partB {
-  font-size: 18px;
-  background: rgba(255, 255, 255, 0.54);
-  width: 500px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  padding: 10px;
-  border: 1px solid black;
-  border-radius: 10px;
-  margin-top: 70px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.button_Back {
-  border: 1px solid black;
-  border-radius: 5px;
-  color: black;
-  background-color: rgba(0, 120, 5, 0.468);
-}
-
-.button_BackEven {
-  margin-left: 350px;
-  border: 1px solid black;
-  border-radius: 5px;
-  color: black;
-  background-color: rgba(0, 120, 5, 0.468);
-}
-
-.button_Back1 {
-  margin-left:  160px;
-  border: 1px solid black;
-  border-radius: 5px;
-  color: black;
-  background-color: rgba(0, 120, 5, 0.468);
-}
-
-.button_BackEven:hover {
-  color: white;
-  background-color: rgb(0, 120, 4);
-  transition: all 0.5s ease;
-}
-.button_Back1:hover {
-  color: white;
-  background-color: rgb(0, 120, 4);
-  transition: all 0.5s ease;
-}
-.button_Back2 {
-  margin-left: 55px;
-  border: 1px solid black;
-  border-radius: 5px;
-  color: black;
-  background-color: rgba(0, 120, 5, 0.468);
-}
-
-.button_Back2,
-.button_Back:hover {
-  color: white;
-  background-color: rgb(0, 120, 4);
-  transition: all 0.5s ease;
-}
-
-.colB3 {
-  grid-column: 1 / -1;
-}
-
-.colB3 p {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  gap: 1em;
-  margin-left: 15px;
-}
 
 /* -------------------------------Pour la card -------------- */
 .ac_card_body {
@@ -402,13 +262,12 @@ tr {
 
 .footer1 ion-icon {
   color: rgb(23, 176, 23);
+  font-size: 22px;
+  transition: 0.5s ease-in;
 }
 
 .footer1 a ion-icon:hover {
-  font-size: 25px;
   color: white;
-  transition: 0.1s ease-in;
-  position: sticky;
 }
 
 .footer1 span {
@@ -637,6 +496,7 @@ li {
   header {
     height: auto;
   }
+
   .ac_3colum,
   h3 {
     font-size: 12px;
@@ -677,15 +537,18 @@ li {
     font-size: 0.85rem;
   }
 }
-@media(max-width:363px){
-  .ac_card_body .P2{
-   
+
+@media(max-width:363px) {
+  .ac_card_body .P2 {
+
     display: none;
   }
-  .ac_card_body p{
+
+  .ac_card_body p {
     width: inherit;
   }
-  .ac_card_body h5{
+
+  .ac_card_body h5 {
     width: inherit;
   }
 }

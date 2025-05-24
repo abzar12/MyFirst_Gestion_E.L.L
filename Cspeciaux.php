@@ -141,13 +141,13 @@ if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
               <label for="date">Date de Naissance</label><br>
               <input class="input" type="date" name="date" id="date" required><br>
               <label for="langue">Langue préférée</label><br>
-              <input class="input" type="text" name="langue" list="langue" required><br>
+              <input class="input" type="text" name="langue" placeholder="Taper votre langue" list="langue" required><br>
               <datalist class="input" id="langue">
                 <option value="Français" selected>
                 <option value="Arabe">
               </datalist>
               <label for="pays">Pays</label><br>
-              <input class="input" type="text" list="pays" name="pays" required>
+              <input class="input" type="text" list="pays" placeholder="Taper votre pays" name="pays" required>
               <datalist class="input" id="pays">
                 <option value="Côte d'Ivoire">
                 <option value="Burkina Faso">
@@ -173,7 +173,7 @@ if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
                 <option value="6 ou 7 Mois">6 Mois à 1ans</option>
               </select><br>
               <label for="ville">Ville</label><br>
-              <input type="text" id="ville" name="ville" required><br>
+              <input type="text" id="ville" placeholder="Taper votre ville" name="ville" required><br>
               <label for="mois">Quand pensez-vous venir</label><br>
               <input type="date" name="mois" id="mois">
             </div>
@@ -195,10 +195,10 @@ if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
     </form>
     </div>
   </header>
-  <section class="ac_col1 py-" >
+  <section class="ac_col1 py-">
     <div class="container" style="overflow:hidden;">
-      <div class=" row"  data-aos="zoom-out">
-        <div class=" col-md-12" data-aos="" >
+      <div class=" row" data-aos="zoom-out">
+        <div class=" col-md-12" data-aos="">
           <p class="CR2">COURS PROFESSIONNEl</p>
           <table class="ac_3_A1" style="margin:auto;">
             <th class="text-uppercase">Nombre de Mois</th>

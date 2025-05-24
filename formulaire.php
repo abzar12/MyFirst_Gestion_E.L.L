@@ -26,6 +26,7 @@ try {
     $error = [];
     if (empty($Prenom) || empty($Nom) || empty($Email) || empty($Formation) || empty($Ville) || empty($Country) || empty($WhatsApp_Number) || empty($Duration)) {
       $error[] = "All field is required except Ghana Number";
+      exit();
     } else {
       $Email = filter_var($Email, FILTER_SANITIZE_EMAIL);
 

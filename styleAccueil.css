@@ -28,7 +28,6 @@ body{
     text-decoration: none;
     border-bottom: 1px solid transparent;
     transition: padding-bottom 0.4s ease-in-out, border-color 0.3s ease;
-    color: #D2691E ;
 }
 .ac-navbar .nav-link:hover{
     padding-bottom: 20px;
@@ -52,9 +51,8 @@ header{
     margin-top: 15%;
     text-align: center;
     color: white;
-    font-size: 2em;
+    font-size: 1.8em;
     font-weight: bolder;
-   
 }
 
 .A H1{
@@ -72,9 +70,10 @@ header{
     border-radius: 8px;
     border: 1px solid rgba(0, 120, 5, 0.468);
     margin-top: 55px;padding: auto 15px;
+    transition:all 1s ease;
 }
 .ac_link:hover{
-    color: rgb(210, 105, 30) ;
+    color: white ;
     cursor: pointer;
     animation: pulsation 1.5s infinite;
     background-color: rgb(0, 120, 4);
@@ -99,16 +98,16 @@ header{
 }
 
 .ion-icon1, .ion-icon3 {
-      border: 1px solid rgb(210, 105, 30);border-radius: 50%;padding: 10px; margin: 10px;color: rgb(210, 105, 30);font-size: 80px; width: 80px;background-color: rgb(0, 120, 4);
+      border: 1px solid rgb(227, 225, 224);border-radius: 50%;padding: 10px; margin: 10px;color: #505050;font-size: 80px; width: 80px; background-color: rgb(0, 120, 4);
 }
 .ion-icon2 {
-    border: 1px solid rgb(0, 120, 4);border-radius: 50%;padding: 10px; margin: 10px;color: rgba(0, 120, 4, 0.952);font-size: 80px; width: 80px;background-color: rgb(210, 105, 30);
+    border: 1px solid rgb(0, 120, 4);border-radius: 50%;padding: 10px; margin: 10px;color: rgba(0, 120, 4, 0.952);font-size: 80px; width: 80px;background-color: rgb(227, 225, 224);
 }
 .ac_col{
  overflow: hidden;
 }
   .container-fluid .ac_col1{
-    background-color: rgb(210, 105, 30);
+    background-color: rgb(80,80,80);
     border-radius: 5px;
   }
   .container-fluid .ac_col2{
@@ -116,7 +115,7 @@ header{
     border-radius: 5px;
   }
   .container-fluid .ac_col3{
-    background-color: rgb(210, 105, 30);
+    background-color: rgb(80,80,80);
     border-radius: 5px;
   }
   .ac_col h2{
@@ -137,14 +136,16 @@ header{
   /* AC_3COLUM */
   
   .ac_3 .CR1{
-    color: rgb(0, 0, 0);
+    color: rgb(0, 120, 4);
     font-weight: bolder;
     margin-left: auto;
+    padding: 15px;
   }
   .ac_3 .CR2{
-    color: rgb(0, 0, 0);
+    color: rgb(0, 120, 4);
     font-weight: bolder;
     margin-left: auto;
+    padding: 15px;
   }
   .ac_3 th{
     width: 300px;
@@ -157,9 +158,10 @@ header{
   .ac_4 p{
     
     text-decoration: underline;
-    color: rgb(210, 105, 30);
+    color: rgb(0, 120, 4);
     text-align: center;
     font-size: x-large;
+    padding: 15px;
     /* font-weight: bold; */
 
   }
@@ -180,19 +182,15 @@ header{
     color: black;
   }
   .ac_4  .aaaa{
-    text-decoration:none; border:1px solid black; margin-top:35px; padding:5px; background-color:rgb(210, 105, 30);
+    text-decoration:none; border:1px solid rgba(0, 120, 5, 0.468); margin-top:35px; padding:5px; background-color:rgba(0, 120, 5, 0.468);
     border-radius: 5px;
-    color: #ffffff;
+    transition: all 0.5s ease;
+    color: black;
   }
   .ac_4  .aaaa:hover{
-    background: linear-gradient(to right, #D2691E 0%, #D2691E 0%, transparent 100%);
-    background-size: 200% 100%;
-    animation: fillBackground 3s linear infinite;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-    position: relative;
-            
+    color: white;
+    background-color: rgb(0, 120, 4);
+              
   }
   /* AC_5colum */
   .ac_5 {
@@ -204,12 +202,44 @@ header{
    color: rgba(255,255,255);
   
 }
+.ac_5colum{
+width: 100%;
+}
+.ac_col55{
+padding: 15px;
+display: flex;
+gap: 15px;
+overflow: hidden;
+}
+.ac_col5{
+  border: 1px solid black;
+  border-radius:5px;
+  background-color: rgb(0, 120, 4);
+  text-align:center;
+  padding-bottom: 10px;
+}
+.ac_col5 p{
+  margin: 0;
+  padding: 10px;
+}
+.ac_col5 a{
+border: 1px solid rgb(236, 236, 236);
+border-radius: 5px;
+color: black;
+margin-bottom: 30px;
+padding: 3px;
+background-color: rgb(227, 225, 224);
+transition: all 0.2s ease-in;
+text-decoration: none;
+}
+.ac_col5 a:hover{
+  color: rgb(23, 176, 23);
+  font-weight: 600;
+}
 .ac_5 p{
   text-decoration: none;
-  margin-top: 20px;
   padding:0%;
   margin: 0%;
-  /* font-size:1em; */
   color: rgb(236, 236, 236);
 }
 .ac_5 .ac_5col1, .ac_5col2,.ac_5col3{
@@ -242,12 +272,11 @@ display: flex; align-items: center;text-align: center;
 
 .footer1 ion-icon{
   color: rgb(23, 176, 23);
+  font-size: 22px;
+  transition: 0.5s  ease-in;
 }
 .footer1 a ion-icon:hover{
-  font-size: 25px;
   color: white;
-  transition: 0.1s  ease-in;
-  position: sticky;
 }
 .footer1 span{
   margin: auto 15px auto -15px;

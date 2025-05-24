@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if (count($error) > 0) {
     // Stocker les erreurs dans la session
-    $_SESSION['errors'] = $error;
+    $_SESSION['errors'] = $error; 
 
     // Récupérer la page précédente (celle qui a envoyé le formulaire)
     $previousPage = !empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';

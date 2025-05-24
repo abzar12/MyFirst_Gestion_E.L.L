@@ -37,6 +37,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['UpdateStudent'])){
     $stmt->bindParam(':Dure',$Dure);
     $stmt->execute();
     }
+    $stmt = $conn->prepare("UPDATE NoteEtudiant SET Classroom = :Class_ET WHERE ID_ST = :ID") ;
+            $stmt->bindParam(':Class_ET', $Classe);
+            $stmt->bindParam(':ID', $IdStudent);
+            $stmt->execute();
     if(!empty($Classe)){
         try {
             switch ($Classe){
