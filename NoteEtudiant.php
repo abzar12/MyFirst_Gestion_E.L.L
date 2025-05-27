@@ -33,7 +33,7 @@ $Total_ET = count($result);
 // binding the three table students NoteEtudiant and classroom with the table Event_ST_Note_CL;
 try {
 
-    $stmt = $conn->query("   SELECT Students.ID, Students.Nom , Students.Prenom, Classroom.Class_Name, 
+    $stmt = $conn->query("   SELECT Students.ID, Students.Nom , Students.Prenom, NoteEtudiant.Classroom, 
                                   NoteEtudiant.Dictation, NoteEtudiant.Vocabulary, NoteEtudiant.Expression, 
                                   NoteEtudiant.Pronunciation, NoteEtudiant.Orale, NoteEtudiant.Reading, NoteEtudiant.Grammar,NoteEtudiant.Moyenne
                            
@@ -41,7 +41,7 @@ try {
                              JOIN NoteEtudiant On Students.ID = NoteEtudiant.ID_ST
                             JOIN Event_ST_Note_CL on NoteEtudiant.ID_Note = Event_ST_Note_CL.ID_Note
                             JOIN Classroom on Event_ST_Note_CL.ID_Class = Classroom.Class_ID
-                            ORDER BY Classroom.Class_Name ASC
+                            ORDER BY NoteEtudiant.Classroom ASC
                         ");
     $stmt->execute();
     $FullNote = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -172,7 +172,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
                 <div class="menu_etud">
                     <form method="GET" action="EditeNote.php">
                         <select name="level" id="class_filter">
-                            <option value="">All</option>
+                            <option value="">All</option> 
                             <option value="Level 1">Level 1</option>
                             <option value="Level 2">Level 2</option>
                             <option value="Level 3">Level 3</option>
@@ -224,7 +224,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
                                 <th><?= htmlspecialchars($row["ID"]); ?> </th>
                                 <td><?= htmlspecialchars($row["Nom"]); ?></td>
                                 <td><?= htmlspecialchars($row["Prenom"]); ?></td>
-                                <td><?= htmlspecialchars($row["Class_Name"]); ?></td>
+                                <td><?= htmlspecialchars($row["Classroom"]); ?></td>
                                 <td><?= htmlspecialchars($row["Dictation"]); ?></td>
                                 <td><?= htmlspecialchars($row["Vocabulary"]); ?></td>
                                 <td><?= htmlspecialchars($row["Expression"]); ?></td>

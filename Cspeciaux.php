@@ -1,15 +1,126 @@
 <?php
-if ($_GET['success'] == true) {
-  echo "<script> alert('ENREGISTRER DANS LA BASES')</script>";
-}
 session_start();
 
-if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
-  foreach ($_SESSION['errors'] as $err) {
-    echo "<p style='color:red;'>$err</p>";
-  }
-  unset($_SESSION['errors']); // Nettoyer les erreurs après affichage
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require "vendor/autoload.php";
+
+
+try {
+  require_once("connection.php");
+} catch (PDOException $th) {
+  die("connection error" . $th->getMessage());
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["Save"])) {
+
+  $Nom = $_POST['nom'];
+  $Prenom = $_POST['prenom'];
+  $Email = $_POST['email'];
+  $Formation = $_POST['formation'];
+  $Telephone = $_POST['tel'];
+  $Telephone_Whatsapp = $_POST['telWhatsapp'];
+  $Date_Naissance = $_POST['date'];
+  $Dure = $_POST['dure'];
+  $Langue = $_POST['langue'];
+  $Ville = $_POST['ville'];
+  $Pays = $_POST['pays'];
+  $Date_Depart = $_POST['mois'];
+
+  // 
+  $Nom = filter_var($Nom, FILTER_SANITIZE_STRING);
+  $Prenom = filter_var($Prenom, FILTER_SANITIZE_STRING);
+  $Email = filter_var($Email, FILTER_VALIDATE_EMAIL);
+  $Telephone = filter_var($Telephone, FILTER_SANITIZE_NUMBER_INT);
+  $Telephone_Whatsapp = filter_var($Telephone_Whatsapp, FILTER_SANITIZE_NUMBER_INT);
+  $Dure = filter_var($Dure, FILTER_SANITIZE_STRING);
+  $Langue = filter_var($Langue, FILTER_SANITIZE_STRING);
+  $Ville = filter_var($Ville, FILTER_SANITIZE_STRING);
+  $Pays = filter_var($Pays, FILTER_SANITIZE_STRING);
+  $Formation = filter_var($Formation, FILTER_SANITIZE_STRING);
+
+
+  if (
+    empty($Prenom) || empty($Nom) || empty($Telephone) || empty($Telephone_Whatsapp) || empty($Date_Naissance) || empty($Date_Depart) || empty($Dure) || empty($Langue) || empty($Ville) || empty($Pays) || empty($Formation)
+  ) {
+    $errors = "Merci de remplir tous les champs";
+    // if (!isset($_POST['contrat'])) {
+    //   $error[] = 'Vous devez accepter les termes et conditions.';
+    // }
+  } elseif (
+    strlen($Nom) < 2 || strlen($Prenom) < 2 || strlen($Telephone) < 7 || strlen($Telephone_Whatsapp) < 7 || strlen($Langue) < 3 || strlen($Ville) < 3 || strlen($Pays) < 3
+  ) {
+    $errors = "Vérifiez bien les informations.";
+  } else {
+
+    try {
+      $req = "insert into Inscription_Etudiant (Nom, Prenom, Email, Formation, Telephone, Telephone_Whatsapp, Date_Naissance, Dure, Langue, Ville, Pays, Date_Depart) values (:Nom, :Prenom, :Email, :Formation, :Telephone, :Telephone_Whatsapp, :Date_Naissance, :Dure, :Langue, :Ville, :Pays, :Date_Depart)";
+      $stmt = $conn->prepare($req);
+
+      $stmt->bindParam(':Nom', $Nom);
+      $stmt->bindParam(':Prenom', $Prenom);
+      $stmt->bindParam(':Email', $Email);
+      $stmt->bindParam(':Formation', $Formation);
+      $stmt->bindParam(':Telephone', $Telephone);
+      $stmt->bindParam(':Telephone_Whatsapp', $Telephone_Whatsapp);
+      $stmt->bindParam(':Date_Naissance', $Date_Naissance);
+      $stmt->bindParam(':Dure', $Dure);
+      $stmt->bindParam(':Langue', $Langue);
+      $stmt->bindParam(':Ville', $Ville);
+      $stmt->bindParam(':Pays', $Pays);
+      $stmt->bindParam(':Date_Depart', $Date_Depart);
+      $stmt->execute();
+      // send message unsing Gmail on a director acount
+      $mail = new PHPMailer(true);
+      try {
+        $mail->isSMTP();
+        $mail->Host = "smtp.gmail.com";
+        $mail->SMTPAuth = true;
+        $mail->Username = "abzarcamara9@gmail.com";
+        $mail->Password = "xbdmdaftrkaweupi";
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = "587";
+
+        $mail->setFrom("testELL@test.com", "Moussa");
+        $mail->addAddress("abzarcamara9@gmail.com", "Abzar");
+
+        //Content
+        $mail->Subject = "New Student";
+        $mail->Body    = "Good Morning Abzar Camara you have a new student : $Nom $Prenom\n" .
+          "Email: $Email";
+        $mail->send();
+      } catch (Exception $th) {
+        echo "<script>alert('ERROR D'ENREGISTREMENT OK')</script>";
+      }
+
+      try {
+
+        $stmt = $conn->query("select Id from users WHERE Role =  'Staff'");
+        $Result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $Director = $Result['Id'];
+        $message = "un nouveau étudiant $Nom $Prenom avec un Email de : $Email a été inscrit";
+        $req = "insert into Message (Id_Admin, ID_ET, Email, Message) values(:ID_Admin , :Nom, :Email, :Message)";
+        $stmt = $conn->prepare($req);
+        $Nom_Prenom_ET = $Nom . " " . $Prenom;
+        $stmt->bindParam(':ID_Admin', $Director);
+        $stmt->bindParam(':Nom', $Nom_Prenom_ET);
+        $stmt->bindParam(':Email', $Email);
+        $stmt->bindParam(':Message', $message);
+        $stmt->execute();
+
+        echo "<script> alert('DONNER ENREGISTRER VOUS SEREZ CONTACT BIENTOT')</script>";
+      } catch (PDOException $th) {
+        die("error" . $th->getMessage());
+      }
+    } catch (\Throwable $th) {
+      echo "errro2" . $th->getMessage();
+    }
+  }
+}
+
+session_unset();
+session_destroy();
 ?>
 <!doctype html>
 <html lang="en">
@@ -93,19 +204,21 @@ if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
 
       </div>
     </nav>
-    <form action="FormulaireRET.php" method="post" style="overflow:hidden;">
-      <div class="principale container" data-aos="zoom-in">
+    <form action="FormulaireRET.php" method="post">
+      <div class="principale container">
         <div class="part2 active">
-
+          <div class="part2head">
+            <h5 class="text-uppercase">Inscription</h5>
+            <label class="text-uppercase" style="font-size:15px"><?php echo $errors; ?></label>
+          </div>
           <div class="partA">
-            <h3 class="text-uppercase">Inscription</h3><br>
             <div class="colA1">
               <label for="nom" class="onlyNom">Nom</label><br>
               <input class="input" type="text" id="nom" name="nom" placeholder="Taper votre Nom" Required><br>
               <label for="email">Email</label><br>
               <input class="input" type="email" name="email" id="email" placeholder="@gmail.com" Required><br>
               <label for="tel">Telephone</label><br>
-              <input class="input" type="tel" name="tel" id="tel" placeholder="+233 XXXXXXXXX" required><br>
+              <input class="input" type="tel" name="tel" id="tel" placeholder="+233 XXXXXXXX" required><br>
             </div>
             <div class="colA2">
               <label for="prenom" class="onlyNom">Prenom</label><br>
@@ -130,24 +243,28 @@ if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
                 </optgroup>
               </select><br>
               <label for="telWhatsapp">Téléphone Whatsapp:</label><br>
-              <input type="tel" name="telWhatsapp" id="telWhatsapp" placeholder="+233 XXXXXXXXX" required><br>
-              <button class="button_Back1" type="button" onclick="nextStep()">Next</button>
+              <input type="tel" name="telWhatsapp" id="telWhatsapp" placeholder="+233 XXXXXXXX" required><br>
             </div>
+
           </div>
+          <div class="button_Back1">
+            <button type="button" onclick="nextStep()">Next</button>
+          </div>
+
         </div>
-        <div class="part2 ">
+        <div class="part2 special">
           <div class="partB">
             <div class="colB1">
               <label for="date">Date de Naissance</label><br>
               <input class="input" type="date" name="date" id="date" required><br>
               <label for="langue">Langue préférée</label><br>
-              <input class="input" type="text" name="langue" list="langue" required><br>
+              <input class="input" type="text" name="langue" placeholder="Taper votre langue" list="langue" required><br>
               <datalist class="input" id="langue">
                 <option value="Français" selected>
                 <option value="Arabe">
               </datalist>
               <label for="pays">Pays</label><br>
-              <input class="input" type="text" list="pays" name="pays" required>
+              <input class="input" type="text" placeholder="Taper votre pays" list="pays" name="pays" required>
               <datalist class="input" id="pays">
                 <option value="Côte d'Ivoire">
                 <option value="Burkina Faso">
@@ -162,7 +279,7 @@ if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
               </datalist><br>
             </div>
             <div class="colB2">
-              <label for="dure">Durée</label>
+              <label for="dure">Durée</label><br>
               <select name="dure" id="dure" required>
                 <option value="1 Mois">1 Mois</option>
                 <option value="2 Mois">2 Mois</option>
@@ -173,17 +290,20 @@ if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
                 <option value="6 ou 7 Mois">6 Mois à 1ans</option>
               </select><br>
               <label for="ville">Ville</label><br>
-              <input type="text" id="ville" name="ville" required><br>
+              <input type="text" id="ville" placeholder="Taper votre ville" name="ville" required><br>
               <label for="mois">Quand pensez-vous venir</label><br>
               <input type="date" name="mois" id="mois">
             </div>
-            <div class="colB3">
-              <p><input type="checkbox" name="contrat" id="contrat" class="a1" style="width:18px; margin:0;">
-                <span for="contrat" style="color:black;">D'accord pour les termes de condition</span> <br>
-              </p>
 
+          </div>
+          <div class="colB3 special">
+            <div class="" style="display: flex; align-items:center;">
+              <input type="checkbox" name="contrat" id="contrat" required class="input special">
+              <label for="contrat" style="font-size: 18px; margin-left:10px">D'accord pour les termes de condition</label>
+            </div>
+            <div class="partB_button">
               <button class="button_Back" type="button" onclick="prevStep()">Back</button>
-              <button class="button_BackEven b" type="submit"> Envoyé</button>
+              <button class="button_BackEven b" name="Save" type="submit"> Envoyé</ion-icon></button>
             </div>
           </div>
         </div>
@@ -195,10 +315,10 @@ if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
     </form>
     </div>
   </header>
-  <section class="ac_col1 py-" >
+  <section class="ac_col1 py-">
     <div class="container" style="overflow:hidden;">
-      <div class=" row"  data-aos="zoom-out">
-        <div class=" col-md-12" data-aos="" >
+      <div class=" row" data-aos="zoom-out">
+        <div class=" col-md-12" data-aos="">
           <p class="CR2">COURS PROFESSIONNEl</p>
           <table class="ac_3_A1" style="margin:auto;">
             <th class="text-uppercase">Nombre de Mois</th>

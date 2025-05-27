@@ -14,6 +14,7 @@ $img4 = "img/IMG_2206.JPG";
   <title>E.L.L</title>
   <link href="asset/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="icon" href="/favicon.ico" type="" >
   <link rel="stylesheet" href="styleAccueil.css">
   
 </head>
@@ -128,7 +129,7 @@ $img4 = "img/IMG_2206.JPG";
         </div>
         <div class="ac_col2 col m-2 " data-aos="zoom-in">
           <ion-icon class="ion-icon2" name="clipboard-outline"></ion-icon>
-          <h2 style="color: rgb(210, 105, 30)">Environnement propice</h2>
+          <h2 style="">Environnement propice</h2>
           <p>Dans un environnement propice à l'apprentissage, nous favorisons la réussite de nos étudiants.</p>
         </div>
         <div class="ac_col3 col m-2" data-aos="fade-left">
@@ -142,7 +143,7 @@ $img4 = "img/IMG_2206.JPG";
   <section class="ac_3colum py-5">
     <div class="container-fluid">
       <div class="ac_3 row">
-        <h3 style="text-align: center; color:rgb(210, 105, 30);  font-family:auto; text-decoration:underline; font-weight: bold;">NOS COURS </h3>
+        <h3 style="text-align: center; color:rgb(0, 120, 4);  font-family:auto; text-decoration:underline; font-weight: bold;">NOS COURS </h3>
         <div class=" col-md-6">
           <p class="CR1">COURS NORMAUX</p>
           <table class="ac_3_A1">
@@ -310,7 +311,7 @@ $img4 = "img/IMG_2206.JPG";
 
           </table>
         </div>
-        <a class="aaaa" href="Formulaire.php">Passer a L'Inscription</a>
+        <a class="aaaa" href="Formulaire.php">Aller à l'inscription</a>
       </div>
     </div>
   </section>
@@ -348,50 +349,50 @@ $img4 = "img/IMG_2206.JPG";
   </section>
   <section class="ac_5colum py-3">
     <div class="container-fluid">
-      <div class="ac_col row " style="width:100%;">
-        <div class="ac_col5 col " data-aos="fade-right" style="border: 1px solid black;border-radius:20px;background-color: rgb(0, 120, 4);padding-left:50px;padding-right:50px;text-align:center;padding-bottom: 15px;margin-left:20px;margin-right:15px;margin-bottom: 5px;">
-          <h3 style="margin-top:10px; color:white; text-align:center; margin-bottom:15px;"> Cours d'anglais</h3>
-          <p style="margin-left:30px; margin-right:15px;  margin-bottom:15px; ">ELL offre une expérience immersive unique, combinant l’éducation linguistique avec une découverte culturelle inoubliable.</p>
-          <a href="Formulaire.php" style="border:1px solid black; border-radius:10px; text-decoration:none; color: black ;cursor: pointer;background-color: #D2691E; padding:5px">INSCRIRE</a>
+      <div class="ac_col55 row ">
+        <div class="ac_col5 col " data-aos="fade-right" >
+          <h3 style="margin-top:10px; color:white; text-align:center; margin-bottom:10px;"> Cours d'anglais</h3>
+          <p >ELL offre une expérience immersive unique, combinant l’éducation linguistique avec une découverte culturelle inoubliable.</p>
+          <a href="Formulaire.php" >INSCRIRE</a>
         </div>
-        <div class="ac_col5 col " data-aos="zoom-in" style="border: 1px solid black;border-radius:20px;background-color: rgb(0, 120, 4);padding-left:50px;padding-right:50px;text-align:center;padding-bottom: 15px;margin-left:20px;margin-right:15px;margin-bottom: 5px;">
+        <div class="ac_col5 col " data-aos="zoom-in" >
           <h3 style="margin-top:10px; color:white; text-align:center;">TOEFL | IELTS | SAT</h3>
-          <p style="margin-left:30px; margin-right:15px; ">A E.L.L, préparez vos examens de langue anglaise standardisés les plus reconnus au monde : le TOEFL, l’IELTS et le SAT.</p>
+          <p >A E.L.L, préparez vos examens de langue anglaise standardisés les plus reconnus au monde : le TOEFL, l’IELTS et le SAT.</p>
         </div>
-        <div class="ac_col5 col " data-aos="fade-left" style="border: 1px solid black;border-radius:20px;background-color: rgb(0, 120, 4);padding-left:50px;padding-right:50px;text-align:center;padding-bottom: 15px;margin-left:20px;margin-right:15px;margin-bottom: 5px;">
-          <h3 style="margin-top:10px; color:white; text-align:center; margin-bottom:15px;">Cours d' informatique</h3>
-          <p style="margin-left:30px; margin-right:15px; margin-bottom:15px; ">Nous proposons des programmes d’informatique conçus pour vous doter de compétences numériques essentielles.</p>
-          <a href="Cinformatiom.php" style="border:1px solid black; border-radius:10px; text-decoration:none; color: black ;cursor: pointer;background-color: #D2691E; padding:5px">INSCRIRE</a>
+        <div class="ac_col5 col " data-aos="fade-left" >
+          <h3 style="margin-top:10px; color:white; text-align:center; margin-bottom:10px;">Cours d' informatique</h3>
+          <p >Nous proposons des programmes d’informatique conçus pour vous doter de compétences numériques essentielles.</p>
+          <a href="CInformatique.php" >INSCRIRE</a>
         </div>
       </div>
     </div>
   </section>
   <section class="ac_6colum py-5">
     <div class="container-fluid">
-      <div class="row" style="justify-content: center; align-item:center; text-align: center; margin:auto;  ">
-        <div class="card" style="width: 18rem; text-decoration:none; padding:0px; border:none; background-color:transparent;">
-          <img src="<?php echo $img3; ?>" alt="Director" style="border: 1px solid transparent; border-radius:15px; background-size: cover; background-repeat: no-repeat; background-position: center;">
+      <div class="row" style="justify-content: center; align-item:center;text-align: center; margin:auto;  ">
+        <div class="card" style="width: 18rem; text-decoration:none; margin-right:10px; padding:0px; border:none; background-color:transparent;">
+          <img src="<?php echo $img3; ?>" alt="Director" style="border: 1px solid transparent; border-radius:5px;  background-size: cover; background-repeat: no-repeat; background-position: center;">
           <div class="card-body">
             <p>Hamath Dialllo</p>
             <p>Directeur</p>
           </div>
         </div>
-        <div class="card" style="width: 18rem; text-decoration:none; padding:0px; border:none; background-color:transparent;">
-          <img src="<?php echo $img3; ?>" alt="Director" style="border: 1px solid transparent; border-radius:15px; background-size: cover; background-repeat: no-repeat; background-position: center;">
+        <div class="card" style="width: 18rem; text-decoration:none; margin-right:10px; padding:0px; border:none; background-color:transparent;">
+          <img src="<?php echo $img3; ?>" alt="Director" style="border: 1px solid transparent; border-radius:5px;  background-size: cover; background-repeat: no-repeat; background-position: center;">
           <div class="card-body">
             <p>Hamath Dialllo</p>
             <p>Directeur</p>
           </div>
         </div>
-        <div class="card" style="width: 18rem; text-decoration:none; padding:0px; border:none; background-color:transparent;">
-          <img src="<?php echo $img3; ?>" alt="Director" style="border: 1px solid transparent; border-radius:15px; background-size: cover; background-repeat: no-repeat; background-position: center;">
-          <div class="card-body " style="background-color:transparent; border-raduis:10px;">
+        <div class="card" style="width: 18rem; text-decoration:none; margin-right:10px; padding:0px; border:none; background-color:transparent;">
+          <img src="<?php echo $img3; ?>" alt="Director" style="border: 1px solid transparent; border-radius:5px;  background-size: cover; background-repeat: no-repeat; background-position: center;">
+          <div class="card-body " style="background-color:transparent;">
             <p>Hamath Dialllo</p>
             <p>Directeur</p>
           </div>
         </div>
-        <div class="card" style="width: 18rem; text-decoration:none; padding:0px; border:none; background-color:transparent;">
-          <img src="<?php echo $img3; ?>" alt="Director" style="border: 1px solid transparent; border-radius:15px; background-size: cover; background-repeat: no-repeat; background-position: center;">
+        <div class="card" style="width: 18rem; text-decoration:none;  padding:0px; border:none; background-color:transparent;">
+          <img src="<?php echo $img3; ?>" alt="Director" style="border: 1px solid transparent; border-radius:5px;  background-size: cover; background-repeat: no-repeat; background-position: center;">
           <div class="card-body">
             <p>Hamath Dialllo</p>
             <p>Directeur</p>

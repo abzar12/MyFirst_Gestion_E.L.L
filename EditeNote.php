@@ -4,7 +4,7 @@ use PSpell\Dictionary;
 
 $Level = $_GET["level"];
 if ($Level === "") {
-    header("Location:NoteEtudiant.php");
+    header("Location:NoteEtudiant.php"); 
     exit();
 } else {
     try{

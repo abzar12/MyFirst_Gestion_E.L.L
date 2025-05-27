@@ -21,7 +21,7 @@ try {
     } else {
       $Email = filter_var($Email, FILTER_SANITIZE_EMAIL);
 // insertion de l'etudiant dans la table students 
-      $stmt1 = $conn->prepare("insert into Students (Nom, Prenom, DateNaissance, Email, Country, TelephoneWhatsapp, TelephoneGhana, Classe, Formation, Dure) values (:Nom, :Prenom, :Birthday, :Email, :Country,:TelephoneWhatsapp , :TelephoneGhana, :Classroom, :Formation, :Dure)");
+      $stmt1 = $conn->prepare("insert into Students (Nom, Prenom, DateNaissance, Email, Country, TelephoneWhatsapp, TelephoneGhana, Class, Formation, Dure) values (:Nom, :Prenom, :Birthday, :Email, :Country,:TelephoneWhatsapp , :TelephoneGhana, :Classroom, :Formation, :Dure)");
       $stmt1->bindParam(':Nom', $Nom);
       $stmt1->bindParam(':Prenom', $Prenom);
       $stmt1->bindParam(':Birthday', $Birthday);
@@ -34,8 +34,8 @@ try {
       $stmt1->bindParam(':Dure', $Duration);
       $stmt1->execute();
 
-      // selection l'etudiant enregistrer pour sauvegarder son classe dans la table NoteEtudiant
-      $stmt = $conn->prepare("SELECT ID, Classe FROM Students WHERE Nom =:Nom AND Prenom =:Prenom AND TelephoneWhatsapp =:TelephoneWhatsapp ");
+      // selection l'etudiant enregistrer pour sauvegarder son class dans la table NoteEtudiant
+      $stmt = $conn->prepare("SELECT ID, Class FROM Students WHERE Nom =:Nom AND Prenom =:Prenom AND TelephoneWhatsapp =:TelephoneWhatsapp ");
       $stmt->execute([
         ':Nom' => $Nom,
         ':Prenom' => $Prenom,
@@ -46,10 +46,10 @@ try {
       if($Student_Id){
         $stmt = $conn->prepare("insert into NoteEtudiant (ID_ST, Classroom ) values (:ID_ST, :Classroom)");
       $stmt->bindParam(':ID_ST', $Student_Id['ID']); 
-      $stmt->bindParam(':Classroom', $Student_Id['Classe']);
+      $stmt->bindParam(':Classroom', $Student_Id['Class']);
       $stmt->execute();
       }
-      // apres inserer des etudiant dans la table Students et initialiser la note avec (ID_ST) qui est Id de l'etudiant et sa classe dans la table NoteEtudiant;
+      // apres inserer des etudiant dans la table Students et initialiser la note avec (ID_ST) qui est Id de l'etudiant et sa class dans la table NoteEtudiant;
       //donc on relier dans la table Even_ST_Note_Cl les deux champs ;
       // # 1 on doit recuperer ID de note dans la table NoteEtudiant;
       $stmt2 = $conn->prepare("SELECT ID_Note FROM NoteEtudiant WHERE ID_ST = :ID_ST");
@@ -57,10 +57,10 @@ try {
       $stmt2->execute();
       $ID_Note = $stmt2->fetch(); 
       if($ID_Note){
-        // # 2 on doit recuperer ID de Classe dans la table Classroom where Class_Name= $Student_Id['Classe'];
+        // # 2 on doit recuperer ID de Class dans la table Classroom where Class_Name= $Student_Id['Class'];
       // Class_S
-      $stmt = $conn->prepare("SELECT Class_ID FROM Classroom WHERE Class_Name = :Class_ST");// Class_ST=c'est la classe de etudiant;
-      $stmt->bindParam(':Class_ST', $Student_Id['Classe']);
+      $stmt = $conn->prepare("SELECT Class_ID FROM Classroom WHERE Class_Name = :Class_ST");// Class_ST=c'est la class de etudiant;
+      $stmt->bindParam(':Class_ST', $Student_Id['Class']);
       $stmt->execute();
       $Class_ID = $stmt->fetch(); 
       $stmt = $conn->prepare("INSERT INTO Event_ST_Note_CL (ID_ST, ID_Note, ID_Class) 
@@ -68,7 +68,7 @@ try {
       ");
       $stmt->bindParam(':ID_ST', $Student_Id['ID']);
       $stmt->bindParam(':ID_Note', $ID_Note['ID_Note']);
-      $stmt->bindParam(':ID_Class', $Class_ID['Class_ID']);
+      $stmt->bindParam(':ID_Class', $Student_Id['Class']);
       $stmt->execute(); 
         //foreach for students
       foreach ($Student_Id as $Student_key);
