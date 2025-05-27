@@ -27,7 +27,11 @@ try {
     if (empty($Prenom) || empty($Nom) || empty($Email) || empty($Formation) || empty($Ville) || empty($Country) || empty($WhatsApp_Number) || empty($Duration)) {
       $error[] = "All field is required except Ghana Number";
       exit();
-    } else {
+    } elseif (
+      strlen($Nom) < 2 || strlen($Prenom) < 2 || strlen($Telephone) < 7 || strlen($Telephone_Whatsapp) < 7 || strlen($Langue) < 3 || strlen($Ville) < 3 || strlen($Pays) < 3
+    ) {
+      $error[] = "Vérifiez bien les informations.";
+    } else{
       $Email = filter_var($Email, FILTER_SANITIZE_EMAIL);
 
       $stmt = $conn->prepare("insert into Inscription_Etudiant (Nom, Prenom, Email, Formation, Telephone, Telephone_Whatsapp, Date_Naissance, Dure, Langue, Ville, Pays, Date_Depart) values (:Nom, :Prenom, :Email, :Formation, :Telephone, :Telephone_Whatsapp, :Birthday, :Dure, :Langue, :Ville, :Country, :Depart)");
@@ -102,7 +106,7 @@ try {
       // $stmt->bindParam(':Prenom', $Prenom);
       // $stmt->bindParam(':Classroom', $Classroom);
       // $stmt->execute();
-      echo "<script>alert('The Student has been saved successfully')</script>";
+      echo "<script>alert('DONNER ENREGISTRER VOUS SEREZ CONTACT BIENTOT')</script>";
     }
   }
 } catch (PDOException $th) {
@@ -204,6 +208,12 @@ try {
   <div class="section flex justify-center items-center mt-9 md:mt-auto md:h-screen">
     <form action="" method="post" id="formsignUp" class="grid grid-cols-1 md:grid md:grid-cols-2 ml-auto mr-auto md:w-[620px] text-center backdrop-blur-md bg-white right-40 rounded-lg border-2 border-black border-solid">
       <div class="md:col-span-2 text-center mt-5">
+      <label class="md:col-span-2 mt-5 text-center">
+        <?php if (!empty($error)) {
+          foreach ($error as $errors) {
+            echo "<div style='color: red;'>$errors</div>";
+          }
+        }; ?></label> <br>
         <label class="p-0 mt-5 font-[Lora] text-[25px] md:w-[150px] text-[rgb(0,120,4)] border-b-[rgb(0,120,4)]  border-b">INSCRIRE</label>
       </div>
 
@@ -335,12 +345,6 @@ try {
           <a href="Accueil.php"><i class="fa-solid font-bold fa-arrow-left text-black "></i> Go Page Accueil</a>
         </div>
       </div>
-      <label class="md:col-span-2 text-center">
-        <?php if (!empty($error)) {
-          foreach ($error as $errors) {
-            echo "<div style='color: red;'>$errors</div>";
-          }
-        }; ?></label> <br>
       <div class="md:col-span-2 hidden md:block text-center">
         <button type="submit" name="Save" class=" w-[150px] border-2 rounded-md  mt-5 mb-5 p-1 pr-1 border-solid border-[rgba(0,120,5,0.468)] font-[Lora] bg-[rgba(0,120,5,0.468)] text-[rgba(0,0,0,0.82)] hover:bg-[rgb(0,120,4)] transition-colors duration-300">Save</button>
       </div>
