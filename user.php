@@ -114,7 +114,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
                         <a href="teacher.php"><ion-icon name="person-circle" class="smallicon"></ion-icon> <span>Teachers</span></a>
                     </li>
                     <li class="active">
-                        <a href="user.php"><ion-icon name="person-circle-outline" class="smallicon"></ion-icon> <span>Teachers</span></a>
+                        <a href="user.php"><ion-icon name="person-circle-outline" class="smallicon"></ion-icon> <span>Users</span></a>
                     </li>
                     <li>
                         <a href="logOut.php"><ion-icon name="log-out"></ion-icon><span>Logout</span></a>

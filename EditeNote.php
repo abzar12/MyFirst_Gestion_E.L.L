@@ -16,7 +16,7 @@ if ($Level === "") {
                                   JOIN NoteEtudiant on Students.ID = NoteEtudiant.ID_ST
                                   JOIN Event_ST_Note_CL ON  NoteEtudiant.ID_Note = Event_ST_Note_CL.ID_Note
                                   JOIN Classroom ON Event_ST_Note_CL.ID_Class = Classroom.CLass_ID
-                            Where NoteEtudiant.Classroom = :level ");
+                            Where Classroom.Class_Name = :level ");
     $stm->bindParam(':level', $Level);
     $stm->execute();
     $result = $stm->fetchAll(PDO::FETCH_ASSOC);

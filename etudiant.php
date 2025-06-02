@@ -31,18 +31,19 @@ try {
               JOIN Event_ST_Note_CL ON Students.ID = Event_ST_Note_CL.ID_ST
               JOIN NoteEtudiant ON Event_ST_Note_CL.ID_Note = NoteEtudiant.ID_Note
               JOIN Classroom ON Event_ST_Note_CL.ID_Class = Classroom.Class_ID
-     WHERE 1=1 ORDER BY Students.Class ASC"; // WHERE 1=1 permet d'ajouter des conditions dynamiques
+     WHERE 1=1 "; // WHERE 1=1 permet d'ajouter des conditions dynamiques
     $params = [];
 
     if (!empty($search)) {
-        $stmt .= " AND (Students.Nom LIKE ? OR Students.Prenom LIKE ?)";
+        $stmt .= " AND (Nom LIKE ? OR Prenom LIKE ?)";
         $params[] = "%$search%";
         $params[] = "%$search%";
     }
     if (!empty($class_filter)) {
-        $stmt .= " AND Classroom.Class_Name = ?";
+        $stmt .= " AND Class_Name = ?";
         $params[] = $class_filter;
     }
+    $stmt.=" ORDER BY Students.Class ASC";
     $resl = $conn->prepare($stmt);
     $resl->execute($params);
     $result = $resl->fetchAll(PDO::FETCH_ASSOC);
@@ -124,7 +125,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
             <div class="ac_row row">
                 <ul class="ac_menu nav  mb-3" id="pills-tab" role="tablist">
                     <li>
-                        <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon><span>Dashbord</span> </a>
+                        <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon><span>Dashboard</span> </a>
                     </li>
                     <?php if($userRole==="Director" || $userRole === "Staff") {?>
                     <li>
@@ -233,7 +234,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
                     <?php endif; ?>
                 </tbody>
             </table>
-        </div>
+        </div> 
     </section>
     <!-- ------------------------------ mon javascript ------------------------------ !-->
     <script>

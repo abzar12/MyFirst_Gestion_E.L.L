@@ -149,8 +149,8 @@ body {
 /* -----------------fin de la structure de base-------------- */
 .section2{
     position: absolute;
-    top: 100px;
-    left: 35vh;
+    top: 30px;
+    left: 40vh;
     right: 10vh;
     width: auto;
 }
@@ -200,7 +200,7 @@ body {
 .section3 {
     display: block;
     position: absolute;
-    top: 230px;
+    top: 150px;
     left: 37vh;
     right: 7vh;
     width: auto;
@@ -227,7 +227,7 @@ body {
 
 .ac_table {
    
-    height: auto;
+    max-height: 400px;
     margin: 0 auto;
     overflow-x: auto;
     /* Scroll horizontal */
