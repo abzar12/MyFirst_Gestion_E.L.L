@@ -70,7 +70,7 @@ $userRole = $_SESSION['UserRole'];
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="navbarSidebar.css">
-    <title>administrateur</title>
+    <title>ELL ENGLISH LANGUAGE LABORATORY Admin</title>
 </head>
 
 <body>

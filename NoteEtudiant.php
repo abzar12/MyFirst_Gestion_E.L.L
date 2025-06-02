@@ -20,20 +20,20 @@ if ($sucesuccessss == true) {
     echo ("<script> alert('SUCCESSFULL...')</script>");
 }
 
-$search = isset($_POST['query']) ? $_POST['query'] : "";
-if ($_POST['query'] == "") {
-    $stmt = $conn->prepare("SELECT * FROM NoteEtudiant");
-    $stmt->execute();
-} else {
-    $stmt = $conn->prepare("SELECT * FROM NoteEtudiant WHERE Nom LIKE ? OR Prenom LIKE ? OR Classroom LIKE ?");
-    $stmt->execute(["%$search%", "%$search%", "%$search%"]);
-}
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$Total_ET = count($result);
+// $search = isset($_POST['query']) ? $_POST['query'] : "";
+// if ($_POST['query'] == "") {
+//     $stmt = $conn->prepare("SELECT * FROM NoteEtudiant");
+//     $stmt->execute();
+// } else {
+//     $stmt = $conn->prepare("SELECT * FROM NoteEtudiant WHERE Nom LIKE ? OR Prenom LIKE ? OR Classroom LIKE ?");
+//     $stmt->execute(["%$search%", "%$search%", "%$search%"]);
+// }
+// $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// $Total_ET = count($result);
 // binding the three table students NoteEtudiant and classroom with the table Event_ST_Note_CL;
 try {
-
-    $stmt = $conn->query("   SELECT Students.ID, Students.Nom , Students.Prenom, NoteEtudiant.Classroom, 
+    $search = isset($_POST['query']) ? $_POST['query'] : "";
+    $stmt =$conn->prepare( "SELECT Students.ID, Students.Nom , Students.Prenom, Classroom.Class_Name, 
                                   NoteEtudiant.Dictation, NoteEtudiant.Vocabulary, NoteEtudiant.Expression, 
                                   NoteEtudiant.Pronunciation, NoteEtudiant.Orale, NoteEtudiant.Reading, NoteEtudiant.Grammar,NoteEtudiant.Moyenne
                            
@@ -41,12 +41,13 @@ try {
                              JOIN NoteEtudiant On Students.ID = NoteEtudiant.ID_ST
                             JOIN Event_ST_Note_CL on NoteEtudiant.ID_Note = Event_ST_Note_CL.ID_Note
                             JOIN Classroom on Event_ST_Note_CL.ID_Class = Classroom.Class_ID
-                            ORDER BY NoteEtudiant.Classroom ASC
-                        ");
-    $stmt->execute();
-    $FullNote = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                            WHERE Students.Nom LIKE ? OR Students.Prenom LIKE ?");
+    $stmt->execute(["%$search%", "%$search%"]);
+    $result= $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $Total_ET= count($result);
+  
 } catch (PDOException $th) {
-    die("ERROR OF DATA BASA" . $th->getMessage());
+    die("ERROR OF DATA BASE" . $th->getMessage());
 }
 
 
@@ -137,7 +138,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
             <div class="ac_row row">
                 <ul class="ac_menu nav  mb-3" id="pills-tab" role="tablist">
                     <li>
-                        <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon> <span>Dashbord</span></a>
+                        <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon> <span>Dashboard</span></a>
                     </li>
                     <?php if ($userRole === "Director" || $userRole === "Staff") { ?>
                         <li>
@@ -157,7 +158,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
                         <li>
                             <a href="user.php"><ion-icon name="person-circle-outline" class="smallicon"></ion-icon> <span>Users</span></a>
                         </li>
-                    <?php }; ?> 
+                    <?php }; ?>
                     <li>
                         <a href="logOut.php"><ion-icon name="log-out"></ion-icon><span>Logout</span></a>
                     </li>
@@ -172,7 +173,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
                 <div class="menu_etud">
                     <form method="GET" action="EditeNote.php">
                         <select name="level" id="class_filter">
-                            <option value="">All</option> 
+                            <option value="">All</option>
                             <option value="Level 1">Level 1</option>
                             <option value="Level 2">Level 2</option>
                             <option value="Level 3">Level 3</option>
@@ -199,7 +200,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
     <section class="section3">
         <h1><span class="ac_span"><?php echo $Total_ET; ?></span> Students</h1>
         <div class="container ac_table" id="table-container">
-            <?php (count($FullNote) > 0); ?>
+            <?php (count($result) > 0); ?>
             <table class="table display nowrap" id="myTable">
                 <thead>
                     <tr>
@@ -218,13 +219,13 @@ $_SESSION['LAST_ACTIVITY'] = time();
                     </tr>
                 </thead>
                 <tbody id="mytable_list">
-                    <?php if (!empty($FullNote)): ?>
-                        <?php foreach ($FullNote as $row): ?>
+                    <?php if (!empty($result)): ?>
+                        <?php foreach ($result as $row): ?>
                             <tr>
                                 <th><?= htmlspecialchars($row["ID"]); ?> </th>
                                 <td><?= htmlspecialchars($row["Nom"]); ?></td>
                                 <td><?= htmlspecialchars($row["Prenom"]); ?></td>
-                                <td><?= htmlspecialchars($row["Classroom"]); ?></td>
+                                <td><?= htmlspecialchars($row["Class_Name"]); ?></td>
                                 <td><?= htmlspecialchars($row["Dictation"]); ?></td>
                                 <td><?= htmlspecialchars($row["Vocabulary"]); ?></td>
                                 <td><?= htmlspecialchars($row["Expression"]); ?></td>

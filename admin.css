@@ -149,7 +149,7 @@ body {
 .section2 {
     position: absolute;
     top: 100px;
-    left: 35vh;
+    left: 40vh;
     right: 10vh;
 }
 
@@ -228,6 +228,7 @@ body {
 }
 
 .ac_table {
+    max-height: 330px;
     margin: 0 auto;
     overflow-x: auto;
     /* Scroll horizontal */

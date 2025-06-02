@@ -75,7 +75,7 @@ $userRole = $_SESSION['UserRole'];
             <div class="ac_row row">
                 <ul class="ac_menu nav  mb-3" id="pills-tab" role="tablist">
                     <li>
-                        <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon> <span>Dashbord</span></a>
+                        <a href="dashbord.php"><ion-icon name="speedometer-sharp"></ion-icon> <span>Dashboard</span></a>
                     </li>
                     <li>
                         <a href="administrateur.php"><ion-icon name="person-sharp"></ion-icon> <span>Admin</span></a>

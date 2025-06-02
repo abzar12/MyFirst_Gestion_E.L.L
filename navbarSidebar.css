@@ -125,7 +125,7 @@ overflow: hidden;
 }
 .ac_navbar .ac_form input{
     width: 30vh; 
-    text-align: center;
+    text-align: left;
 }
 .ac_menu li{
     padding: 0;

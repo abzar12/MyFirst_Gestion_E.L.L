@@ -59,11 +59,11 @@ try {
 try {
     // search on the data base
     $search = isset($_POST['query']) ? $_POST['query'] : "";
-    if ($_POST['query'] == "") {
+    if ($_POST['query'] === "") {
         $stmt = $conn->prepare("SELECT * FROM Inscription_Etudiant");
         $stmt->execute();
     } else {
-        $stmt = $conn->prepare("SELECT * FROM Inscription_Etudiant WHERE Nom LIKE ? OR Prenom Like ?");
+        $stmt = $conn->prepare("SELECT * FROM Inscription_Etudiant WHERE Nom LIKE ? OR Prenom LIKE ?");
         $stmt->execute(["%$search%", "%$search%"]);
     }
 
@@ -88,7 +88,9 @@ $_SESSION['LAST_ACTIVITY'] = time();
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="Dashbord.css">
     <link rel="stylesheet" href="navbarSidebar.css">
-    <title>Dashbord</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="English language laboratory, Le meilleur école d'anglais au Ghana, ecole de langue au Ghana, ELL, ">
+    <title>ELL ENGLISH LANGUAGE LABORATORY Dashbord</title>
 </head>
 
 <body>
@@ -99,7 +101,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
                     <div class="ac_navbar">
                         <a class="Logo navbar-brand text-uppercase" href="Accueil.php"><span>E.L.L</span></a>
                         <form class="ac_form" action="">
-                            <input type="text" placeholder="Nom OU Prenom" id="recherche">
+                            <input type="text" placeholder="Search Name " id="recherche">
                         </form>
                         <div class="ac_A1">
                             <p><?php echo "$LastName <br> $FirstName"  ;?></p>
@@ -117,7 +119,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
                 <ul class="ac_menu nav  mb-3" id="pills-tab" role="tablist">
                     
                     <li class="active">
-                        <a href="dashbord.php"><ion-icon name="speedometer-sharp" class="active"></ion-icon> <span>Dashbord</span></a>
+                        <a href="dashbord.php"><ion-icon name="speedometer-sharp" class="active"></ion-icon> <span>Dashboard</span></a>
                     </li> 
                     <?php if($userRole === "Director" ||$userRole === "Staff")  {?>
                     <li>
